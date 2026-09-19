@@ -67,8 +67,9 @@ def test_elitism_makes_best_distance_never_worse():
 
 
 def _kmedian_reference(stores, k, seed=0, restarts=40):
-    """Independent yardstick: many random-restart k-median runs (assign to nearest, then move each centre
-    to the geometric median of its stores via Weiszfeld). Not part of the GA. Uses flat km coordinates."""
+    """Independent k-median heuristic (Lloyd-style): many random-restart runs (assign each store to its nearest
+    centre, then move each centre to the geometric median of its stores via Weiszfeld). A heuristic, not a proof
+    of optimality. Not part of the GA. Uses flat km coordinates."""
     rng = np.random.default_rng(seed)
     kx = np.cos(np.radians(stores[:, 0].mean())) * 111.195  # km per degree of longitude at this latitude
     xy = np.column_stack([stores[:, 1] * kx, stores[:, 0] * 111.195])  # (x = east km, y = north km)
@@ -91,10 +92,13 @@ def _kmedian_reference(stores, k, seed=0, restarts=40):
     return best
 
 
-def test_stage1_ga_is_close_to_the_true_optimum():
-    """How good is the 2022 GA? Compare its stage-1 total with the k-median yardstick."""
+def test_stage1_ga_matches_kmedian_heuristic():
+    """How good is the 2022 GA? Compare its stage-1 total with an independent k-median heuristic (Lloyd-style,
+    40 random restarts). The GA must match it within 1%. This is a heuristic check, not a proven optimum."""
     res, s = run(CFG), load_stores(CFG)
     for group, k in (("durable", 3), ("nondurable", 2)):
         ga_km, ref_km = res["groups"][group]["stage1"]["store_km"], _kmedian_reference(s[group]["coords"], k)
-        print(f"{group}: GA {ga_km:.1f} km vs reference {ref_km:.1f} km (gap {100 * (ga_km / ref_km - 1):.2f}%)")
-        assert ga_km <= ref_km * 1.05
+        better = "k-median heuristic" if ref_km < ga_km else "GA"
+        print(f"{group}: GA {ga_km:.2f} km vs k-median heuristic {ref_km:.2f} km "
+              f"(GA is {100 * (ga_km / ref_km - 1):+.2f}% vs heuristic; better: {better})")
+        assert ga_km <= ref_km * 1.01

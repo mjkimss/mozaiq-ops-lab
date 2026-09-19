@@ -45,7 +45,9 @@ would wander instead of showing the search's real progress. One line of code, fl
 
 **D10. GA settings (population 100, 300 generations, crossover 0.9, mutation 0.05) are PLACEHOLDERs in
 config.yaml.** The paper gives no values and no stopping rule. Not tuned. A test compares the result with an
-independent k-median yardstick (gap 0.05% durable, 0.9% non-durable), so the settings are not hiding a bad result.
+independent k-median heuristic (Lloyd-style, 40 random restarts): the GA matches it within 1%. The heuristic was
+slightly better in both groups (291.9 vs 292.0 km durable, 58.0 vs 58.6 km non-durable). This is a heuristic
+check, not a proven optimum; the exact-optimum claim waits for PuLP in Phase 2.
 
 **D11. Port coordinates are approximate PLACEHOLDERs** (Incheon 37.4750, 126.6100; Busan 35.1000, 129.0400).
 The paper names the ports but gives no coordinates. Verify before quoting any port-distance number.

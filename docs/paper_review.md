@@ -25,10 +25,10 @@ Attempting Market Penetration to Foreign Markets* (IB extended essay, 2022; `doc
 | 4 | **Called "reinforcement learning"** (section 3-2). A GA is an evolutionary metaheuristic: it evolves a population by selection and variation, with no agent, reward signal or policy. | The README and code use the correct name. |
 | 5 | **Arbitrary durable / non-durable split.** The roles of DCs and the stores they serve were assigned arbitrarily, by longitude. (See also findings 8-9.) | No arbitrary split. Demand comes from a weekly-turnovers figure per villa, and every villa is assigned to its cheapest feasible open hub. |
 | 6 | **No results reported.** The paper describes a method and never says what it found, so its claim that the GA "would have lessened Walmart's problems" is untested. | v1 now reports final locations and convergence (this repo). v2 reports GA-versus-optimal: cost gap %, runtime, and 10+ seeds. |
-| 7 | **No check against an exact answer.** Nothing says whether the GA found the best solution or merely a good one. | v2 solves the same instances exactly (PuLP with CBC) and reports the gap. (For v1 a k-median yardstick in `tests/test_v1.py` shows the GA is within 0.05% and 0.9%.) |
+| 7 | **No check against an exact answer.** Nothing says whether the GA found the best solution or merely a good one. | v2 solves the same instances exactly (PuLP with CBC) and reports the gap. (For v1, `tests/test_v1.py` compares the GA with an independent k-median heuristic, Lloyd-style: the GA matches it within 1%; the heuristic was slightly better in both groups, 291.9 vs 292.0 km durable and 58.0 vs 58.6 km non-durable. That is a heuristic check, not a proven optimum; the exact-optimum claim waits for PuLP in v2.) |
 | 8 | **The longitude-based split contradicts the paper's own intent.** It wants non-durable DCs "in the north and south" because stores cluster there, but a longitude sort is east-west. With the corrected Masan the split is: a-i = Pohang, Hakseong, Seomyeon, Siji, Masan, Bisan, Gamsam, Wolpyeong, Guseong; j-p = the seven Seoul-metro stores. Both non-durable DCs therefore sit in the capital area and none serves the south. | The role of a hub is decided by the model (which hubs to open and where), not by sorting stores. |
 | 9 | **Internal contradiction.** The text says one store is supplied by two DCs (one durable, one non-durable), but Table 1 gives each store to only one group. | v2 has one kind of hub and one assignment rule (cheapest feasible open hub). |
-| 10 | **Islands and ports as a soft term.** Ports enter only as an added distance; nothing stops a DC from being placed in the sea (the search box is a rectangle covering sea and North Korea). | Jeju villas can only be served by a Jeju hub (a hard constraint that mirrors the paper's port logic); hubs are chosen from real candidate towns, so none can land in the sea. |
+| 10 | **Islands and ports as a soft term.** Ports enter only as an added distance; nothing stops a DC from being placed in the sea (the search box is a rectangle covering sea and North Korea). | Jeju villas can only be served by a Jeju hub or the Jeju outsourced vendor (a hard constraint that mirrors the paper's port logic); hubs are chosen from real candidate towns, so none can land in the sea. |
 | 11 | **Missing settings.** Population size, generations, rates and the stopping condition are not stated, so the run cannot be reproduced from the essay. | Every parameter is in `config.yaml`, with a fixed seed. |
 | 12 | **Roulette wheel on 1 / distance has weak selection pressure.** When all individuals have similar distances, all get almost equal slices, so selection barely favours the better ones. | v2 keeps roulette (for fidelity) and adds tournament selection, compared on the same seeds. |
 | 13 | **Data error in Appendix 2.** Masan duplicates Yeoksam's coordinates (and the table is titled "DC locations" although it lists stores). | Corrected in `data/walmart_stores.csv` and logged (decision D4). |
@@ -36,5 +36,19 @@ Attempting Market Penetration to Foreign Markets* (IB extended essay, 2022; `doc
 ## What v1 found (seed 42)
 See the Phase 1 report and `outputs/v1_result.json`. In short: stage 1 places the three durable DCs near
 Busan, Daegu and central Korea, and the two non-durable DCs inside the Seoul-metro cluster. Stage 2 (adding the port
-term) moves the third durable DC north to Guseong, next to Incheon, cutting port distance by about 74 km while
-adding about 4 km of store distance.
+term) moves the third durable DC north to (37.311, 127.104), Guseong in Yongin, cutting port distance by about
+74 km while adding about 4 km of store distance. That DC is still 47 km from the Incheon port (haversine); it was
+112 km away in stage 1.
+
+## From Walmart to MOZAIQ
+
+| Walmart 2022 (v1) | MOZAIQ (v2) |
+|---|---|
+| Distribution center (DC) | Ops hub: cleaning, laundry and supply base for a cluster of villas |
+| Store | Villa (demand = weekly turnovers) |
+| Port (Incheon, Busan) | Linen/supply source (PLACEHOLDER: MOZAIQ's real supply chain is not public) |
+| Sea crossing to Jeju is not modelled | Jeju is an island: Jeju villas can only be served by a Jeju hub or the Jeju vendor (hard constraint) |
+| Durable vs non-durable DCs | Linen loop (time-sensitive, pickup and delivery) vs consumables (durable, restocked) |
+| Straight-line distance | Road time and distance from OSRM (haversine x detour factor as flagged fallback) |
+| Fixed 5 DCs at free coordinates | Hubs chosen from 21 candidate towns, or outsourced to a local vendor |
+| Fitness = 1 / distance | Weekly cost = transport + rent + vendor fees + capacity and drive-time penalties |
