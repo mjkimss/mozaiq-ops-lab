@@ -1,0 +1,28 @@
+# Every assumption lives here, with "source:" (where it came from) or "PLACEHOLDER" (my guess, to verify).
+# Sections: v1 = faithful rebuild of the 2022 essay GA. v2 sections are added in Phase 2.
+
+v1:
+  seed: 42                    # PLACEHOLDER: any fixed number; same seed -> same result
+
+  # The paper's search box for DC genes (section 3-3-1). Note it is a plain rectangle, so DCs may land in the sea.
+  bounds:
+    lat: [34.0, 38.0]         # source: paper 3-3-1 (paper calls this "x")
+    lon: [120.0, 130.0]       # source: paper 3-3-1 (paper calls this "y")
+
+  # DC roles and the store split (paper Table 1). Stores are named a..p by descending longitude.
+  n_durable_dcs: 3            # source: paper Table 1 (DCs A-C)
+  n_nondurable_dcs: 2         # source: paper Table 1 (DCs D-E)
+  n_durable_stores: 9         # source: paper Table 1 (stores a-i); the remaining 7 (j-p) are non-durable
+
+  # Ports for the second stage. Coordinates are NOT in the paper.
+  ports:
+    Incheon: [37.4750, 126.6100]   # PLACEHOLDER: approximate Incheon port, verify
+    Busan:   [35.1000, 129.0400]   # PLACEHOLDER: approximate Busan port, verify
+
+  # GA settings. The paper gives NONE of these; all are PLACEHOLDERs.
+  ga:
+    population: 100           # PLACEHOLDER
+    generations: 300          # PLACEHOLDER: paper's flowchart says "until condition met" but gives no condition
+    crossover_prob: 0.9       # PLACEHOLDER: chance a pair is crossed; otherwise the child copies parent 1
+    mutation_prob: 0.05       # PLACEHOLDER: per-gene chance (a gene is one latitude or one longitude value)
+    elite: 1                  # ADDITION beyond the paper: best individual is copied unchanged each generation

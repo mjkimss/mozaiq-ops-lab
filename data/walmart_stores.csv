@@ -1,0 +1,17 @@
+name,lat,lon,note
+Yeoksam,37.49914,127.04856,source: paper Appendix 2
+Hwajeong,37.63266,126.83340,source: paper Appendix 2
+Keyang,37.53098,126.73688,source: paper Appendix 2
+Songrim,37.48306,126.66056,source: paper Appendix 2
+Jungdong,37.50404,126.76392,source: paper Appendix 2
+Pyeongchon,37.39473,126.96344,source: paper Appendix 2
+Deokyi,37.68851,126.76028,source: paper Appendix 2
+Siji,35.83935,128.70404,source: paper Appendix 2
+Hakseong,35.55566,129.33103,source: paper Appendix 2
+Bisan,35.88988,128.55597,source: paper Appendix 2
+Guseong,37.30496,127.10510,source: paper Appendix 2
+Seomyeon,35.16391,129.05260,source: paper Appendix 2
+Wolpyeong,36.35764,127.36299,source: paper Appendix 2
+Masan,35.20000,128.57000,CORRECTED: paper Appendix 2 lists (37.49914 127.04832) which duplicates Yeoksam; this is APPROXIMATE Masan city centre (Changwon-si)
+Pohangidong,36.03193,129.33883,source: paper Appendix 2
+Gamsam,35.84535,128.53449,source: paper Appendix 2
