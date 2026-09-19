@@ -156,3 +156,27 @@ more for a remote villa (longer pickup and delivery), and does not exist in ever
 outsourcing remote villas (e.g. Gangwon) relative to a distance-priced vendor. The model is NOT changed (base results stay as the
 business result). Planned for Phase 3: a "vendor distance surcharge" (extra KRW per turnover per km from the nearest town) as one more
 sensitivity line, alongside vendor fee, van batching, rent and turnovers.
+
+## Phase 3: outputs and README
+
+**D34. All sweeps and the heatmaps use the exact solver, not the GA.** A sweep should show the true optimum for each setting; the GA
+only appears in the convergence and validation charts. Sweep ranges: vendor fee x0.5 to x4 by van round trips 1.0 to 0.1 (40 cells per
+scenario); rent x0.1 to x4 by turnovers x0.5 to x3; surcharge 0 to 1,000 KRW per turnover per km. Ranges are wide on purpose so the
+break-even edge is visible; the base cell is outlined in every grid.
+
+**D35. Vendor distance surcharge (answers D33).** `vendor.distance_surcharge_krw_per_turnover_km` in config.yaml, default 0 (base results
+unchanged). When set, vendor cost per turnover = flat fee + surcharge x road km from the villa to its nearest candidate hub town in its zone
+(a stand-in for how remote the villa is). Result: at about the in-house van's cost per km (roughly 1,000 KRW) the 100-villa network opens 7 hubs
+instead of 2; the 30-villa network still opens none. Also added `turnover_scale` to `build_instance` for the turnovers sensitivity.
+
+**D36. What-if map is kept and clearly labelled.** `hubs_expansion_whatif_batched.html` (0.25 round trips per turnover, 5 hubs) carries a
+banner "WHAT-IF, not a business recommendation", because the base business result has 0 and 2 hubs and a viewer should also see what a hub
+network looks like. Base maps state the business result in their banner ("outsource-first at these costs").
+
+**D37. README order and wording.** Korean summary first, then the break-even heatmap and one-paragraph key finding, then the GA-vs-exact
+validation, then v1 vs v2, then the rest. The Korean draft was kept except: "공개 자료 기반 가정치" (assumptions based on public sources)
+changed to "시뮬레이션 또는 가정치이며, 일부만 공개 자료를 참고" because several values (vendor fee, hub area, machines, linen kg, drive limit,
+turnovers) have no source and the original would overclaim; two sentences were smoothed for grammar. Paper link points to
+`docs/walmart_paper.md`; the file was scanned for a candidate number, session number, supervisor name and personal name and none was
+present, so nothing was removed (the "Kim" hits are cited authors). Chart colours were checked with the dataviz validator; aqua is below 3:1
+contrast on the light surface, so every aqua bar segment carries a visible value label and a legend entry.

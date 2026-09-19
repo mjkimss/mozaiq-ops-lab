@@ -6,7 +6,6 @@ Steps: build the instance (road times from the OSRM cache/API), solve it exactly
 roulette and with tournament selection over several seeds, and compare each GA result with the exact optimum.
 """
 import argparse
-import copy
 import csv
 
 import numpy as np
@@ -16,6 +15,7 @@ from src.data import SCENARIOS
 from src.hub_exact import solve_exact
 from src.hub_ga import SELECTION, run_ga
 from src.hub_model import build_instance, describe, evaluate
+from src.sensitivity import override
 
 
 def krw(x):
@@ -94,10 +94,7 @@ def main():
         compare(build_instance(args.scenario, cfg), v2, title, f"v2_{args.scenario}_runs.csv")
         return
     for st in v2["stress_tests"]:
-        c = copy.deepcopy(cfg)  # change only the two unsourced numbers; everything else is the base configuration
-        c["v2"]["costs"]["van_round_trips_per_turnover"] = st["round_trips"]
-        for zone in c["v2"]["vendor"]["cost_per_turnover_krw"]:
-            c["v2"]["vendor"]["cost_per_turnover_krw"][zone] *= st["vendor_multiplier"]
+        c = override(cfg, vendor_multiplier=st["vendor_multiplier"], round_trips=st["round_trips"])  # only the two unsourced numbers change
         title = (f"ALGORITHM VALIDATION, NOT A BUSINESS RECOMMENDATION: {st['scenario']} instance '{st['name']}' "
                  f"(vendor fee x{st['vendor_multiplier']:g}, {st['round_trips']:g} van round trips per turnover)")
         compare(build_instance(st["scenario"], c), v2, title, f"v2_{st['scenario']}_stress_{st['name']}_runs.csv")

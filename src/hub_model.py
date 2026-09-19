@@ -12,9 +12,10 @@ from src.data import load_hubs, load_villas
 from src.travel import CACHE_PATH, travel_matrix
 
 
-def build_instance(scenario, cfg=None, cache_path=CACHE_PATH):
+def build_instance(scenario, cfg=None, cache_path=CACHE_PATH, turnover_scale=1.0):
     v2 = (cfg or load_config())["v2"]
     villas, hubs = load_villas(scenario), load_hubs()
+    villas = {**villas, "turnovers": villas["turnovers"] * turnover_scale}  # sensitivity hook; 1.0 = as in the data
     same_zone = villas["zone"][:, None] == hubs["zone"][None, :]  # the Jeju hard constraint
     minutes, km, fallback, stats = travel_matrix(villas["coords"], hubs["coords"], same_zone, cache_path, v2)
 
@@ -27,9 +28,10 @@ def build_instance(scenario, cfg=None, cache_path=CACHE_PATH):
         "scenario": scenario, "villas": villas, "hubs": hubs, "minutes": minutes, "km": km,
         "fallback": fallback, "travel_stats": stats,
         "transport": transport, "drive": drive, "pair": transport + drive,
-        "vendor": villas["turnovers"] * np.where(villas["zone"] == "jeju",
-                                                 v2["vendor"]["cost_per_turnover_krw"]["jeju"],
-                                                 v2["vendor"]["cost_per_turnover_krw"]["mainland"]),
+        # flat fee per turnover, plus (default 0) a surcharge per km from the villa to its nearest candidate town
+        "vendor": villas["turnovers"] * (np.where(villas["zone"] == "jeju", v2["vendor"]["cost_per_turnover_krw"]["jeju"],
+                                                  v2["vendor"]["cost_per_turnover_krw"]["mainland"])
+                                         + v2["vendor"]["distance_surcharge_krw_per_turnover_km"] * km.min(axis=1)),
         "fixed": rent * 12 / 52,  # monthly rent -> weekly
         "capacity": h["washer_kg_per_cycle"] * h["cycles_per_hour"] * h["hours_per_week"] * h["machines_per_hub"]
                     / h["linen_kg_per_turnover"],  # turnovers per week

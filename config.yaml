@@ -96,6 +96,9 @@ v2:
   # It is set higher than the in-house variable cost by construction, as specified. The Jeju hub-versus-vendor answer depends on it.
   vendor:
     cost_per_turnover_krw: {mainland: 15000, jeju: 19500}
+    # Extra fee per turnover per road km from the villa to its nearest candidate hub town (a stand-in for how remote the villa is).
+    # 0 = the flat fee of the base results (limitation D33). Only the Phase 3 sensitivity line varies it. PLACEHOLDER: rough estimate, no source.
+    distance_surcharge_krw_per_turnover_km: 0
 
   # ---- penalties (soft constraints; large enough to dominate real costs, stated so) -------------------------
   penalties:

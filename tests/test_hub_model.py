@@ -19,7 +19,7 @@ HUBS = {"ids": ["H1", "H2"], "names": ["Hub1", "Hub2"], "zone": np.array(["mainl
 ROAD = {(0, 0): (30, 10), (1, 0): (60, 20), (2, 1): (10, 5)}
 
 
-def cfg(vendor=30000, capacity_kg=10.0):
+def cfg(vendor=30000, capacity_kg=10.0, surcharge=0):
     return {"v2": {
         "osrm": {"base_url": "http://osrm.test", "batch_size": 50, "min_interval_s": 0, "timeout_s": 1, "retries": 0, "user_agent": "t"},
         "fallback": {"detour_factor": 1.3, "speed_kmh": 50},
@@ -27,7 +27,7 @@ def cfg(vendor=30000, capacity_kg=10.0):
         "hub": {"area_m2": 1, "rent_gyeonggi_krw_per_m2_month": 26000, "rent_tier_multiplier": {"gyeonggi": 1.0, "jeju": 0.7},
                 "washer_kg_per_cycle": capacity_kg, "cycles_per_hour": 1, "hours_per_week": 1, "machines_per_hub": 1,
                 "linen_kg_per_turnover": 1, "max_linen_drive_min": 45},
-        "vendor": {"cost_per_turnover_krw": {"mainland": vendor, "jeju": vendor + 10000}},
+        "vendor": {"cost_per_turnover_krw": {"mainland": vendor, "jeju": vendor + 10000}, "distance_surcharge_krw_per_turnover_km": surcharge},
         "penalties": {"drive_krw_per_min_per_turnover": 100, "capacity_krw_per_turnover": 50000}}}
 
 
@@ -42,7 +42,7 @@ def world(tmp_path, monkeypatch):
     monkeypatch.setattr(travel.requests, "get", boom)
     monkeypatch.setattr(hub_model, "load_villas", lambda s: VILLAS)
     monkeypatch.setattr(hub_model, "load_hubs", lambda: HUBS)
-    return lambda **kw: build_instance("current", cfg(**kw), cache_path=cache)
+    return lambda turnover_scale=1.0, **kw: build_instance("current", cfg(**kw), cache_path=cache, turnover_scale=turnover_scale)
 
 
 def test_cost_hand_computed(world):
@@ -81,6 +81,19 @@ def test_capacity_penalty(world):
     assert evaluate(inst, np.array([True, False]))["capacity"][0] == pytest.approx(50000)
     inst = world(vendor=1e9, capacity_kg=5.0)            # load equal to capacity is fine
     assert evaluate(inst, np.array([True, False]))["capacity"][0] == 0
+
+
+def test_flat_vendor_fee_by_default_and_surcharge_scales_with_remoteness(world):
+    assert world()["vendor"] == pytest.approx([2 * 30000, 3 * 30000, 1 * 40000])           # flat fee x turnovers
+    # surcharge 1,000 KRW per turnover per km to the nearest hub town: A is 10 km, B 20 km, J 5 km from the nearest hub
+    assert world(surcharge=1000)["vendor"] == pytest.approx([2 * (30000 + 10000), 3 * (30000 + 20000), 1 * (40000 + 5000)])
+
+
+def test_turnover_scale_multiplies_demand(world):
+    base, doubled = world(), world(turnover_scale=2.0)
+    assert list(doubled["villas"]["turnovers"]) == [4.0, 6.0, 2.0]
+    assert doubled["transport"][0, 0] == pytest.approx(2 * base["transport"][0, 0])
+    assert doubled["vendor"] == pytest.approx(2 * base["vendor"])
 
 
 def _random_instance(seed, n_v=14, n_h=8, capacity=1e9):

@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d69d4995e4a37e0f2a24db67772fa15f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    <div style="position:fixed;top:10px;left:50px;right:50px;z-index:9999;background:#fffbe6;border:1px solid #d4b106;padding:8px 12px;font:14px sans-serif;border-radius:6px"><b>current, base assumptions.</b> SIMULATED villas, PLACEHOLDER costs: not MOZAIQ data. Exact optimum: <b>0 hubs</b> (outsource-first at these costs); turnovers outsourced: mainland 100%, jeju 100%.</div><div style="position:fixed;bottom:24px;left:10px;z-index:9999;background:white;border:1px solid #ccc;padding:6px 10px;font:12px sans-serif;border-radius:6px"><span style="color:#2a78d6">&#9679;</span> villa served by a hub &nbsp; <span style="color:#7a7a7a">&#9679;</span> villa outsourced &nbsp; <span style="color:#b0b0b0">&#9679;</span> candidate town &nbsp; (open hubs: 0)<br>Road times: OSRM. Road data &copy; OpenStreetMap contributors (ODbL).</div>
+    
+            <div class="folium-map" id="map_d69d4995e4a37e0f2a24db67772fa15f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d69d4995e4a37e0f2a24db67772fa15f = L.map(
+                "map_d69d4995e4a37e0f2a24db67772fa15f",
+                {
+                    center: [36.3, 127.8],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_238d12c34843ce88fd1da2ffa9abd9a1 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_238d12c34843ce88fd1da2ffa9abd9a1.addTo(map_d69d4995e4a37e0f2a24db67772fa15f);
+        
+    
+            var feature_group_e44a8eed8838da01fb76922a584807e0 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_6c6acb5441faf3a549edf9d4b6fd54d3 = L.circleMarker(
+                [37.5665, 126.978],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_6c6acb5441faf3a549edf9d4b6fd54d3.bindTooltip(
+                `<div>
+                     candidate town: Seoul (rent 1,252,385 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_60d7c83358d12e70997a07d2f2781171 = L.circleMarker(
+                [37.5393, 127.2148],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_60d7c83358d12e70997a07d2f2781171.bindTooltip(
+                `<div>
+                     candidate town: Hanam (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_74dc0cb252d2fecb091534d107b54217 = L.circleMarker(
+                [37.636, 127.2165],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_74dc0cb252d2fecb091534d107b54217.bindTooltip(
+                `<div>
+                     candidate town: Namyangju (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6bda75c9f28d8240f3f26f6f6cbf38a2 = L.circleMarker(
+                [37.6152, 126.7159],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_6bda75c9f28d8240f3f26f6f6cbf38a2.bindTooltip(
+                `<div>
+                     candidate town: Gimpo (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a1074e1cc9ab42f1f805c5a988085a79 = L.circleMarker(
+                [37.6584, 126.832],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_a1074e1cc9ab42f1f805c5a988085a79.bindTooltip(
+                `<div>
+                     candidate town: Goyang (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f9c98a77a48930844829be0345b10400 = L.circleMarker(
+                [37.4563, 126.7052],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_f9c98a77a48930844829be0345b10400.bindTooltip(
+                `<div>
+                     candidate town: Incheon (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_75c4a89217c1f0a8fc949f5a0c023a69 = L.circleMarker(
+                [37.2411, 127.1776],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_75c4a89217c1f0a8fc949f5a0c023a69.bindTooltip(
+                `<div>
+                     candidate town: Yongin (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fe8c290fe507bfffe421720528d1ec3e = L.circleMarker(
+                [37.2636, 127.0286],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_fe8c290fe507bfffe421720528d1ec3e.bindTooltip(
+                `<div>
+                     candidate town: Suwon (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b752041b789c4cc3c703a153eceb47df = L.circleMarker(
+                [37.4915, 127.4875],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_b752041b789c4cc3c703a153eceb47df.bindTooltip(
+                `<div>
+                     candidate town: Yangpyeong (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a0839025e2472bfda35537fb8463e9fd = L.circleMarker(
+                [37.8315, 127.5095],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_a0839025e2472bfda35537fb8463e9fd.bindTooltip(
+                `<div>
+                     candidate town: Gapyeong (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b5a68d9355e0bfcf742db6d23b79f9d1 = L.circleMarker(
+                [37.8813, 127.7298],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_b5a68d9355e0bfcf742db6d23b79f9d1.bindTooltip(
+                `<div>
+                     candidate town: Chuncheon (rent 313,096 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9bf9d4ab0ffdb3f978a7e2666f16e3df = L.circleMarker(
+                [37.697, 127.8886],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_9bf9d4ab0ffdb3f978a7e2666f16e3df.bindTooltip(
+                `<div>
+                     candidate town: Hongcheon (rent 313,096 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_847d2eb1971eaab23874cc49b01b29a3 = L.circleMarker(
+                [37.4917, 127.985],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_847d2eb1971eaab23874cc49b01b29a3.bindTooltip(
+                `<div>
+                     candidate town: Hoengseong (rent 313,096 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_231b22f666434f8680db16fa601571ad = L.circleMarker(
+                [37.3422, 127.9202],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_231b22f666434f8680db16fa601571ad.bindTooltip(
+                `<div>
+                     candidate town: Wonju (rent 313,096 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_abe0f92fb6e3cb7ddfbb30984f1ab1e9 = L.circleMarker(
+                [37.7519, 128.8761],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_abe0f92fb6e3cb7ddfbb30984f1ab1e9.bindTooltip(
+                `<div>
+                     candidate town: Gangneung (rent 313,096 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fbebc6ff4ed1d4131925ffcdaddc9d4f = L.circleMarker(
+                [38.207, 128.5918],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_fbebc6ff4ed1d4131925ffcdaddc9d4f.bindTooltip(
+                `<div>
+                     candidate town: Sokcho (rent 313,096 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_572d06efaa127a5917d2bb2c4de96297 = L.circleMarker(
+                [38.0754, 128.619],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_572d06efaa127a5917d2bb2c4de96297.bindTooltip(
+                `<div>
+                     candidate town: Yangyang (rent 313,096 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0364dddd739ad9a8af135be7d49fa560 = L.circleMarker(
+                [35.1796, 129.0756],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_0364dddd739ad9a8af135be7d49fa560.bindTooltip(
+                `<div>
+                     candidate town: Busan (rent 438,335 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_aceb70f5f5670ecddd5ee843ca56ece0 = L.circleMarker(
+                [35.2285, 128.8894],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_aceb70f5f5670ecddd5ee843ca56ece0.bindTooltip(
+                `<div>
+                     candidate town: Gimhae (rent 438,335 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4f59afea2ceaab6df06d27a5a272bfc0 = L.circleMarker(
+                [33.4996, 126.5312],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_4f59afea2ceaab6df06d27a5a272bfc0.bindTooltip(
+                `<div>
+                     candidate town: Jeju City (rent 438,335 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5e26ff3983671e3411df0351166f0819 = L.circleMarker(
+                [33.2541, 126.5601],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e44a8eed8838da01fb76922a584807e0);
+        
+    
+            circle_marker_5e26ff3983671e3411df0351166f0819.bindTooltip(
+                `<div>
+                     candidate town: Seogwipo (rent 438,335 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_e44a8eed8838da01fb76922a584807e0.addTo(map_d69d4995e4a37e0f2a24db67772fa15f);
+        
+    
+            var feature_group_45caa8b3fe70ae8c0cbcc5721be48a26 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            feature_group_45caa8b3fe70ae8c0cbcc5721be48a26.addTo(map_d69d4995e4a37e0f2a24db67772fa15f);
+        
+    
+            var feature_group_fba1b9cce11c2a470ce1e74405d53c12 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            feature_group_fba1b9cce11c2a470ce1e74405d53c12.addTo(map_d69d4995e4a37e0f2a24db67772fa15f);
+        
+    
+            var feature_group_545e693ef2caaf64e3bfe306d5d8b8c7 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_1993050ca6a80c5c4cdfb9145f6e455b = L.circleMarker(
+                [37.59261, 127.01728],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_885569eedbbe9cd583dd5349d5c06d57 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_61969e44ec985a1fc7b07b4f0fe2c93f = $(`<div id="html_61969e44ec985a1fc7b07b4f0fe2c93f" style="width: 100.0%; height: 100.0%;"><b>V001</b> (Seoul-Gahoe, SIMULATED)<br>4 turnovers/week<br>served by outsourced to the mainland vendor (60,000 KRW/week)</div>`)[0];
+                popup_885569eedbbe9cd583dd5349d5c06d57.setContent(html_61969e44ec985a1fc7b07b4f0fe2c93f);
+            
+        
+
+        circle_marker_1993050ca6a80c5c4cdfb9145f6e455b.bindPopup(popup_885569eedbbe9cd583dd5349d5c06d57)
+        ;
+
+        
+    
+    
+            var circle_marker_c3fdf6a8c3f1f0568496b91ce500de40 = L.circleMarker(
+                [37.56062, 126.96951],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_b9472e0147c507312f309191b6926220 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_d0dd9c47d98d18ce2274cb93a7de319f = $(`<div id="html_d0dd9c47d98d18ce2274cb93a7de319f" style="width: 100.0%; height: 100.0%;"><b>V002</b> (Seoul-Gahoe, SIMULATED)<br>5 turnovers/week<br>served by outsourced to the mainland vendor (75,000 KRW/week)</div>`)[0];
+                popup_b9472e0147c507312f309191b6926220.setContent(html_d0dd9c47d98d18ce2274cb93a7de319f);
+            
+        
+
+        circle_marker_c3fdf6a8c3f1f0568496b91ce500de40.bindPopup(popup_b9472e0147c507312f309191b6926220)
+        ;
+
+        
+    
+    
+            var circle_marker_c3f46608177bf84b39abb11ad2b44d36 = L.circleMarker(
+                [37.61248, 126.94592],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_5a993ec17f6ba3e6dfa62d5e87edbf7d = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_ddd6cb94bfe662555eff552b38cac7e2 = $(`<div id="html_ddd6cb94bfe662555eff552b38cac7e2" style="width: 100.0%; height: 100.0%;"><b>V003</b> (Seoul-Gahoe, SIMULATED)<br>3 turnovers/week<br>served by outsourced to the mainland vendor (45,000 KRW/week)</div>`)[0];
+                popup_5a993ec17f6ba3e6dfa62d5e87edbf7d.setContent(html_ddd6cb94bfe662555eff552b38cac7e2);
+            
+        
+
+        circle_marker_c3f46608177bf84b39abb11ad2b44d36.bindPopup(popup_5a993ec17f6ba3e6dfa62d5e87edbf7d)
+        ;
+
+        
+    
+    
+            var circle_marker_d0377238aead31504f6bc831f0c15ecc = L.circleMarker(
+                [37.60637, 126.98293],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_884edb5d108d202c22865e1b2ca549f2 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_c981a093ffb97fe2dc54dd73d539362d = $(`<div id="html_c981a093ffb97fe2dc54dd73d539362d" style="width: 100.0%; height: 100.0%;"><b>V004</b> (Seoul-Gahoe, SIMULATED)<br>5 turnovers/week<br>served by outsourced to the mainland vendor (75,000 KRW/week)</div>`)[0];
+                popup_884edb5d108d202c22865e1b2ca549f2.setContent(html_c981a093ffb97fe2dc54dd73d539362d);
+            
+        
+
+        circle_marker_d0377238aead31504f6bc831f0c15ecc.bindPopup(popup_884edb5d108d202c22865e1b2ca549f2)
+        ;
+
+        
+    
+    
+            var circle_marker_9c44f471b6a17ea9a5354c1a012101e7 = L.circleMarker(
+                [37.79502, 127.47235],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_43bde41d3433cde03d56ae5bb56b3230 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_3aa42dc7b4f4664b31b00e06e9730984 = $(`<div id="html_3aa42dc7b4f4664b31b00e06e9730984" style="width: 100.0%; height: 100.0%;"><b>V010</b> (Gapyeong, SIMULATED)<br>4 turnovers/week<br>served by outsourced to the mainland vendor (60,000 KRW/week)</div>`)[0];
+                popup_43bde41d3433cde03d56ae5bb56b3230.setContent(html_3aa42dc7b4f4664b31b00e06e9730984);
+            
+        
+
+        circle_marker_9c44f471b6a17ea9a5354c1a012101e7.bindPopup(popup_43bde41d3433cde03d56ae5bb56b3230)
+        ;
+
+        
+    
+    
+            var circle_marker_9552291a027560f3b8cac9d84b3d6b00 = L.circleMarker(
+                [37.83269, 127.5068],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_a9c773b6a1f36d5959ae9fa039c79dfd = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_2191f3734a0006fecb19881082332674 = $(`<div id="html_2191f3734a0006fecb19881082332674" style="width: 100.0%; height: 100.0%;"><b>V011</b> (Gapyeong, SIMULATED)<br>5 turnovers/week<br>served by outsourced to the mainland vendor (75,000 KRW/week)</div>`)[0];
+                popup_a9c773b6a1f36d5959ae9fa039c79dfd.setContent(html_2191f3734a0006fecb19881082332674);
+            
+        
+
+        circle_marker_9552291a027560f3b8cac9d84b3d6b00.bindPopup(popup_a9c773b6a1f36d5959ae9fa039c79dfd)
+        ;
+
+        
+    
+    
+            var circle_marker_dd613191a37b995b0a94f542358b1e8e = L.circleMarker(
+                [37.84184, 127.51063],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_bb3ea838465c1cac7fe3614558355df2 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_962e45d216341afd4c696a195a276b44 = $(`<div id="html_962e45d216341afd4c696a195a276b44" style="width: 100.0%; height: 100.0%;"><b>V012</b> (Gapyeong, SIMULATED)<br>5 turnovers/week<br>served by outsourced to the mainland vendor (75,000 KRW/week)</div>`)[0];
+                popup_bb3ea838465c1cac7fe3614558355df2.setContent(html_962e45d216341afd4c696a195a276b44);
+            
+        
+
+        circle_marker_dd613191a37b995b0a94f542358b1e8e.bindPopup(popup_bb3ea838465c1cac7fe3614558355df2)
+        ;
+
+        
+    
+    
+            var circle_marker_22753c7d27dc6017919a4a9df7a73bbb = L.circleMarker(
+                [37.83125, 127.4893],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_fb54fb59733f5a3ac5aa76f2e6742288 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_6bc65df4362d442aaa5a16dc3d84bef3 = $(`<div id="html_6bc65df4362d442aaa5a16dc3d84bef3" style="width: 100.0%; height: 100.0%;"><b>V013</b> (Gapyeong, SIMULATED)<br>5 turnovers/week<br>served by outsourced to the mainland vendor (75,000 KRW/week)</div>`)[0];
+                popup_fb54fb59733f5a3ac5aa76f2e6742288.setContent(html_6bc65df4362d442aaa5a16dc3d84bef3);
+            
+        
+
+        circle_marker_22753c7d27dc6017919a4a9df7a73bbb.bindPopup(popup_fb54fb59733f5a3ac5aa76f2e6742288)
+        ;
+
+        
+    
+    
+            var circle_marker_fd87089106de092936be06f872517452 = L.circleMarker(
+                [37.80689, 127.52486],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_bb046164ba25e55c2a77f356239066e5 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_5194d42ce40fab60175272ae5ae21559 = $(`<div id="html_5194d42ce40fab60175272ae5ae21559" style="width: 100.0%; height: 100.0%;"><b>V014</b> (Gapyeong, SIMULATED)<br>2 turnovers/week<br>served by outsourced to the mainland vendor (30,000 KRW/week)</div>`)[0];
+                popup_bb046164ba25e55c2a77f356239066e5.setContent(html_5194d42ce40fab60175272ae5ae21559);
+            
+        
+
+        circle_marker_fd87089106de092936be06f872517452.bindPopup(popup_bb046164ba25e55c2a77f356239066e5)
+        ;
+
+        
+    
+    
+            var circle_marker_92670588ebd2d1dba0ed18abd2a12cbe = L.circleMarker(
+                [37.76677, 127.43218],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_00a0eacce1f6cd10d143a74f4d54c72b = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_c820d4e1dbfce31491b84e1dd7fa3999 = $(`<div id="html_c820d4e1dbfce31491b84e1dd7fa3999" style="width: 100.0%; height: 100.0%;"><b>V018</b> (Cheongpyeong, SIMULATED)<br>4 turnovers/week<br>served by outsourced to the mainland vendor (60,000 KRW/week)</div>`)[0];
+                popup_00a0eacce1f6cd10d143a74f4d54c72b.setContent(html_c820d4e1dbfce31491b84e1dd7fa3999);
+            
+        
+
+        circle_marker_92670588ebd2d1dba0ed18abd2a12cbe.bindPopup(popup_00a0eacce1f6cd10d143a74f4d54c72b)
+        ;
+
+        
+    
+    
+            var circle_marker_1d20b4f295e963f59be36ab174357c0b = L.circleMarker(
+                [37.75834, 127.38832],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_80d2915995fc568987cf8d65a7664634 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_b9f219ad69a665e84d3ba4c19e81e6f9 = $(`<div id="html_b9f219ad69a665e84d3ba4c19e81e6f9" style="width: 100.0%; height: 100.0%;"><b>V019</b> (Cheongpyeong, SIMULATED)<br>2 turnovers/week<br>served by outsourced to the mainland vendor (30,000 KRW/week)</div>`)[0];
+                popup_80d2915995fc568987cf8d65a7664634.setContent(html_b9f219ad69a665e84d3ba4c19e81e6f9);
+            
+        
+
+        circle_marker_1d20b4f295e963f59be36ab174357c0b.bindPopup(popup_80d2915995fc568987cf8d65a7664634)
+        ;
+
+        
+    
+    
+            var circle_marker_f8fc8949455f5beabc5644bd85ecf23b = L.circleMarker(
+                [37.73962, 127.45071],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_2f27cad75e9e5f8f4628e0ec5dbe4a4a = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_c473a2d259958b8906748008f8f65987 = $(`<div id="html_c473a2d259958b8906748008f8f65987" style="width: 100.0%; height: 100.0%;"><b>V020</b> (Cheongpyeong, SIMULATED)<br>4 turnovers/week<br>served by outsourced to the mainland vendor (60,000 KRW/week)</div>`)[0];
+                popup_2f27cad75e9e5f8f4628e0ec5dbe4a4a.setContent(html_c473a2d259958b8906748008f8f65987);
+            
+        
+
+        circle_marker_f8fc8949455f5beabc5644bd85ecf23b.bindPopup(popup_2f27cad75e9e5f8f4628e0ec5dbe4a4a)
+        ;
+
+        
+    
+    
+            var circle_marker_eb6edaf75245e1679b92f7b591b1bf16 = L.circleMarker(
+                [37.7279, 127.42885],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_ea3a0d2d5ae9a42c8b26daee2dcd5c30 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_d102631d4e23493ca82ff717c0810429 = $(`<div id="html_d102631d4e23493ca82ff717c0810429" style="width: 100.0%; height: 100.0%;"><b>V021</b> (Cheongpyeong, SIMULATED)<br>2 turnovers/week<br>served by outsourced to the mainland vendor (30,000 KRW/week)</div>`)[0];
+                popup_ea3a0d2d5ae9a42c8b26daee2dcd5c30.setContent(html_d102631d4e23493ca82ff717c0810429);
+            
+        
+
+        circle_marker_eb6edaf75245e1679b92f7b591b1bf16.bindPopup(popup_ea3a0d2d5ae9a42c8b26daee2dcd5c30)
+        ;
+
+        
+    
+    
+            var circle_marker_ee270356c643aa893ac5fd6ef76e631f = L.circleMarker(
+                [37.7353, 127.8958],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_10db42ba7bfcedc68c5c50f04f08ffab = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_4f018c8d7b93da062dcaae8c542800ac = $(`<div id="html_4f018c8d7b93da062dcaae8c542800ac" style="width: 100.0%; height: 100.0%;"><b>V024</b> (Hongcheon, SIMULATED)<br>3 turnovers/week<br>served by outsourced to the mainland vendor (45,000 KRW/week)</div>`)[0];
+                popup_10db42ba7bfcedc68c5c50f04f08ffab.setContent(html_4f018c8d7b93da062dcaae8c542800ac);
+            
+        
+
+        circle_marker_ee270356c643aa893ac5fd6ef76e631f.bindPopup(popup_10db42ba7bfcedc68c5c50f04f08ffab)
+        ;
+
+        
+    
+    
+            var circle_marker_a5a00155b558f84fd6612cac2c1f19ab = L.circleMarker(
+                [37.7054, 127.89964],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_d26a639e538db442b5d3ab08966ad493 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_3107fd5f039bdbca5d4f3b2870baa393 = $(`<div id="html_3107fd5f039bdbca5d4f3b2870baa393" style="width: 100.0%; height: 100.0%;"><b>V025</b> (Hongcheon, SIMULATED)<br>4 turnovers/week<br>served by outsourced to the mainland vendor (60,000 KRW/week)</div>`)[0];
+                popup_d26a639e538db442b5d3ab08966ad493.setContent(html_3107fd5f039bdbca5d4f3b2870baa393);
+            
+        
+
+        circle_marker_a5a00155b558f84fd6612cac2c1f19ab.bindPopup(popup_d26a639e538db442b5d3ab08966ad493)
+        ;
+
+        
+    
+    
+            var circle_marker_f6fd4f2c698781ba27537cf9140ceefe = L.circleMarker(
+                [37.66906, 127.88383],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_fffa6017c7f03c19a0add0c62489bea7 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_c7e52f7cad44547e426d8c154171e06f = $(`<div id="html_c7e52f7cad44547e426d8c154171e06f" style="width: 100.0%; height: 100.0%;"><b>V026</b> (Hongcheon, SIMULATED)<br>4 turnovers/week<br>served by outsourced to the mainland vendor (60,000 KRW/week)</div>`)[0];
+                popup_fffa6017c7f03c19a0add0c62489bea7.setContent(html_c7e52f7cad44547e426d8c154171e06f);
+            
+        
+
+        circle_marker_f6fd4f2c698781ba27537cf9140ceefe.bindPopup(popup_fffa6017c7f03c19a0add0c62489bea7)
+        ;
+
+        
+    
+    
+            var circle_marker_61995de6b2c34bb767cca703d7253b8d = L.circleMarker(
+                [37.67617, 127.8808],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_b3fa62c77ce00425c665595419eb907e = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_3fa13360d07152c44e3ef3e5c4724a75 = $(`<div id="html_3fa13360d07152c44e3ef3e5c4724a75" style="width: 100.0%; height: 100.0%;"><b>V027</b> (Hongcheon, SIMULATED)<br>5 turnovers/week<br>served by outsourced to the mainland vendor (75,000 KRW/week)</div>`)[0];
+                popup_b3fa62c77ce00425c665595419eb907e.setContent(html_3fa13360d07152c44e3ef3e5c4724a75);
+            
+        
+
+        circle_marker_61995de6b2c34bb767cca703d7253b8d.bindPopup(popup_b3fa62c77ce00425c665595419eb907e)
+        ;
+
+        
+    
+    
+            var circle_marker_9da793746d1c670b7c2a8fbd58c7506d = L.circleMarker(
+                [37.73443, 127.8658],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_69705e604f73ab7eb078c850a1b555b8 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_6cd8745e8b9d88c3f82ef6b1e092d165 = $(`<div id="html_6cd8745e8b9d88c3f82ef6b1e092d165" style="width: 100.0%; height: 100.0%;"><b>V028</b> (Hongcheon, SIMULATED)<br>2 turnovers/week<br>served by outsourced to the mainland vendor (30,000 KRW/week)</div>`)[0];
+                popup_69705e604f73ab7eb078c850a1b555b8.setContent(html_6cd8745e8b9d88c3f82ef6b1e092d165);
+            
+        
+
+        circle_marker_9da793746d1c670b7c2a8fbd58c7506d.bindPopup(popup_69705e604f73ab7eb078c850a1b555b8)
+        ;
+
+        
+    
+    
+            var circle_marker_bd836a50b7eb6559aca3ddd1961064ac = L.circleMarker(
+                [38.08098, 128.59064],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_bec4fc477162116e09bff3f27b3a2cea = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_4b12e2be87305657e4c593f5d97ae289 = $(`<div id="html_4b12e2be87305657e4c593f5d97ae289" style="width: 100.0%; height: 100.0%;"><b>V032</b> (Yangyang, SIMULATED)<br>5 turnovers/week<br>served by outsourced to the mainland vendor (75,000 KRW/week)</div>`)[0];
+                popup_bec4fc477162116e09bff3f27b3a2cea.setContent(html_4b12e2be87305657e4c593f5d97ae289);
+            
+        
+
+        circle_marker_bd836a50b7eb6559aca3ddd1961064ac.bindPopup(popup_bec4fc477162116e09bff3f27b3a2cea)
+        ;
+
+        
+    
+    
+            var circle_marker_12bb1f44dae56e5a2ce60f9e77662d95 = L.circleMarker(
+                [38.0508, 128.65323],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_4858b12fd31ea6f94740b1e5b1140d3c = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_c36616e132a58bcf221742d73234044a = $(`<div id="html_c36616e132a58bcf221742d73234044a" style="width: 100.0%; height: 100.0%;"><b>V033</b> (Yangyang, SIMULATED)<br>2 turnovers/week<br>served by outsourced to the mainland vendor (30,000 KRW/week)</div>`)[0];
+                popup_4858b12fd31ea6f94740b1e5b1140d3c.setContent(html_c36616e132a58bcf221742d73234044a);
+            
+        
+
+        circle_marker_12bb1f44dae56e5a2ce60f9e77662d95.bindPopup(popup_4858b12fd31ea6f94740b1e5b1140d3c)
+        ;
+
+        
+    
+    
+            var circle_marker_dbea792892f3e9dc01c5d3e1743f3178 = L.circleMarker(
+                [38.04984, 128.64972],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_92dbee038862bf34b09f04e13dac4e5c = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_7d8d3782ee08d6b6985cc51dd1abffde = $(`<div id="html_7d8d3782ee08d6b6985cc51dd1abffde" style="width: 100.0%; height: 100.0%;"><b>V034</b> (Yangyang, SIMULATED)<br>4 turnovers/week<br>served by outsourced to the mainland vendor (60,000 KRW/week)</div>`)[0];
+                popup_92dbee038862bf34b09f04e13dac4e5c.setContent(html_7d8d3782ee08d6b6985cc51dd1abffde);
+            
+        
+
+        circle_marker_dbea792892f3e9dc01c5d3e1743f3178.bindPopup(popup_92dbee038862bf34b09f04e13dac4e5c)
+        ;
+
+        
+    
+    
+            var circle_marker_a181cd1784a8571fd4f14ef6d082b177 = L.circleMarker(
+                [38.08673, 128.62458],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_31727fb8712fc188514ee6a70965f300 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_247965bb241e4b7a5689d6ad4836e3a0 = $(`<div id="html_247965bb241e4b7a5689d6ad4836e3a0" style="width: 100.0%; height: 100.0%;"><b>V035</b> (Yangyang, SIMULATED)<br>2 turnovers/week<br>served by outsourced to the mainland vendor (30,000 KRW/week)</div>`)[0];
+                popup_31727fb8712fc188514ee6a70965f300.setContent(html_247965bb241e4b7a5689d6ad4836e3a0);
+            
+        
+
+        circle_marker_a181cd1784a8571fd4f14ef6d082b177.bindPopup(popup_31727fb8712fc188514ee6a70965f300)
+        ;
+
+        
+    
+    
+            var circle_marker_6886c55a617ea1c82288257ca80c4300 = L.circleMarker(
+                [37.49531, 127.47327],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_282737cd129e890adbacf68db0147bfe = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_df2a0dabfd92d75146997c0a457d9ac8 = $(`<div id="html_df2a0dabfd92d75146997c0a457d9ac8" style="width: 100.0%; height: 100.0%;"><b>V038</b> (Yangpyeong, SIMULATED)<br>3 turnovers/week<br>served by outsourced to the mainland vendor (45,000 KRW/week)</div>`)[0];
+                popup_282737cd129e890adbacf68db0147bfe.setContent(html_df2a0dabfd92d75146997c0a457d9ac8);
+            
+        
+
+        circle_marker_6886c55a617ea1c82288257ca80c4300.bindPopup(popup_282737cd129e890adbacf68db0147bfe)
+        ;
+
+        
+    
+    
+            var circle_marker_5e8ad78b6d55a63b7dd5b26479a8b349 = L.circleMarker(
+                [37.51161, 127.44952],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_c7aecb6e32aaeeb597128d5972417ecb = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_10268c380437f67b2723e904a52d4700 = $(`<div id="html_10268c380437f67b2723e904a52d4700" style="width: 100.0%; height: 100.0%;"><b>V039</b> (Yangpyeong, SIMULATED)<br>4 turnovers/week<br>served by outsourced to the mainland vendor (60,000 KRW/week)</div>`)[0];
+                popup_c7aecb6e32aaeeb597128d5972417ecb.setContent(html_10268c380437f67b2723e904a52d4700);
+            
+        
+
+        circle_marker_5e8ad78b6d55a63b7dd5b26479a8b349.bindPopup(popup_c7aecb6e32aaeeb597128d5972417ecb)
+        ;
+
+        
+    
+    
+            var circle_marker_5c6b2cbd21e78cc30459d238503dce07 = L.circleMarker(
+                [37.86884, 127.73702],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_ab5f5408e9839c2cb0be0834f57a355d = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_b7d87e13111413fb6f0c56980b7f8c3c = $(`<div id="html_b7d87e13111413fb6f0c56980b7f8c3c" style="width: 100.0%; height: 100.0%;"><b>V043</b> (Chuncheon, SIMULATED)<br>3 turnovers/week<br>served by outsourced to the mainland vendor (45,000 KRW/week)</div>`)[0];
+                popup_ab5f5408e9839c2cb0be0834f57a355d.setContent(html_b7d87e13111413fb6f0c56980b7f8c3c);
+            
+        
+
+        circle_marker_5c6b2cbd21e78cc30459d238503dce07.bindPopup(popup_ab5f5408e9839c2cb0be0834f57a355d)
+        ;
+
+        
+    
+    
+            var circle_marker_5402f2ac70753fdeed47654a2893b5fd = L.circleMarker(
+                [37.86973, 127.73133],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_77409bdae1e1ec030c5d590a646bef8e = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_1d0ca31fafd179e8cf104ccfaa6e981d = $(`<div id="html_1d0ca31fafd179e8cf104ccfaa6e981d" style="width: 100.0%; height: 100.0%;"><b>V044</b> (Chuncheon, SIMULATED)<br>4 turnovers/week<br>served by outsourced to the mainland vendor (60,000 KRW/week)</div>`)[0];
+                popup_77409bdae1e1ec030c5d590a646bef8e.setContent(html_1d0ca31fafd179e8cf104ccfaa6e981d);
+            
+        
+
+        circle_marker_5402f2ac70753fdeed47654a2893b5fd.bindPopup(popup_77409bdae1e1ec030c5d590a646bef8e)
+        ;
+
+        
+    
+    
+            var circle_marker_16d3ced2af1dc9da0181bdc12af7a1d1 = L.circleMarker(
+                [37.74541, 128.90132],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_578d1f5b06b3af585eb0a387bf22a987 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_3599220a29074f7906e481af5e8e1650 = $(`<div id="html_3599220a29074f7906e481af5e8e1650" style="width: 100.0%; height: 100.0%;"><b>V048</b> (Gangneung, SIMULATED)<br>2 turnovers/week<br>served by outsourced to the mainland vendor (30,000 KRW/week)</div>`)[0];
+                popup_578d1f5b06b3af585eb0a387bf22a987.setContent(html_3599220a29074f7906e481af5e8e1650);
+            
+        
+
+        circle_marker_16d3ced2af1dc9da0181bdc12af7a1d1.bindPopup(popup_578d1f5b06b3af585eb0a387bf22a987)
+        ;
+
+        
+    
+    
+            var circle_marker_dc7a51b65ce65a0e08c502fa2eb74be2 = L.circleMarker(
+                [33.53545, 126.53707],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_e94b685f3795bd78bf1ad70c933b5396 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_687443e7198b1dbf7ec87cd999902c74 = $(`<div id="html_687443e7198b1dbf7ec87cd999902c74" style="width: 100.0%; height: 100.0%;"><b>V053</b> (Jeju-City, SIMULATED)<br>5 turnovers/week<br>served by outsourced to the jeju vendor (97,500 KRW/week)</div>`)[0];
+                popup_e94b685f3795bd78bf1ad70c933b5396.setContent(html_687443e7198b1dbf7ec87cd999902c74);
+            
+        
+
+        circle_marker_dc7a51b65ce65a0e08c502fa2eb74be2.bindPopup(popup_e94b685f3795bd78bf1ad70c933b5396)
+        ;
+
+        
+    
+    
+            var circle_marker_8bf1e0cfa5f85a5c7dd4c3e049e9bbfc = L.circleMarker(
+                [33.48132, 126.56736],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_34765d430cd571e0707d7b8093ceac55 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_7825be620a9f3eb566d07c61281ce0db = $(`<div id="html_7825be620a9f3eb566d07c61281ce0db" style="width: 100.0%; height: 100.0%;"><b>V054</b> (Jeju-City, SIMULATED)<br>3 turnovers/week<br>served by outsourced to the jeju vendor (58,500 KRW/week)</div>`)[0];
+                popup_34765d430cd571e0707d7b8093ceac55.setContent(html_7825be620a9f3eb566d07c61281ce0db);
+            
+        
+
+        circle_marker_8bf1e0cfa5f85a5c7dd4c3e049e9bbfc.bindPopup(popup_34765d430cd571e0707d7b8093ceac55)
+        ;
+
+        
+    
+    
+            var circle_marker_35929fb900adf3e3b28139521ec140f2 = L.circleMarker(
+                [33.29182, 126.54671],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_545e693ef2caaf64e3bfe306d5d8b8c7);
+        
+    
+        var popup_3196d01eba0a15ee567fb510a827fb81 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_a70db52ea8a87335816539b647f63d4a = $(`<div id="html_a70db52ea8a87335816539b647f63d4a" style="width: 100.0%; height: 100.0%;"><b>V063</b> (Seogwipo, SIMULATED)<br>4 turnovers/week<br>served by outsourced to the jeju vendor (78,000 KRW/week)</div>`)[0];
+                popup_3196d01eba0a15ee567fb510a827fb81.setContent(html_a70db52ea8a87335816539b647f63d4a);
+            
+        
+
+        circle_marker_35929fb900adf3e3b28139521ec140f2.bindPopup(popup_3196d01eba0a15ee567fb510a827fb81)
+        ;
+
+        
+    
+    
+            feature_group_545e693ef2caaf64e3bfe306d5d8b8c7.addTo(map_d69d4995e4a37e0f2a24db67772fa15f);
+        
+    
+            var feature_group_c64479955937d8f09475413decd2fd3e = L.featureGroup(
+                {
+}
+            );
+        
+    
+            feature_group_c64479955937d8f09475413decd2fd3e.addTo(map_d69d4995e4a37e0f2a24db67772fa15f);
+        
+    
+            var layer_control_11506ce508c500a358efa8cd776c8393_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_238d12c34843ce88fd1da2ffa9abd9a1,
+                },
+                overlays :  {
+                    "candidate towns" : feature_group_e44a8eed8838da01fb76922a584807e0,
+                    "assignment lines" : feature_group_45caa8b3fe70ae8c0cbcc5721be48a26,
+                    "villas served by a hub" : feature_group_fba1b9cce11c2a470ce1e74405d53c12,
+                    "villas outsourced to the vendor" : feature_group_545e693ef2caaf64e3bfe306d5d8b8c7,
+                    "open hubs" : feature_group_c64479955937d8f09475413decd2fd3e,
+                },
+            };
+            let layer_control_11506ce508c500a358efa8cd776c8393 = L.control.layers(
+                layer_control_11506ce508c500a358efa8cd776c8393_layers.base_layers,
+                layer_control_11506ce508c500a358efa8cd776c8393_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_d69d4995e4a37e0f2a24db67772fa15f);
+
+        
+    
+            map_d69d4995e4a37e0f2a24db67772fa15f.fitBounds(
+                [[33.2541, 126.5312], [38.207, 129.0756]],
+                {}
+            );
+        
+</script>
+</html>

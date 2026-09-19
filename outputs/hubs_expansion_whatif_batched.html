@@ -1,0 +1,3611 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_173bd6e9ff04ca1a602159ceaa3cb953 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    <div style="position:fixed;top:10px;left:50px;right:50px;z-index:9999;background:#fffbe6;border:1px solid #d4b106;padding:8px 12px;font:14px sans-serif;border-radius:6px"><b>WHAT-IF, not a business recommendation.</b> Expansion with 0.25 van round trips per turnover (heavy batching), which is not the base assumption. SIMULATED villas, PLACEHOLDER costs: not MOZAIQ data. Exact optimum: <b>5 hubs</b> (Namyangju, Hongcheon, Yangyang, Busan, Jeju City).</div><div style="position:fixed;bottom:24px;left:10px;z-index:9999;background:white;border:1px solid #ccc;padding:6px 10px;font:12px sans-serif;border-radius:6px"><span style="color:#2a78d6">&#9679;</span> villa served by a hub &nbsp; <span style="color:#7a7a7a">&#9679;</span> villa outsourced &nbsp; <span style="color:#b0b0b0">&#9679;</span> candidate town &nbsp; (open hubs: 5)<br>Road times: OSRM. Road data &copy; OpenStreetMap contributors (ODbL).</div>
+    
+            <div class="folium-map" id="map_173bd6e9ff04ca1a602159ceaa3cb953" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_173bd6e9ff04ca1a602159ceaa3cb953 = L.map(
+                "map_173bd6e9ff04ca1a602159ceaa3cb953",
+                {
+                    center: [36.3, 127.8],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e960946ca867947cf22d278fc8c049e9 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e960946ca867947cf22d278fc8c049e9.addTo(map_173bd6e9ff04ca1a602159ceaa3cb953);
+        
+    
+            var feature_group_90c0f1b483040db28008cb6803a0c689 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_ab590a268c9fa4260bdc749fd0a59cd7 = L.circleMarker(
+                [37.5665, 126.978],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_ab590a268c9fa4260bdc749fd0a59cd7.bindTooltip(
+                `<div>
+                     candidate town: Seoul (rent 1,252,385 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ea2b8986e80ff1bf44392108a7027cbe = L.circleMarker(
+                [37.5393, 127.2148],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_ea2b8986e80ff1bf44392108a7027cbe.bindTooltip(
+                `<div>
+                     candidate town: Hanam (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5d23b999129bff2037c9fa5b74146948 = L.circleMarker(
+                [37.636, 127.2165],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_5d23b999129bff2037c9fa5b74146948.bindTooltip(
+                `<div>
+                     candidate town: Namyangju (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f7bed04926a29e48f540d05ac5ced77f = L.circleMarker(
+                [37.6152, 126.7159],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_f7bed04926a29e48f540d05ac5ced77f.bindTooltip(
+                `<div>
+                     candidate town: Gimpo (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c6432df6cb346da640407aa3c1df82d8 = L.circleMarker(
+                [37.6584, 126.832],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_c6432df6cb346da640407aa3c1df82d8.bindTooltip(
+                `<div>
+                     candidate town: Goyang (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fbc7629307926c9cad232874423338a1 = L.circleMarker(
+                [37.4563, 126.7052],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_fbc7629307926c9cad232874423338a1.bindTooltip(
+                `<div>
+                     candidate town: Incheon (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a38734af8fbd9a50868e5ffdabc8cd77 = L.circleMarker(
+                [37.2411, 127.1776],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_a38734af8fbd9a50868e5ffdabc8cd77.bindTooltip(
+                `<div>
+                     candidate town: Yongin (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0692d13ab133d98fe50a1ef182ec0776 = L.circleMarker(
+                [37.2636, 127.0286],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_0692d13ab133d98fe50a1ef182ec0776.bindTooltip(
+                `<div>
+                     candidate town: Suwon (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f56b22a9f9b838fe50470012fd7fc135 = L.circleMarker(
+                [37.4915, 127.4875],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_f56b22a9f9b838fe50470012fd7fc135.bindTooltip(
+                `<div>
+                     candidate town: Yangpyeong (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a6338f2be956c6ef82a6f66d700e719f = L.circleMarker(
+                [37.8315, 127.5095],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_a6338f2be956c6ef82a6f66d700e719f.bindTooltip(
+                `<div>
+                     candidate town: Gapyeong (rent 626,192 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c9cfc217a5f843da17e1f65f73826675 = L.circleMarker(
+                [37.8813, 127.7298],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_c9cfc217a5f843da17e1f65f73826675.bindTooltip(
+                `<div>
+                     candidate town: Chuncheon (rent 313,096 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_59155a49cdd392e55fe082428c8afc97 = L.circleMarker(
+                [37.697, 127.8886],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_59155a49cdd392e55fe082428c8afc97.bindTooltip(
+                `<div>
+                     candidate town: Hongcheon (rent 313,096 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_759cbbfde6d034a046962d785d9faa42 = L.circleMarker(
+                [37.4917, 127.985],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_759cbbfde6d034a046962d785d9faa42.bindTooltip(
+                `<div>
+                     candidate town: Hoengseong (rent 313,096 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bb839d74e056e7bc1a8e6b9089e848c7 = L.circleMarker(
+                [37.3422, 127.9202],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_bb839d74e056e7bc1a8e6b9089e848c7.bindTooltip(
+                `<div>
+                     candidate town: Wonju (rent 313,096 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a78bdcf65bd70226f0915e8d90879586 = L.circleMarker(
+                [37.7519, 128.8761],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_a78bdcf65bd70226f0915e8d90879586.bindTooltip(
+                `<div>
+                     candidate town: Gangneung (rent 313,096 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_772179559848ba955c804c43b7c82a4b = L.circleMarker(
+                [38.207, 128.5918],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_772179559848ba955c804c43b7c82a4b.bindTooltip(
+                `<div>
+                     candidate town: Sokcho (rent 313,096 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1a5acbcfd3f9c75efa2bd98408df7dce = L.circleMarker(
+                [38.0754, 128.619],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_1a5acbcfd3f9c75efa2bd98408df7dce.bindTooltip(
+                `<div>
+                     candidate town: Yangyang (rent 313,096 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_295d335d592a8ad28b50e5f644a750b8 = L.circleMarker(
+                [35.1796, 129.0756],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_295d335d592a8ad28b50e5f644a750b8.bindTooltip(
+                `<div>
+                     candidate town: Busan (rent 438,335 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e87835e3257b753054250e7fb7f8a714 = L.circleMarker(
+                [35.2285, 128.8894],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_e87835e3257b753054250e7fb7f8a714.bindTooltip(
+                `<div>
+                     candidate town: Gimhae (rent 438,335 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2312c579ce4561d11ae98f97e2d14a46 = L.circleMarker(
+                [33.4996, 126.5312],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_2312c579ce4561d11ae98f97e2d14a46.bindTooltip(
+                `<div>
+                     candidate town: Jeju City (rent 438,335 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a2d2ff4c22cef181999d93c579630f29 = L.circleMarker(
+                [33.2541, 126.5601],
+                {"bubblingMouseEvents": true, "color": "#b0b0b0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b0b0b0", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_90c0f1b483040db28008cb6803a0c689);
+        
+    
+            circle_marker_a2d2ff4c22cef181999d93c579630f29.bindTooltip(
+                `<div>
+                     candidate town: Seogwipo (rent 438,335 KRW/week)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_90c0f1b483040db28008cb6803a0c689.addTo(map_173bd6e9ff04ca1a602159ceaa3cb953);
+        
+    
+            var feature_group_8ef769529610d970667de6184b32220b = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_5f6f52c6a92f868c0fdabb703d4eca2a = L.polyline(
+                [[37.59261, 127.01728], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_de7ab8cf25c4d78efd60a3aa22ad651f = L.polyline(
+                [[37.56062, 126.96951], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_d403dffa8f19665e7dc13d79ffeef26b = L.polyline(
+                [[37.61248, 126.94592], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_aee6545090d9edc5c1a0982ed1a22ea4 = L.polyline(
+                [[37.60637, 126.98293], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_9c12f86d2c61e3ddf8ce302d8c917d37 = L.polyline(
+                [[37.56684, 126.96777], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_5184dbcf306a56ec366f39077a387f93 = L.polyline(
+                [[37.57821, 126.98586], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_bae3371cf00c1134bc86691e97a52256 = L.polyline(
+                [[37.58688, 127.02514], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_7eec98c9313f053cdebbf94ede8e6259 = L.polyline(
+                [[37.59237, 127.02462], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_3478ee9b697bd772c3d475d2453f3221 = L.polyline(
+                [[37.55982, 126.95832], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_9e1d59af31e2fc4a52a39b3717b6e46f = L.polyline(
+                [[37.79502, 127.47235], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_eb7bac95c0a2e24a6b1404e87a6e3915 = L.polyline(
+                [[37.83269, 127.5068], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_906ed3aeac7f400dffe8d6e9acf67156 = L.polyline(
+                [[37.84184, 127.51063], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_71b84c06c65e598f2d4fdd8c8e532218 = L.polyline(
+                [[37.83125, 127.4893], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_2bfe5adfb51187addfe2142d0a48954f = L.polyline(
+                [[37.80689, 127.52486], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_86c7c9c00051c4e548da25a0a5df9325 = L.polyline(
+                [[37.80755, 127.49906], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_1df6f9555079ab9facb1bef1891e4d57 = L.polyline(
+                [[37.8579, 127.48186], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_8701c795ebe36c4bdd5d55f50dab0b58 = L.polyline(
+                [[37.81291, 127.53993], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_c2aab761c3094717855fb9fd29a4599f = L.polyline(
+                [[37.76677, 127.43218], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_a608059b16bad43b51243357228a2d1f = L.polyline(
+                [[37.75834, 127.38832], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_2ccefaa9b3cc01ca198a51e44067dab9 = L.polyline(
+                [[37.73962, 127.45071], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_52a796dd8436e8bbd7d33b0cb35c2f58 = L.polyline(
+                [[37.7279, 127.42885], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_c24fd8db3cc7a7ef26fc1d0b63f8f372 = L.polyline(
+                [[37.73001, 127.40684], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_6630d55c4c84c270ad268d1374f0ee69 = L.polyline(
+                [[37.71102, 127.44631], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_9d91e847c867c40084764360d311ce53 = L.polyline(
+                [[37.7353, 127.8958], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_a0935127bcc37b3bb92835b0c761258c = L.polyline(
+                [[37.7054, 127.89964], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_f0a6fc25dd3c230522f6f49e85a8abeb = L.polyline(
+                [[37.66906, 127.88383], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_4380e9e46cfff98ea13a88abca1683fb = L.polyline(
+                [[37.67617, 127.8808], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_3a92a89730676d8e60ee15ce9fb97f50 = L.polyline(
+                [[37.73443, 127.8658], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_319b1c97ce9e7014161701531e5e9017 = L.polyline(
+                [[37.71074, 127.87263], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_9e803e7bc8c4b3fa83bf29ab0ee5ad53 = L.polyline(
+                [[37.70998, 127.85913], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_27e8b7fa8986592829a28196fb12f52d = L.polyline(
+                [[37.72461, 127.9242], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_663c77cafe50a2521968aaf7844dfe0d = L.polyline(
+                [[38.08098, 128.59064], [38.0754, 128.619]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_03430d008c4f3cc21a4f1d5584cbfc99 = L.polyline(
+                [[38.0508, 128.65323], [38.0754, 128.619]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_b62f304486f77b01f32420017398b4e1 = L.polyline(
+                [[38.04984, 128.64972], [38.0754, 128.619]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_4f9ca412d332e533ff8729d7179ed2fd = L.polyline(
+                [[38.08673, 128.62458], [38.0754, 128.619]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_b58ae2ff63b350e87d937a1309de99bd = L.polyline(
+                [[38.06828, 128.59816], [38.0754, 128.619]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_917a50223fe5ff39253a765469ffdd3b = L.polyline(
+                [[38.03844, 128.6491], [38.0754, 128.619]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_e1f73ab92fff17140db12df00582c70c = L.polyline(
+                [[37.49531, 127.47327], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_049f3b789299579057fa7df9dc369c13 = L.polyline(
+                [[37.51161, 127.44952], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_ea55cf34028adec010e7c4a8661588e6 = L.polyline(
+                [[37.45393, 127.45733], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_cfe36e300d322a7c75fd462de45d9dd3 = L.polyline(
+                [[37.52887, 127.50012], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_6cdeaf80f789beb8507fb74f3c32fff8 = L.polyline(
+                [[37.4934, 127.51732], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_81f0c6b532dfe286f86ac61dc0e90a56 = L.polyline(
+                [[37.86884, 127.73702], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_4c6d209887a9375fd60a8a1ba308c485 = L.polyline(
+                [[37.86973, 127.73133], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_c721b996ddfe4b5cb2302612c781fbce = L.polyline(
+                [[37.90252, 127.76253], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_376fecf91b12ebbeb7eac47c157c734a = L.polyline(
+                [[37.91597, 127.69021], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_d558dc0cb09b0f514e437e914f44aa14 = L.polyline(
+                [[37.90154, 127.75464], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_0986bb78b8effd909a2fcf43254d05fb = L.polyline(
+                [[37.74541, 128.90132], [38.0754, 128.619]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_08fa282b808a9e5f32c7ae233b3ba805 = L.polyline(
+                [[37.71304, 128.88638], [38.0754, 128.619]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_2720264c313e24a2be317d8ddeacdca0 = L.polyline(
+                [[37.75294, 128.89417], [38.0754, 128.619]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_b1f41bf74314f3b1a3f344423aa3395f = L.polyline(
+                [[37.73001, 128.85198], [38.0754, 128.619]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_e03c801c913b5eb2992334fa9a61ada0 = L.polyline(
+                [[37.72625, 128.86378], [38.0754, 128.619]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_02901af54ab1320b4fdf3e3893680a13 = L.polyline(
+                [[33.53545, 126.53707], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_b422a63c8854a7f68d5c0cc68d6892e0 = L.polyline(
+                [[33.48132, 126.56736], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_ae01565bb9e2a88124f6825ab043431e = L.polyline(
+                [[33.49516, 126.56963], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_55df9ee51ef71e129d1e6cce605c3287 = L.polyline(
+                [[33.50129, 126.56292], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_0d996cfa2555d140762ee4d3038d9361 = L.polyline(
+                [[33.51902, 126.53765], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_b4f7f70707bfefe844820e3e8f3ef995 = L.polyline(
+                [[33.52986, 126.52413], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_34bc2afec9fe128f7952de45821e3b9d = L.polyline(
+                [[33.53342, 126.4967], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_9596418620638f3880965330a063a908 = L.polyline(
+                [[33.50116, 126.56728], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_f1062f677fe66a423d448b40ea91f1b3 = L.polyline(
+                [[33.47968, 126.55568], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_72a82c5289bd45a185520a5c745e0ce9 = L.polyline(
+                [[33.51697, 126.54157], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_6215762d8c68ad7ee8a798ae5b6660af = L.polyline(
+                [[33.29182, 126.54671], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_4e591382dee2f3bfcb7baeb65d88cf59 = L.polyline(
+                [[33.23033, 126.52416], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_a98b8cd7dcb941b4b7464880cb465223 = L.polyline(
+                [[33.23113, 126.59334], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_047229e344ba0d8f451ead1683517bf1 = L.polyline(
+                [[33.22309, 126.5684], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_280f313fc20a45e546bb393ac5fa34b8 = L.polyline(
+                [[33.25244, 126.56767], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_a673153107ee3677a367b6cd5a423686 = L.polyline(
+                [[33.23863, 126.59701], [33.4996, 126.5312]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_8651248152588d1d38941e1af264ebd3 = L.polyline(
+                [[35.16037, 129.17415], [35.1796, 129.0756]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_fbfd5b2b3e9c74617b6df2f179dbf2bc = L.polyline(
+                [[35.13781, 129.12885], [35.1796, 129.0756]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_ac7aacf85d3d80245095a4ba2f6644ad = L.polyline(
+                [[35.15602, 129.18502], [35.1796, 129.0756]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_5dae41f61907cd9b1fe2bdf5e02b8e40 = L.polyline(
+                [[35.1815, 129.13296], [35.1796, 129.0756]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_65dd916185c9adc8e042c111fbc24f5b = L.polyline(
+                [[35.19617, 129.18806], [35.1796, 129.0756]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_ece94c6be58ec14718ab7d789ff80168 = L.polyline(
+                [[35.16496, 129.19715], [35.1796, 129.0756]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_391dc72f1e9ddea9e0ed8cada24a34f5 = L.polyline(
+                [[35.12683, 129.12632], [35.1796, 129.0756]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_0ff793781cd5941825c147f5993f2e22 = L.polyline(
+                [[35.14332, 129.14379], [35.1796, 129.0756]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_6eb9cf31fbc79ce6c59c5e84bcee1da3 = L.polyline(
+                [[35.1381, 129.16926], [35.1796, 129.0756]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_06284b1a301e24ae4797425ad150562c = L.polyline(
+                [[35.17033, 129.13718], [35.1796, 129.0756]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_7fb0e36e6db2f11b78d4f8cb5b6f6943 = L.polyline(
+                [[35.17733, 129.12559], [35.1796, 129.0756]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_46de8397a4b0dc7f9e5fd655cb938b87 = L.polyline(
+                [[35.19817, 129.16697], [35.1796, 129.0756]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_5ea13226254a62a126aeb68e8a03ff19 = L.polyline(
+                [[35.18803, 129.17654], [35.1796, 129.0756]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_6438aa6da24a442c3d8ea153bea4864e = L.polyline(
+                [[35.1384, 129.16985], [35.1796, 129.0756]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_80c73b24be23349220128c574cb30feb = L.polyline(
+                [[35.12627, 129.18803], [35.1796, 129.0756]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_7a3bba3a50caf26f4e64cf67d0037594 = L.polyline(
+                [[37.66432, 127.18056], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_c0e6ffbddc8319bd99c139511f4f0e44 = L.polyline(
+                [[37.62309, 127.20194], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_69a0f7347d3453c8f75216210eb74284 = L.polyline(
+                [[37.64613, 127.2403], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_68a793cd292902e24869b2c7d389aa2f = L.polyline(
+                [[37.6211, 127.24552], [37.636, 127.2165]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_e7dcec79ee6bbb16028369d685132b5b = L.polyline(
+                [[38.1747, 128.6047], [38.0754, 128.619]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_d62ad78260660da23dece78984f74f71 = L.polyline(
+                [[38.23291, 128.61608], [38.0754, 128.619]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_ee8c34bb57e7ed0059cd10644b1cbded = L.polyline(
+                [[38.19317, 128.60956], [38.0754, 128.619]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_03631b7fe2e9e32ab92ad22ab12b5ad6 = L.polyline(
+                [[37.50428, 127.95309], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_28ea5dc36f9391b196cd83a9e5d1a955 = L.polyline(
+                [[37.48215, 127.9557], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            var poly_line_62dadd0a08d32573299d1c736abea87d = L.polyline(
+                [[37.51814, 127.97515], [37.697, 127.8886]],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2a78d6", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(feature_group_8ef769529610d970667de6184b32220b);
+        
+    
+            feature_group_8ef769529610d970667de6184b32220b.addTo(map_173bd6e9ff04ca1a602159ceaa3cb953);
+        
+    
+            var feature_group_4a0bf6729e16561cf95055863cb49fba = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_2869ca03d33a098907acb70d3c787e64 = L.circleMarker(
+                [37.59261, 127.01728],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_e73245b1471ea814db3cf9a90f0a2e5f = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_3490461d93878b446126b68ac8153d85 = $(`<div id="html_3490461d93878b446126b68ac8153d85" style="width: 100.0%; height: 100.0%;"><b>V001</b> (Seoul-Gahoe, SIMULATED)<br>4 turnovers/week<br>served by hub Namyangju: 25 min drive, 21.0 km</div>`)[0];
+                popup_e73245b1471ea814db3cf9a90f0a2e5f.setContent(html_3490461d93878b446126b68ac8153d85);
+            
+        
+
+        circle_marker_2869ca03d33a098907acb70d3c787e64.bindPopup(popup_e73245b1471ea814db3cf9a90f0a2e5f)
+        ;
+
+        
+    
+    
+            var circle_marker_00ccd182b2946ffcc7a0c004d6bc82a9 = L.circleMarker(
+                [37.56062, 126.96951],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_ec018990e27b6678005493c8f18f66de = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_e9006a6ee19ed1a8c18a66a3e0d1f748 = $(`<div id="html_e9006a6ee19ed1a8c18a66a3e0d1f748" style="width: 100.0%; height: 100.0%;"><b>V002</b> (Seoul-Gahoe, SIMULATED)<br>5 turnovers/week<br>served by hub Namyangju: 32 min drive, 26.0 km</div>`)[0];
+                popup_ec018990e27b6678005493c8f18f66de.setContent(html_e9006a6ee19ed1a8c18a66a3e0d1f748);
+            
+        
+
+        circle_marker_00ccd182b2946ffcc7a0c004d6bc82a9.bindPopup(popup_ec018990e27b6678005493c8f18f66de)
+        ;
+
+        
+    
+    
+            var circle_marker_5ab1a7dc52991bd8989224c4cccdd68f = L.circleMarker(
+                [37.61248, 126.94592],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_21ecf900c4324959dfb0281ed7aee916 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_2de472ec2513bec6fe275b0250688770 = $(`<div id="html_2de472ec2513bec6fe275b0250688770" style="width: 100.0%; height: 100.0%;"><b>V003</b> (Seoul-Gahoe, SIMULATED)<br>3 turnovers/week<br>served by hub Namyangju: 31 min drive, 27.5 km</div>`)[0];
+                popup_21ecf900c4324959dfb0281ed7aee916.setContent(html_2de472ec2513bec6fe275b0250688770);
+            
+        
+
+        circle_marker_5ab1a7dc52991bd8989224c4cccdd68f.bindPopup(popup_21ecf900c4324959dfb0281ed7aee916)
+        ;
+
+        
+    
+    
+            var circle_marker_3081457e6325f7a82f2ec50d3dd0e421 = L.circleMarker(
+                [37.60637, 126.98293],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_eb942a43a39c360e13daa1bef1ee481d = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_287d84628708370479ccaa97649b05d0 = $(`<div id="html_287d84628708370479ccaa97649b05d0" style="width: 100.0%; height: 100.0%;"><b>V004</b> (Seoul-Gahoe, SIMULATED)<br>5 turnovers/week<br>served by hub Namyangju: 32 min drive, 25.1 km</div>`)[0];
+                popup_eb942a43a39c360e13daa1bef1ee481d.setContent(html_287d84628708370479ccaa97649b05d0);
+            
+        
+
+        circle_marker_3081457e6325f7a82f2ec50d3dd0e421.bindPopup(popup_eb942a43a39c360e13daa1bef1ee481d)
+        ;
+
+        
+    
+    
+            var circle_marker_c32d1ded85b9b6ba90cdb86c03dfb515 = L.circleMarker(
+                [37.56684, 126.96777],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_fd198a512637899daaeb4b391d8fef4e = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_ddfa2d13ac9902bb7a07d2331125af5c = $(`<div id="html_ddfa2d13ac9902bb7a07d2331125af5c" style="width: 100.0%; height: 100.0%;"><b>V005</b> (Seoul-Gahoe, SIMULATED)<br>4 turnovers/week<br>served by hub Namyangju: 31 min drive, 24.7 km</div>`)[0];
+                popup_fd198a512637899daaeb4b391d8fef4e.setContent(html_ddfa2d13ac9902bb7a07d2331125af5c);
+            
+        
+
+        circle_marker_c32d1ded85b9b6ba90cdb86c03dfb515.bindPopup(popup_fd198a512637899daaeb4b391d8fef4e)
+        ;
+
+        
+    
+    
+            var circle_marker_e57b3d767eafe8e171127a2ed59138e9 = L.circleMarker(
+                [37.57821, 126.98586],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_9258d0af54356c3c544ce9946ea89a93 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_7ea59e3ad94cd618e3b560ebbefdb0aa = $(`<div id="html_7ea59e3ad94cd618e3b560ebbefdb0aa" style="width: 100.0%; height: 100.0%;"><b>V006</b> (Seoul-Gahoe, SIMULATED)<br>3 turnovers/week<br>served by hub Namyangju: 29 min drive, 25.0 km</div>`)[0];
+                popup_9258d0af54356c3c544ce9946ea89a93.setContent(html_7ea59e3ad94cd618e3b560ebbefdb0aa);
+            
+        
+
+        circle_marker_e57b3d767eafe8e171127a2ed59138e9.bindPopup(popup_9258d0af54356c3c544ce9946ea89a93)
+        ;
+
+        
+    
+    
+            var circle_marker_b8bb07351fbd4df6ec84662d12a2344a = L.circleMarker(
+                [37.58688, 127.02514],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_cfeb9bf43f09a8538f5252ec65baba03 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_0aeb3d6f74a53184ebb367da6c4aea71 = $(`<div id="html_0aeb3d6f74a53184ebb367da6c4aea71" style="width: 100.0%; height: 100.0%;"><b>V007</b> (Seoul-Gahoe, SIMULATED)<br>5 turnovers/week<br>served by hub Namyangju: 25 min drive, 20.6 km</div>`)[0];
+                popup_cfeb9bf43f09a8538f5252ec65baba03.setContent(html_0aeb3d6f74a53184ebb367da6c4aea71);
+            
+        
+
+        circle_marker_b8bb07351fbd4df6ec84662d12a2344a.bindPopup(popup_cfeb9bf43f09a8538f5252ec65baba03)
+        ;
+
+        
+    
+    
+            var circle_marker_29441457d90189d821b081adadd17b9e = L.circleMarker(
+                [37.59237, 127.02462],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_a59004361949fc39d2f1ceaf480cd5bc = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_5685bcf42f52ed86d1d516af87cb48f8 = $(`<div id="html_5685bcf42f52ed86d1d516af87cb48f8" style="width: 100.0%; height: 100.0%;"><b>V008</b> (Seoul-Gahoe, SIMULATED)<br>5 turnovers/week<br>served by hub Namyangju: 25 min drive, 20.4 km</div>`)[0];
+                popup_a59004361949fc39d2f1ceaf480cd5bc.setContent(html_5685bcf42f52ed86d1d516af87cb48f8);
+            
+        
+
+        circle_marker_29441457d90189d821b081adadd17b9e.bindPopup(popup_a59004361949fc39d2f1ceaf480cd5bc)
+        ;
+
+        
+    
+    
+            var circle_marker_ba0df58fd9f95ede43502152a64abdfa = L.circleMarker(
+                [37.55982, 126.95832],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_9a27fefc9b9aaab57e6fbac8904b020a = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_f800f8eca6fde67cb1f4b8cc3fb0cdd3 = $(`<div id="html_f800f8eca6fde67cb1f4b8cc3fb0cdd3" style="width: 100.0%; height: 100.0%;"><b>V009</b> (Seoul-Gahoe, SIMULATED)<br>5 turnovers/week<br>served by hub Namyangju: 34 min drive, 26.2 km</div>`)[0];
+                popup_9a27fefc9b9aaab57e6fbac8904b020a.setContent(html_f800f8eca6fde67cb1f4b8cc3fb0cdd3);
+            
+        
+
+        circle_marker_ba0df58fd9f95ede43502152a64abdfa.bindPopup(popup_9a27fefc9b9aaab57e6fbac8904b020a)
+        ;
+
+        
+    
+    
+            var circle_marker_0b4a588c97ded253f4ef5acf21b80540 = L.circleMarker(
+                [37.79502, 127.47235],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_290c65d1bcabb9ed2191f7f630db76df = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_473ce3506347ff3eb8e05588561929eb = $(`<div id="html_473ce3506347ff3eb8e05588561929eb" style="width: 100.0%; height: 100.0%;"><b>V010</b> (Gapyeong, SIMULATED)<br>4 turnovers/week<br>served by hub Namyangju: 36 min drive, 33.8 km</div>`)[0];
+                popup_290c65d1bcabb9ed2191f7f630db76df.setContent(html_473ce3506347ff3eb8e05588561929eb);
+            
+        
+
+        circle_marker_0b4a588c97ded253f4ef5acf21b80540.bindPopup(popup_290c65d1bcabb9ed2191f7f630db76df)
+        ;
+
+        
+    
+    
+            var circle_marker_93dd2d2830c6daccf66d8384c76556b7 = L.circleMarker(
+                [37.83269, 127.5068],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_7260a15cc46e3b4d0b38c4d35c2e4d81 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_4c67d8e031f08b53c51da92154215578 = $(`<div id="html_4c67d8e031f08b53c51da92154215578" style="width: 100.0%; height: 100.0%;"><b>V011</b> (Gapyeong, SIMULATED)<br>5 turnovers/week<br>served by hub Namyangju: 43 min drive, 40.3 km</div>`)[0];
+                popup_7260a15cc46e3b4d0b38c4d35c2e4d81.setContent(html_4c67d8e031f08b53c51da92154215578);
+            
+        
+
+        circle_marker_93dd2d2830c6daccf66d8384c76556b7.bindPopup(popup_7260a15cc46e3b4d0b38c4d35c2e4d81)
+        ;
+
+        
+    
+    
+            var circle_marker_139eb52cfe1f0aeb0a9c2de5aac72e66 = L.circleMarker(
+                [37.84184, 127.51063],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_bcfb704575a1075f97985f5940de2d2e = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_a9eaf4cea8c7c12c52e3f3d23be6c927 = $(`<div id="html_a9eaf4cea8c7c12c52e3f3d23be6c927" style="width: 100.0%; height: 100.0%;"><b>V012</b> (Gapyeong, SIMULATED)<br>5 turnovers/week<br>served by hub Namyangju: 47 min drive, 43.1 km</div>`)[0];
+                popup_bcfb704575a1075f97985f5940de2d2e.setContent(html_a9eaf4cea8c7c12c52e3f3d23be6c927);
+            
+        
+
+        circle_marker_139eb52cfe1f0aeb0a9c2de5aac72e66.bindPopup(popup_bcfb704575a1075f97985f5940de2d2e)
+        ;
+
+        
+    
+    
+            var circle_marker_d533214029017297c8ac2ee5531d8760 = L.circleMarker(
+                [37.83125, 127.4893],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_b095c2df312be7a12e61eae5ac3f66c0 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_82f79a2c26f8db30b7395650cbe5c508 = $(`<div id="html_82f79a2c26f8db30b7395650cbe5c508" style="width: 100.0%; height: 100.0%;"><b>V013</b> (Gapyeong, SIMULATED)<br>5 turnovers/week<br>served by hub Namyangju: 47 min drive, 42.0 km</div>`)[0];
+                popup_b095c2df312be7a12e61eae5ac3f66c0.setContent(html_82f79a2c26f8db30b7395650cbe5c508);
+            
+        
+
+        circle_marker_d533214029017297c8ac2ee5531d8760.bindPopup(popup_b095c2df312be7a12e61eae5ac3f66c0)
+        ;
+
+        
+    
+    
+            var circle_marker_238a84a6f5322cde88fe04540713c4b2 = L.circleMarker(
+                [37.80689, 127.52486],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_c2228968d0ab1a10c82d8e88f685f084 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_f3fa823f1d6ff0da4bfab038fb359a22 = $(`<div id="html_f3fa823f1d6ff0da4bfab038fb359a22" style="width: 100.0%; height: 100.0%;"><b>V014</b> (Gapyeong, SIMULATED)<br>2 turnovers/week<br>served by hub Namyangju: 43 min drive, 40.4 km</div>`)[0];
+                popup_c2228968d0ab1a10c82d8e88f685f084.setContent(html_f3fa823f1d6ff0da4bfab038fb359a22);
+            
+        
+
+        circle_marker_238a84a6f5322cde88fe04540713c4b2.bindPopup(popup_c2228968d0ab1a10c82d8e88f685f084)
+        ;
+
+        
+    
+    
+            var circle_marker_298a64b8993212bf99c65eb0abca9d27 = L.circleMarker(
+                [37.80755, 127.49906],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_78effb2aefd8a4d96217e7bc9edbb401 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_57ddae283b9128f06560efb7cac4130b = $(`<div id="html_57ddae283b9128f06560efb7cac4130b" style="width: 100.0%; height: 100.0%;"><b>V015</b> (Gapyeong, SIMULATED)<br>3 turnovers/week<br>served by hub Namyangju: 43 min drive, 37.1 km</div>`)[0];
+                popup_78effb2aefd8a4d96217e7bc9edbb401.setContent(html_57ddae283b9128f06560efb7cac4130b);
+            
+        
+
+        circle_marker_298a64b8993212bf99c65eb0abca9d27.bindPopup(popup_78effb2aefd8a4d96217e7bc9edbb401)
+        ;
+
+        
+    
+    
+            var circle_marker_430089d9d5b8185f9934859a08ba2fa4 = L.circleMarker(
+                [37.8579, 127.48186],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_545d808e5b52e3d62ae9fa7fb4c1dccd = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_a849fe42b75a61dcd7a600d2c1947a9d = $(`<div id="html_a849fe42b75a61dcd7a600d2c1947a9d" style="width: 100.0%; height: 100.0%;"><b>V016</b> (Gapyeong, SIMULATED)<br>2 turnovers/week<br>served by hub Namyangju: 50 min drive, 45.3 km</div>`)[0];
+                popup_545d808e5b52e3d62ae9fa7fb4c1dccd.setContent(html_a849fe42b75a61dcd7a600d2c1947a9d);
+            
+        
+
+        circle_marker_430089d9d5b8185f9934859a08ba2fa4.bindPopup(popup_545d808e5b52e3d62ae9fa7fb4c1dccd)
+        ;
+
+        
+    
+    
+            var circle_marker_3f2018a7ff5f3d835104c85cfdf82f7e = L.circleMarker(
+                [37.81291, 127.53993],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_e3c6c35b432ca88f9f0b07e4a38b3755 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_7501ffc7a584cb949e493dfd4a2de101 = $(`<div id="html_7501ffc7a584cb949e493dfd4a2de101" style="width: 100.0%; height: 100.0%;"><b>V017</b> (Gapyeong, SIMULATED)<br>2 turnovers/week<br>served by hub Namyangju: 46 min drive, 43.0 km</div>`)[0];
+                popup_e3c6c35b432ca88f9f0b07e4a38b3755.setContent(html_7501ffc7a584cb949e493dfd4a2de101);
+            
+        
+
+        circle_marker_3f2018a7ff5f3d835104c85cfdf82f7e.bindPopup(popup_e3c6c35b432ca88f9f0b07e4a38b3755)
+        ;
+
+        
+    
+    
+            var circle_marker_5cc74003aa9378b72b8667e621bcbf77 = L.circleMarker(
+                [37.76677, 127.43218],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_bb94468a09de6ec92134b2a22389faed = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_7c47f7d3ee39ba799b85ac4a7dbc5119 = $(`<div id="html_7c47f7d3ee39ba799b85ac4a7dbc5119" style="width: 100.0%; height: 100.0%;"><b>V018</b> (Cheongpyeong, SIMULATED)<br>4 turnovers/week<br>served by hub Namyangju: 35 min drive, 29.3 km</div>`)[0];
+                popup_bb94468a09de6ec92134b2a22389faed.setContent(html_7c47f7d3ee39ba799b85ac4a7dbc5119);
+            
+        
+
+        circle_marker_5cc74003aa9378b72b8667e621bcbf77.bindPopup(popup_bb94468a09de6ec92134b2a22389faed)
+        ;
+
+        
+    
+    
+            var circle_marker_3427b4a4e04230171b824702c520e0cc = L.circleMarker(
+                [37.75834, 127.38832],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_efc2b520777fdae4f5a6d05cab86866e = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_3cf4818d9fd94ba1424fdc66f121e3dd = $(`<div id="html_3cf4818d9fd94ba1424fdc66f121e3dd" style="width: 100.0%; height: 100.0%;"><b>V019</b> (Cheongpyeong, SIMULATED)<br>2 turnovers/week<br>served by hub Namyangju: 36 min drive, 31.7 km</div>`)[0];
+                popup_efc2b520777fdae4f5a6d05cab86866e.setContent(html_3cf4818d9fd94ba1424fdc66f121e3dd);
+            
+        
+
+        circle_marker_3427b4a4e04230171b824702c520e0cc.bindPopup(popup_efc2b520777fdae4f5a6d05cab86866e)
+        ;
+
+        
+    
+    
+            var circle_marker_fe94ab46afb8abf9e5049350112ffa66 = L.circleMarker(
+                [37.73962, 127.45071],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_2c1a7821875c28bca535bbf05f0e23af = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_4842c3630afe3d4ad2104ecd375ee547 = $(`<div id="html_4842c3630afe3d4ad2104ecd375ee547" style="width: 100.0%; height: 100.0%;"><b>V020</b> (Cheongpyeong, SIMULATED)<br>4 turnovers/week<br>served by hub Namyangju: 34 min drive, 28.8 km</div>`)[0];
+                popup_2c1a7821875c28bca535bbf05f0e23af.setContent(html_4842c3630afe3d4ad2104ecd375ee547);
+            
+        
+
+        circle_marker_fe94ab46afb8abf9e5049350112ffa66.bindPopup(popup_2c1a7821875c28bca535bbf05f0e23af)
+        ;
+
+        
+    
+    
+            var circle_marker_681dde2d28fe28154e3c720a4d505fd9 = L.circleMarker(
+                [37.7279, 127.42885],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_d21d08c942d3eff77a718cbc746e3a07 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_29bc855035bbebf08ded9a0dfd35b117 = $(`<div id="html_29bc855035bbebf08ded9a0dfd35b117" style="width: 100.0%; height: 100.0%;"><b>V021</b> (Cheongpyeong, SIMULATED)<br>2 turnovers/week<br>served by hub Namyangju: 29 min drive, 25.5 km</div>`)[0];
+                popup_d21d08c942d3eff77a718cbc746e3a07.setContent(html_29bc855035bbebf08ded9a0dfd35b117);
+            
+        
+
+        circle_marker_681dde2d28fe28154e3c720a4d505fd9.bindPopup(popup_d21d08c942d3eff77a718cbc746e3a07)
+        ;
+
+        
+    
+    
+            var circle_marker_67d79617e81df0d4b3dc0ba4aef462d5 = L.circleMarker(
+                [37.73001, 127.40684],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_9bbcfd690502f133a6e5179c186a3bfd = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_5065bd37cab0c915e0cd2dc9ea590f39 = $(`<div id="html_5065bd37cab0c915e0cd2dc9ea590f39" style="width: 100.0%; height: 100.0%;"><b>V022</b> (Cheongpyeong, SIMULATED)<br>2 turnovers/week<br>served by hub Namyangju: 26 min drive, 23.8 km</div>`)[0];
+                popup_9bbcfd690502f133a6e5179c186a3bfd.setContent(html_5065bd37cab0c915e0cd2dc9ea590f39);
+            
+        
+
+        circle_marker_67d79617e81df0d4b3dc0ba4aef462d5.bindPopup(popup_9bbcfd690502f133a6e5179c186a3bfd)
+        ;
+
+        
+    
+    
+            var circle_marker_867fe555d2919bc2f10a4dd7f71904fa = L.circleMarker(
+                [37.71102, 127.44631],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_6a49bda06a53955a498ff1d223cd5b89 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_dc2980fd64541abb3a289a9519129cb6 = $(`<div id="html_dc2980fd64541abb3a289a9519129cb6" style="width: 100.0%; height: 100.0%;"><b>V023</b> (Cheongpyeong, SIMULATED)<br>3 turnovers/week<br>served by hub Namyangju: 30 min drive, 27.7 km</div>`)[0];
+                popup_6a49bda06a53955a498ff1d223cd5b89.setContent(html_dc2980fd64541abb3a289a9519129cb6);
+            
+        
+
+        circle_marker_867fe555d2919bc2f10a4dd7f71904fa.bindPopup(popup_6a49bda06a53955a498ff1d223cd5b89)
+        ;
+
+        
+    
+    
+            var circle_marker_edccbe206ceac6ea558ee15094cb2ebc = L.circleMarker(
+                [37.7353, 127.8958],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_4d26f8add3ac2f77089a7ad91e904a41 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_b16f422c0db8f3e528695d1236287d07 = $(`<div id="html_b16f422c0db8f3e528695d1236287d07" style="width: 100.0%; height: 100.0%;"><b>V024</b> (Hongcheon, SIMULATED)<br>3 turnovers/week<br>served by hub Hongcheon: 15 min drive, 5.9 km</div>`)[0];
+                popup_4d26f8add3ac2f77089a7ad91e904a41.setContent(html_b16f422c0db8f3e528695d1236287d07);
+            
+        
+
+        circle_marker_edccbe206ceac6ea558ee15094cb2ebc.bindPopup(popup_4d26f8add3ac2f77089a7ad91e904a41)
+        ;
+
+        
+    
+    
+            var circle_marker_5acfa5de12ebb036c561205338a6f153 = L.circleMarker(
+                [37.7054, 127.89964],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_4090878bc8315cab091182a2e5e43d49 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_ebfb059724e7d2fa80805289bab680e8 = $(`<div id="html_ebfb059724e7d2fa80805289bab680e8" style="width: 100.0%; height: 100.0%;"><b>V025</b> (Hongcheon, SIMULATED)<br>4 turnovers/week<br>served by hub Hongcheon: 4 min drive, 1.9 km</div>`)[0];
+                popup_4090878bc8315cab091182a2e5e43d49.setContent(html_ebfb059724e7d2fa80805289bab680e8);
+            
+        
+
+        circle_marker_5acfa5de12ebb036c561205338a6f153.bindPopup(popup_4090878bc8315cab091182a2e5e43d49)
+        ;
+
+        
+    
+    
+            var circle_marker_a55b533dc3826bdc2e6bae684d5e501f = L.circleMarker(
+                [37.66906, 127.88383],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_6de6c00cf97437380acfb6c6a881f785 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_f0e0af1db3af52d23a22f40dd3d74581 = $(`<div id="html_f0e0af1db3af52d23a22f40dd3d74581" style="width: 100.0%; height: 100.0%;"><b>V026</b> (Hongcheon, SIMULATED)<br>4 turnovers/week<br>served by hub Hongcheon: 7 min drive, 4.9 km</div>`)[0];
+                popup_6de6c00cf97437380acfb6c6a881f785.setContent(html_f0e0af1db3af52d23a22f40dd3d74581);
+            
+        
+
+        circle_marker_a55b533dc3826bdc2e6bae684d5e501f.bindPopup(popup_6de6c00cf97437380acfb6c6a881f785)
+        ;
+
+        
+    
+    
+            var circle_marker_2af554e12ba74b6ff40f1b114af5355e = L.circleMarker(
+                [37.67617, 127.8808],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_11b96a4265cb650f51ab0771e1ca5f1f = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_2c4e7336a80eb51d11c0c9d1e2aacdde = $(`<div id="html_2c4e7336a80eb51d11c0c9d1e2aacdde" style="width: 100.0%; height: 100.0%;"><b>V027</b> (Hongcheon, SIMULATED)<br>5 turnovers/week<br>served by hub Hongcheon: 5 min drive, 3.0 km</div>`)[0];
+                popup_11b96a4265cb650f51ab0771e1ca5f1f.setContent(html_2c4e7336a80eb51d11c0c9d1e2aacdde);
+            
+        
+
+        circle_marker_2af554e12ba74b6ff40f1b114af5355e.bindPopup(popup_11b96a4265cb650f51ab0771e1ca5f1f)
+        ;
+
+        
+    
+    
+            var circle_marker_2aaca9be635f5569895d0e77eb8f0824 = L.circleMarker(
+                [37.73443, 127.8658],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_fd5877369a3214e1df4674cedf85e8f0 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_e38464fe61e394dbce32644e3dcabf1b = $(`<div id="html_e38464fe61e394dbce32644e3dcabf1b" style="width: 100.0%; height: 100.0%;"><b>V028</b> (Hongcheon, SIMULATED)<br>2 turnovers/week<br>served by hub Hongcheon: 13 min drive, 6.7 km</div>`)[0];
+                popup_fd5877369a3214e1df4674cedf85e8f0.setContent(html_e38464fe61e394dbce32644e3dcabf1b);
+            
+        
+
+        circle_marker_2aaca9be635f5569895d0e77eb8f0824.bindPopup(popup_fd5877369a3214e1df4674cedf85e8f0)
+        ;
+
+        
+    
+    
+            var circle_marker_3dfab593d90f52d7b249f73899000d28 = L.circleMarker(
+                [37.71074, 127.87263],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_c1ff01dd2528676dd8cbc22d22be2144 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_2883cf1d3cb0d4e3d45c318fb547728a = $(`<div id="html_2883cf1d3cb0d4e3d45c318fb547728a" style="width: 100.0%; height: 100.0%;"><b>V029</b> (Hongcheon, SIMULATED)<br>3 turnovers/week<br>served by hub Hongcheon: 10 min drive, 4.5 km</div>`)[0];
+                popup_c1ff01dd2528676dd8cbc22d22be2144.setContent(html_2883cf1d3cb0d4e3d45c318fb547728a);
+            
+        
+
+        circle_marker_3dfab593d90f52d7b249f73899000d28.bindPopup(popup_c1ff01dd2528676dd8cbc22d22be2144)
+        ;
+
+        
+    
+    
+            var circle_marker_3ec7e082ad07b283790fba24eb2ec226 = L.circleMarker(
+                [37.70998, 127.85913],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_9d9096ebddc8fc24024c2251aaac0879 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_d3349161bdfd9f58c3265adafec9faa5 = $(`<div id="html_d3349161bdfd9f58c3265adafec9faa5" style="width: 100.0%; height: 100.0%;"><b>V030</b> (Hongcheon, SIMULATED)<br>5 turnovers/week<br>served by hub Hongcheon: 6 min drive, 3.8 km</div>`)[0];
+                popup_9d9096ebddc8fc24024c2251aaac0879.setContent(html_d3349161bdfd9f58c3265adafec9faa5);
+            
+        
+
+        circle_marker_3ec7e082ad07b283790fba24eb2ec226.bindPopup(popup_9d9096ebddc8fc24024c2251aaac0879)
+        ;
+
+        
+    
+    
+            var circle_marker_2a40e0beba4eb90507124e9e111671c7 = L.circleMarker(
+                [37.72461, 127.9242],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_53a42517446910c230f39fd4ccdef86b = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_a4da72041452dede8c6869eeb2cd4d70 = $(`<div id="html_a4da72041452dede8c6869eeb2cd4d70" style="width: 100.0%; height: 100.0%;"><b>V031</b> (Hongcheon, SIMULATED)<br>4 turnovers/week<br>served by hub Hongcheon: 10 min drive, 6.2 km</div>`)[0];
+                popup_53a42517446910c230f39fd4ccdef86b.setContent(html_a4da72041452dede8c6869eeb2cd4d70);
+            
+        
+
+        circle_marker_2a40e0beba4eb90507124e9e111671c7.bindPopup(popup_53a42517446910c230f39fd4ccdef86b)
+        ;
+
+        
+    
+    
+            var circle_marker_6763051dec6001b953d5fddeda5756dd = L.circleMarker(
+                [38.08098, 128.59064],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_8fc6fee8b64ce02effb409fec2693693 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_349fd0ef78e8c8afa830eae98d67fb60 = $(`<div id="html_349fd0ef78e8c8afa830eae98d67fb60" style="width: 100.0%; height: 100.0%;"><b>V032</b> (Yangyang, SIMULATED)<br>5 turnovers/week<br>served by hub Yangyang: 6 min drive, 3.4 km</div>`)[0];
+                popup_8fc6fee8b64ce02effb409fec2693693.setContent(html_349fd0ef78e8c8afa830eae98d67fb60);
+            
+        
+
+        circle_marker_6763051dec6001b953d5fddeda5756dd.bindPopup(popup_8fc6fee8b64ce02effb409fec2693693)
+        ;
+
+        
+    
+    
+            var circle_marker_301c6dbead195a79c6ccaadd49f170c1 = L.circleMarker(
+                [38.0508, 128.65323],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_8bc825d9adb8f59c8a83c5a24a3f2206 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_b807e4e0ddd7d1e83b0b618a8783c75d = $(`<div id="html_b807e4e0ddd7d1e83b0b618a8783c75d" style="width: 100.0%; height: 100.0%;"><b>V033</b> (Yangyang, SIMULATED)<br>2 turnovers/week<br>served by hub Yangyang: 8 min drive, 5.3 km</div>`)[0];
+                popup_8bc825d9adb8f59c8a83c5a24a3f2206.setContent(html_b807e4e0ddd7d1e83b0b618a8783c75d);
+            
+        
+
+        circle_marker_301c6dbead195a79c6ccaadd49f170c1.bindPopup(popup_8bc825d9adb8f59c8a83c5a24a3f2206)
+        ;
+
+        
+    
+    
+            var circle_marker_c26a812bbbe95bf8870792bbb43e96e3 = L.circleMarker(
+                [38.04984, 128.64972],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_fc053eddeb6c95437b092ed1882d0c7f = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_41095e9ae70587d718a86b9aeaea907b = $(`<div id="html_41095e9ae70587d718a86b9aeaea907b" style="width: 100.0%; height: 100.0%;"><b>V034</b> (Yangyang, SIMULATED)<br>4 turnovers/week<br>served by hub Yangyang: 7 min drive, 5.0 km</div>`)[0];
+                popup_fc053eddeb6c95437b092ed1882d0c7f.setContent(html_41095e9ae70587d718a86b9aeaea907b);
+            
+        
+
+        circle_marker_c26a812bbbe95bf8870792bbb43e96e3.bindPopup(popup_fc053eddeb6c95437b092ed1882d0c7f)
+        ;
+
+        
+    
+    
+            var circle_marker_4301ff31b1a0577523d87150cf4c17fa = L.circleMarker(
+                [38.08673, 128.62458],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_dabf89ff455a2df2f292bc38c0deae3c = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_c7e5c5dde59d36aa7387b2009ce9a213 = $(`<div id="html_c7e5c5dde59d36aa7387b2009ce9a213" style="width: 100.0%; height: 100.0%;"><b>V035</b> (Yangyang, SIMULATED)<br>2 turnovers/week<br>served by hub Yangyang: 5 min drive, 2.9 km</div>`)[0];
+                popup_dabf89ff455a2df2f292bc38c0deae3c.setContent(html_c7e5c5dde59d36aa7387b2009ce9a213);
+            
+        
+
+        circle_marker_4301ff31b1a0577523d87150cf4c17fa.bindPopup(popup_dabf89ff455a2df2f292bc38c0deae3c)
+        ;
+
+        
+    
+    
+            var circle_marker_96b6917504a03f383eea9e54ce7f0cc8 = L.circleMarker(
+                [38.06828, 128.59816],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_995534518e226129860832e1f84a3015 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_63c36bff0c087b2de4e515eeddcb4518 = $(`<div id="html_63c36bff0c087b2de4e515eeddcb4518" style="width: 100.0%; height: 100.0%;"><b>V036</b> (Yangyang, SIMULATED)<br>3 turnovers/week<br>served by hub Yangyang: 6 min drive, 4.6 km</div>`)[0];
+                popup_995534518e226129860832e1f84a3015.setContent(html_63c36bff0c087b2de4e515eeddcb4518);
+            
+        
+
+        circle_marker_96b6917504a03f383eea9e54ce7f0cc8.bindPopup(popup_995534518e226129860832e1f84a3015)
+        ;
+
+        
+    
+    
+            var circle_marker_f61716266847a3dbf27ccac25afb735c = L.circleMarker(
+                [38.03844, 128.6491],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_9ee64e4159148cf253575c837d179631 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_c89fa9be9ce5d6cec70fd497a171dcf9 = $(`<div id="html_c89fa9be9ce5d6cec70fd497a171dcf9" style="width: 100.0%; height: 100.0%;"><b>V037</b> (Yangyang, SIMULATED)<br>4 turnovers/week<br>served by hub Yangyang: 11 min drive, 8.6 km</div>`)[0];
+                popup_9ee64e4159148cf253575c837d179631.setContent(html_c89fa9be9ce5d6cec70fd497a171dcf9);
+            
+        
+
+        circle_marker_f61716266847a3dbf27ccac25afb735c.bindPopup(popup_9ee64e4159148cf253575c837d179631)
+        ;
+
+        
+    
+    
+            var circle_marker_62980c3d292a254454a5dcba4156db74 = L.circleMarker(
+                [37.49531, 127.47327],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_ac96dbae9ff2799018197d0c4273e266 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_cfd8aee15e2c4a271eaad85e16d0cad8 = $(`<div id="html_cfd8aee15e2c4a271eaad85e16d0cad8" style="width: 100.0%; height: 100.0%;"><b>V038</b> (Yangpyeong, SIMULATED)<br>3 turnovers/week<br>served by hub Namyangju: 38 min drive, 40.0 km</div>`)[0];
+                popup_ac96dbae9ff2799018197d0c4273e266.setContent(html_cfd8aee15e2c4a271eaad85e16d0cad8);
+            
+        
+
+        circle_marker_62980c3d292a254454a5dcba4156db74.bindPopup(popup_ac96dbae9ff2799018197d0c4273e266)
+        ;
+
+        
+    
+    
+            var circle_marker_e2aa6e6c2d1be16f1e6d03a09fdcf6ab = L.circleMarker(
+                [37.51161, 127.44952],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_58d51b9ee0ecf455c4ef7c81cfabe12f = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_ae71efc54a02a20076c17a770ddc7629 = $(`<div id="html_ae71efc54a02a20076c17a770ddc7629" style="width: 100.0%; height: 100.0%;"><b>V039</b> (Yangpyeong, SIMULATED)<br>4 turnovers/week<br>served by hub Namyangju: 35 min drive, 35.8 km</div>`)[0];
+                popup_58d51b9ee0ecf455c4ef7c81cfabe12f.setContent(html_ae71efc54a02a20076c17a770ddc7629);
+            
+        
+
+        circle_marker_e2aa6e6c2d1be16f1e6d03a09fdcf6ab.bindPopup(popup_58d51b9ee0ecf455c4ef7c81cfabe12f)
+        ;
+
+        
+    
+    
+            var circle_marker_c864b129fa187f1222255969d18dd1de = L.circleMarker(
+                [37.45393, 127.45733],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_049eb925c06f444769674ec033c53cc4 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_7af9da58e3e0a8002f3097f83f01ff62 = $(`<div id="html_7af9da58e3e0a8002f3097f83f01ff62" style="width: 100.0%; height: 100.0%;"><b>V040</b> (Yangpyeong, SIMULATED)<br>3 turnovers/week<br>served by hub Namyangju: 52 min drive, 46.1 km</div>`)[0];
+                popup_049eb925c06f444769674ec033c53cc4.setContent(html_7af9da58e3e0a8002f3097f83f01ff62);
+            
+        
+
+        circle_marker_c864b129fa187f1222255969d18dd1de.bindPopup(popup_049eb925c06f444769674ec033c53cc4)
+        ;
+
+        
+    
+    
+            var circle_marker_932a1353d9aaecd56a2a1a48703eaf39 = L.circleMarker(
+                [37.52887, 127.50012],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_b4d6418220f54bc9cf8771e9fa0549a4 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_b52a6b3aa10c5ad6708faa3ea3df9282 = $(`<div id="html_b52a6b3aa10c5ad6708faa3ea3df9282" style="width: 100.0%; height: 100.0%;"><b>V041</b> (Yangpyeong, SIMULATED)<br>4 turnovers/week<br>served by hub Namyangju: 45 min drive, 41.4 km</div>`)[0];
+                popup_b4d6418220f54bc9cf8771e9fa0549a4.setContent(html_b52a6b3aa10c5ad6708faa3ea3df9282);
+            
+        
+
+        circle_marker_932a1353d9aaecd56a2a1a48703eaf39.bindPopup(popup_b4d6418220f54bc9cf8771e9fa0549a4)
+        ;
+
+        
+    
+    
+            var circle_marker_669538a36143cf6b0a845e32168222cf = L.circleMarker(
+                [37.4934, 127.51732],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_4355b8fe6340969a3b587bf5ddf2b71e = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_775461110f1518eb3c1d8d63e97c9b05 = $(`<div id="html_775461110f1518eb3c1d8d63e97c9b05" style="width: 100.0%; height: 100.0%;"><b>V042</b> (Yangpyeong, SIMULATED)<br>3 turnovers/week<br>served by hub Namyangju: 41 min drive, 43.1 km</div>`)[0];
+                popup_4355b8fe6340969a3b587bf5ddf2b71e.setContent(html_775461110f1518eb3c1d8d63e97c9b05);
+            
+        
+
+        circle_marker_669538a36143cf6b0a845e32168222cf.bindPopup(popup_4355b8fe6340969a3b587bf5ddf2b71e)
+        ;
+
+        
+    
+    
+            var circle_marker_5774310ebefeb29dce16e20969e302bd = L.circleMarker(
+                [37.86884, 127.73702],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_1ca3f2337e166385f090b161946e85aa = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_a9335253e8e2e860fc2b0fc3c96ec0fe = $(`<div id="html_a9335253e8e2e860fc2b0fc3c96ec0fe" style="width: 100.0%; height: 100.0%;"><b>V043</b> (Chuncheon, SIMULATED)<br>3 turnovers/week<br>served by hub Hongcheon: 34 min drive, 31.5 km</div>`)[0];
+                popup_1ca3f2337e166385f090b161946e85aa.setContent(html_a9335253e8e2e860fc2b0fc3c96ec0fe);
+            
+        
+
+        circle_marker_5774310ebefeb29dce16e20969e302bd.bindPopup(popup_1ca3f2337e166385f090b161946e85aa)
+        ;
+
+        
+    
+    
+            var circle_marker_426428724b82f6dad8404e2a4866c614 = L.circleMarker(
+                [37.86973, 127.73133],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_18b2535feb4138a09650fdbfe0b32102 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_dc8120d4b59da035540f4655ff5039bf = $(`<div id="html_dc8120d4b59da035540f4655ff5039bf" style="width: 100.0%; height: 100.0%;"><b>V044</b> (Chuncheon, SIMULATED)<br>4 turnovers/week<br>served by hub Hongcheon: 35 min drive, 31.8 km</div>`)[0];
+                popup_18b2535feb4138a09650fdbfe0b32102.setContent(html_dc8120d4b59da035540f4655ff5039bf);
+            
+        
+
+        circle_marker_426428724b82f6dad8404e2a4866c614.bindPopup(popup_18b2535feb4138a09650fdbfe0b32102)
+        ;
+
+        
+    
+    
+            var circle_marker_164a6908b40d8e393ed59f9bbdad6511 = L.circleMarker(
+                [37.90252, 127.76253],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_f16a5fc7a295b413faa7427c9b8d5488 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_0e1eea724ee60a30de1bf24ffa366e2b = $(`<div id="html_0e1eea724ee60a30de1bf24ffa366e2b" style="width: 100.0%; height: 100.0%;"><b>V045</b> (Chuncheon, SIMULATED)<br>5 turnovers/week<br>served by hub Hongcheon: 36 min drive, 35.5 km</div>`)[0];
+                popup_f16a5fc7a295b413faa7427c9b8d5488.setContent(html_0e1eea724ee60a30de1bf24ffa366e2b);
+            
+        
+
+        circle_marker_164a6908b40d8e393ed59f9bbdad6511.bindPopup(popup_f16a5fc7a295b413faa7427c9b8d5488)
+        ;
+
+        
+    
+    
+            var circle_marker_4fafa0b6fb43a6ab79ea144da9b3a661 = L.circleMarker(
+                [37.91597, 127.69021],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_17a882d32ba07d72ac9523ab463b599c = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_cfdd0d9ee4dc1445da2814f07229e7a2 = $(`<div id="html_cfdd0d9ee4dc1445da2814f07229e7a2" style="width: 100.0%; height: 100.0%;"><b>V046</b> (Chuncheon, SIMULATED)<br>2 turnovers/week<br>served by hub Hongcheon: 51 min drive, 47.3 km</div>`)[0];
+                popup_17a882d32ba07d72ac9523ab463b599c.setContent(html_cfdd0d9ee4dc1445da2814f07229e7a2);
+            
+        
+
+        circle_marker_4fafa0b6fb43a6ab79ea144da9b3a661.bindPopup(popup_17a882d32ba07d72ac9523ab463b599c)
+        ;
+
+        
+    
+    
+            var circle_marker_3b0ba1764737fec3ce87dac2d86971de = L.circleMarker(
+                [37.90154, 127.75464],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_8010c0870cf2518bc7bbaea7ea09b150 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_ce74396eee614b7fecdf386c242bd1da = $(`<div id="html_ce74396eee614b7fecdf386c242bd1da" style="width: 100.0%; height: 100.0%;"><b>V047</b> (Chuncheon, SIMULATED)<br>4 turnovers/week<br>served by hub Hongcheon: 39 min drive, 36.4 km</div>`)[0];
+                popup_8010c0870cf2518bc7bbaea7ea09b150.setContent(html_ce74396eee614b7fecdf386c242bd1da);
+            
+        
+
+        circle_marker_3b0ba1764737fec3ce87dac2d86971de.bindPopup(popup_8010c0870cf2518bc7bbaea7ea09b150)
+        ;
+
+        
+    
+    
+            var circle_marker_38c2e4ea63ac9c2db1b50a9711418ba3 = L.circleMarker(
+                [37.74541, 128.90132],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_a99921c58612f278aeccd0e7d13662ad = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_83035f5b39032a59188f4ba5acf55fff = $(`<div id="html_83035f5b39032a59188f4ba5acf55fff" style="width: 100.0%; height: 100.0%;"><b>V048</b> (Gangneung, SIMULATED)<br>2 turnovers/week<br>served by hub Yangyang: 49 min drive, 50.8 km</div>`)[0];
+                popup_a99921c58612f278aeccd0e7d13662ad.setContent(html_83035f5b39032a59188f4ba5acf55fff);
+            
+        
+
+        circle_marker_38c2e4ea63ac9c2db1b50a9711418ba3.bindPopup(popup_a99921c58612f278aeccd0e7d13662ad)
+        ;
+
+        
+    
+    
+            var circle_marker_bf6f0ea37c83710bec39a1127467bcf0 = L.circleMarker(
+                [37.71304, 128.88638],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_e197087c567bcfde7b8db6467ccf7e08 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_e2e436aedaae1d81b50f84ec2c30591a = $(`<div id="html_e2e436aedaae1d81b50f84ec2c30591a" style="width: 100.0%; height: 100.0%;"><b>V049</b> (Gangneung, SIMULATED)<br>3 turnovers/week<br>served by hub Yangyang: 52 min drive, 59.7 km</div>`)[0];
+                popup_e197087c567bcfde7b8db6467ccf7e08.setContent(html_e2e436aedaae1d81b50f84ec2c30591a);
+            
+        
+
+        circle_marker_bf6f0ea37c83710bec39a1127467bcf0.bindPopup(popup_e197087c567bcfde7b8db6467ccf7e08)
+        ;
+
+        
+    
+    
+            var circle_marker_7d8b4b8e4a0efdd1f748401effea43ec = L.circleMarker(
+                [37.75294, 128.89417],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_c0ed84f02791401d27d2763209fe587c = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_10d013acab105223f7bc1ae3858d6b52 = $(`<div id="html_10d013acab105223f7bc1ae3858d6b52" style="width: 100.0%; height: 100.0%;"><b>V050</b> (Gangneung, SIMULATED)<br>5 turnovers/week<br>served by hub Yangyang: 47 min drive, 54.0 km</div>`)[0];
+                popup_c0ed84f02791401d27d2763209fe587c.setContent(html_10d013acab105223f7bc1ae3858d6b52);
+            
+        
+
+        circle_marker_7d8b4b8e4a0efdd1f748401effea43ec.bindPopup(popup_c0ed84f02791401d27d2763209fe587c)
+        ;
+
+        
+    
+    
+            var circle_marker_0b8aefca5329018bc820d8463ce40446 = L.circleMarker(
+                [37.73001, 128.85198],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_08082174a8cd0e163d4d88ea58c71a15 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_c49b6440c7f8061e43047cf633630c5c = $(`<div id="html_c49b6440c7f8061e43047cf633630c5c" style="width: 100.0%; height: 100.0%;"><b>V051</b> (Gangneung, SIMULATED)<br>5 turnovers/week<br>served by hub Yangyang: 47 min drive, 53.6 km</div>`)[0];
+                popup_08082174a8cd0e163d4d88ea58c71a15.setContent(html_c49b6440c7f8061e43047cf633630c5c);
+            
+        
+
+        circle_marker_0b8aefca5329018bc820d8463ce40446.bindPopup(popup_08082174a8cd0e163d4d88ea58c71a15)
+        ;
+
+        
+    
+    
+            var circle_marker_d3e02650acf6f020860890897a33a2f9 = L.circleMarker(
+                [37.72625, 128.86378],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_836c00a6d9f4988cfccd2cd1c589a9b1 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_21f281d04c576d089b287b4a4965f220 = $(`<div id="html_21f281d04c576d089b287b4a4965f220" style="width: 100.0%; height: 100.0%;"><b>V052</b> (Gangneung, SIMULATED)<br>3 turnovers/week<br>served by hub Yangyang: 49 min drive, 54.5 km</div>`)[0];
+                popup_836c00a6d9f4988cfccd2cd1c589a9b1.setContent(html_21f281d04c576d089b287b4a4965f220);
+            
+        
+
+        circle_marker_d3e02650acf6f020860890897a33a2f9.bindPopup(popup_836c00a6d9f4988cfccd2cd1c589a9b1)
+        ;
+
+        
+    
+    
+            var circle_marker_6f3e5ed24ef7c91bcfd54b0b44a9f910 = L.circleMarker(
+                [33.53545, 126.53707],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_386c696a8fd8e1906c9a60a8c42a6487 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_cfec02d59f1a286dc5940a677664337b = $(`<div id="html_cfec02d59f1a286dc5940a677664337b" style="width: 100.0%; height: 100.0%;"><b>V053</b> (Jeju-City, SIMULATED)<br>5 turnovers/week<br>served by hub Jeju City: 6 min drive, 4.1 km</div>`)[0];
+                popup_386c696a8fd8e1906c9a60a8c42a6487.setContent(html_cfec02d59f1a286dc5940a677664337b);
+            
+        
+
+        circle_marker_6f3e5ed24ef7c91bcfd54b0b44a9f910.bindPopup(popup_386c696a8fd8e1906c9a60a8c42a6487)
+        ;
+
+        
+    
+    
+            var circle_marker_fa6922a12b1baf336157e94d7d111435 = L.circleMarker(
+                [33.48132, 126.56736],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_e8a3e28e99ffd4f16c288e65b2ee7483 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_142c6a0dd18ef4c8c2e68d5d1f14579d = $(`<div id="html_142c6a0dd18ef4c8c2e68d5d1f14579d" style="width: 100.0%; height: 100.0%;"><b>V054</b> (Jeju-City, SIMULATED)<br>3 turnovers/week<br>served by hub Jeju City: 8 min drive, 5.6 km</div>`)[0];
+                popup_e8a3e28e99ffd4f16c288e65b2ee7483.setContent(html_142c6a0dd18ef4c8c2e68d5d1f14579d);
+            
+        
+
+        circle_marker_fa6922a12b1baf336157e94d7d111435.bindPopup(popup_e8a3e28e99ffd4f16c288e65b2ee7483)
+        ;
+
+        
+    
+    
+            var circle_marker_3417a4ba2248fbecd1392104fa8f513e = L.circleMarker(
+                [33.49516, 126.56963],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_27f06190a5ab8361bc33db3c59065fb1 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_0a9bfb6354bb349237925dd95d77288f = $(`<div id="html_0a9bfb6354bb349237925dd95d77288f" style="width: 100.0%; height: 100.0%;"><b>V055</b> (Jeju-City, SIMULATED)<br>2 turnovers/week<br>served by hub Jeju City: 8 min drive, 5.0 km</div>`)[0];
+                popup_27f06190a5ab8361bc33db3c59065fb1.setContent(html_0a9bfb6354bb349237925dd95d77288f);
+            
+        
+
+        circle_marker_3417a4ba2248fbecd1392104fa8f513e.bindPopup(popup_27f06190a5ab8361bc33db3c59065fb1)
+        ;
+
+        
+    
+    
+            var circle_marker_2bad3b8eb62ee31795bc6442d608876d = L.circleMarker(
+                [33.50129, 126.56292],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_a76eb103ae0dd1f2c382fc28e25c6417 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_d2a1686904ffc46eee8b1092f6679e09 = $(`<div id="html_d2a1686904ffc46eee8b1092f6679e09" style="width: 100.0%; height: 100.0%;"><b>V056</b> (Jeju-City, SIMULATED)<br>4 turnovers/week<br>served by hub Jeju City: 5 min drive, 3.9 km</div>`)[0];
+                popup_a76eb103ae0dd1f2c382fc28e25c6417.setContent(html_d2a1686904ffc46eee8b1092f6679e09);
+            
+        
+
+        circle_marker_2bad3b8eb62ee31795bc6442d608876d.bindPopup(popup_a76eb103ae0dd1f2c382fc28e25c6417)
+        ;
+
+        
+    
+    
+            var circle_marker_3b7a4a3a5af59f1e9995831fb053cbf3 = L.circleMarker(
+                [33.51902, 126.53765],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_7656e4a49f6012d5392e32a5dcc393f2 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_4f61af9648e20a26e3e284995aa31076 = $(`<div id="html_4f61af9648e20a26e3e284995aa31076" style="width: 100.0%; height: 100.0%;"><b>V057</b> (Jeju-City, SIMULATED)<br>5 turnovers/week<br>served by hub Jeju City: 5 min drive, 3.9 km</div>`)[0];
+                popup_7656e4a49f6012d5392e32a5dcc393f2.setContent(html_4f61af9648e20a26e3e284995aa31076);
+            
+        
+
+        circle_marker_3b7a4a3a5af59f1e9995831fb053cbf3.bindPopup(popup_7656e4a49f6012d5392e32a5dcc393f2)
+        ;
+
+        
+    
+    
+            var circle_marker_40fc0ef4cded0230c497275ace2a4177 = L.circleMarker(
+                [33.52986, 126.52413],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_2230b00047b1562511a05c702e668d4f = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_b03775b0e93c207ad688511192191627 = $(`<div id="html_b03775b0e93c207ad688511192191627" style="width: 100.0%; height: 100.0%;"><b>V058</b> (Jeju-City, SIMULATED)<br>3 turnovers/week<br>served by hub Jeju City: 6 min drive, 3.1 km</div>`)[0];
+                popup_2230b00047b1562511a05c702e668d4f.setContent(html_b03775b0e93c207ad688511192191627);
+            
+        
+
+        circle_marker_40fc0ef4cded0230c497275ace2a4177.bindPopup(popup_2230b00047b1562511a05c702e668d4f)
+        ;
+
+        
+    
+    
+            var circle_marker_7bfdf6861b377bafb16a0cf89b749fb7 = L.circleMarker(
+                [33.53342, 126.4967],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_3e1000be881349ea7c5745bc909c85a7 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_1eb79b32c132d81b55903e00c6f72d88 = $(`<div id="html_1eb79b32c132d81b55903e00c6f72d88" style="width: 100.0%; height: 100.0%;"><b>V059</b> (Jeju-City, SIMULATED)<br>2 turnovers/week<br>served by hub Jeju City: 7 min drive, 5.5 km</div>`)[0];
+                popup_3e1000be881349ea7c5745bc909c85a7.setContent(html_1eb79b32c132d81b55903e00c6f72d88);
+            
+        
+
+        circle_marker_7bfdf6861b377bafb16a0cf89b749fb7.bindPopup(popup_3e1000be881349ea7c5745bc909c85a7)
+        ;
+
+        
+    
+    
+            var circle_marker_396067525b5a624abae602c54117a2c6 = L.circleMarker(
+                [33.50116, 126.56728],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_a26be231ea23b9ec5e8a2ac23dc7b37f = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_0cc455a75042c2da7a59ec86c80e785b = $(`<div id="html_0cc455a75042c2da7a59ec86c80e785b" style="width: 100.0%; height: 100.0%;"><b>V060</b> (Jeju-City, SIMULATED)<br>3 turnovers/week<br>served by hub Jeju City: 6 min drive, 4.4 km</div>`)[0];
+                popup_a26be231ea23b9ec5e8a2ac23dc7b37f.setContent(html_0cc455a75042c2da7a59ec86c80e785b);
+            
+        
+
+        circle_marker_396067525b5a624abae602c54117a2c6.bindPopup(popup_a26be231ea23b9ec5e8a2ac23dc7b37f)
+        ;
+
+        
+    
+    
+            var circle_marker_29236e586564301de7cf376d660f07a3 = L.circleMarker(
+                [33.47968, 126.55568],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_4d6420225c18ef953a7db879a46f0fb4 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_6a45f5e3a50d86c80b09bcf9719027f3 = $(`<div id="html_6a45f5e3a50d86c80b09bcf9719027f3" style="width: 100.0%; height: 100.0%;"><b>V061</b> (Jeju-City, SIMULATED)<br>4 turnovers/week<br>served by hub Jeju City: 6 min drive, 4.0 km</div>`)[0];
+                popup_4d6420225c18ef953a7db879a46f0fb4.setContent(html_6a45f5e3a50d86c80b09bcf9719027f3);
+            
+        
+
+        circle_marker_29236e586564301de7cf376d660f07a3.bindPopup(popup_4d6420225c18ef953a7db879a46f0fb4)
+        ;
+
+        
+    
+    
+            var circle_marker_40a9ac4d1895bb0d3d45c725027469c2 = L.circleMarker(
+                [33.51697, 126.54157],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_48bd210f0081e1148564d73d7db599dc = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_5be42dd02b4e26d7d24e68bf80127442 = $(`<div id="html_5be42dd02b4e26d7d24e68bf80127442" style="width: 100.0%; height: 100.0%;"><b>V062</b> (Jeju-City, SIMULATED)<br>4 turnovers/week<br>served by hub Jeju City: 4 min drive, 2.7 km</div>`)[0];
+                popup_48bd210f0081e1148564d73d7db599dc.setContent(html_5be42dd02b4e26d7d24e68bf80127442);
+            
+        
+
+        circle_marker_40a9ac4d1895bb0d3d45c725027469c2.bindPopup(popup_48bd210f0081e1148564d73d7db599dc)
+        ;
+
+        
+    
+    
+            var circle_marker_71b0b6cd56ae52af15dcce98a912c42d = L.circleMarker(
+                [33.29182, 126.54671],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_247c31f4b07e79af78ced18c10d68e09 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_655b94c58a528dd738861e871b5c0a70 = $(`<div id="html_655b94c58a528dd738861e871b5c0a70" style="width: 100.0%; height: 100.0%;"><b>V063</b> (Seogwipo, SIMULATED)<br>4 turnovers/week<br>served by hub Jeju City: 49 min drive, 41.4 km</div>`)[0];
+                popup_247c31f4b07e79af78ced18c10d68e09.setContent(html_655b94c58a528dd738861e871b5c0a70);
+            
+        
+
+        circle_marker_71b0b6cd56ae52af15dcce98a912c42d.bindPopup(popup_247c31f4b07e79af78ced18c10d68e09)
+        ;
+
+        
+    
+    
+            var circle_marker_f8747d0d4284a520ff1c3455b673e069 = L.circleMarker(
+                [33.23033, 126.52416],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_3d4bccc9a1cf9ec60324eba1cfb9c039 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_22718a984136818512a6ca6022da62dc = $(`<div id="html_22718a984136818512a6ca6022da62dc" style="width: 100.0%; height: 100.0%;"><b>V064</b> (Seogwipo, SIMULATED)<br>3 turnovers/week<br>served by hub Jeju City: 55 min drive, 50.6 km</div>`)[0];
+                popup_3d4bccc9a1cf9ec60324eba1cfb9c039.setContent(html_22718a984136818512a6ca6022da62dc);
+            
+        
+
+        circle_marker_f8747d0d4284a520ff1c3455b673e069.bindPopup(popup_3d4bccc9a1cf9ec60324eba1cfb9c039)
+        ;
+
+        
+    
+    
+            var circle_marker_1e50f9a3e7f020235b804cea0e48a5cd = L.circleMarker(
+                [33.23113, 126.59334],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_80038b501811f388873dd717d7b2bb7d = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_e5bba35ed336c7635fcf37595898fa6e = $(`<div id="html_e5bba35ed336c7635fcf37595898fa6e" style="width: 100.0%; height: 100.0%;"><b>V065</b> (Seogwipo, SIMULATED)<br>5 turnovers/week<br>served by hub Jeju City: 57 min drive, 47.3 km</div>`)[0];
+                popup_80038b501811f388873dd717d7b2bb7d.setContent(html_e5bba35ed336c7635fcf37595898fa6e);
+            
+        
+
+        circle_marker_1e50f9a3e7f020235b804cea0e48a5cd.bindPopup(popup_80038b501811f388873dd717d7b2bb7d)
+        ;
+
+        
+    
+    
+            var circle_marker_fc1da3c07eb090fdb0a3ef5ce39fbfa4 = L.circleMarker(
+                [33.22309, 126.5684],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_eff4dac0063047f35b4990d74346d810 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_23d539ff583ed9a9d81505b11150491f = $(`<div id="html_23d539ff583ed9a9d81505b11150491f" style="width: 100.0%; height: 100.0%;"><b>V066</b> (Seogwipo, SIMULATED)<br>5 turnovers/week<br>served by hub Jeju City: 59 min drive, 50.6 km</div>`)[0];
+                popup_eff4dac0063047f35b4990d74346d810.setContent(html_23d539ff583ed9a9d81505b11150491f);
+            
+        
+
+        circle_marker_fc1da3c07eb090fdb0a3ef5ce39fbfa4.bindPopup(popup_eff4dac0063047f35b4990d74346d810)
+        ;
+
+        
+    
+    
+            var circle_marker_6ef6dc20592bb830397fa230adf70537 = L.circleMarker(
+                [33.25244, 126.56767],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_7ad4f215b87fec7655dd9908888684c1 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_d9f07350d418531432eef14591619248 = $(`<div id="html_d9f07350d418531432eef14591619248" style="width: 100.0%; height: 100.0%;"><b>V067</b> (Seogwipo, SIMULATED)<br>3 turnovers/week<br>served by hub Jeju City: 54 min drive, 48.6 km</div>`)[0];
+                popup_7ad4f215b87fec7655dd9908888684c1.setContent(html_d9f07350d418531432eef14591619248);
+            
+        
+
+        circle_marker_6ef6dc20592bb830397fa230adf70537.bindPopup(popup_7ad4f215b87fec7655dd9908888684c1)
+        ;
+
+        
+    
+    
+            var circle_marker_7289cf5e3f6270fdeb7bc03e8f39c036 = L.circleMarker(
+                [33.23863, 126.59701],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_6d4b5b3654ffd6f0feec5e3782d46ce2 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_5440b7ee2a71bbffb49dac12ef5e5a4e = $(`<div id="html_5440b7ee2a71bbffb49dac12ef5e5a4e" style="width: 100.0%; height: 100.0%;"><b>V068</b> (Seogwipo, SIMULATED)<br>4 turnovers/week<br>served by hub Jeju City: 56 min drive, 47.0 km</div>`)[0];
+                popup_6d4b5b3654ffd6f0feec5e3782d46ce2.setContent(html_5440b7ee2a71bbffb49dac12ef5e5a4e);
+            
+        
+
+        circle_marker_7289cf5e3f6270fdeb7bc03e8f39c036.bindPopup(popup_6d4b5b3654ffd6f0feec5e3782d46ce2)
+        ;
+
+        
+    
+    
+            var circle_marker_81ead72a20d610e936946162f68e7757 = L.circleMarker(
+                [35.16037, 129.17415],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_d35bc0385a78ca9c8f70dc5d54c107d6 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_84bb8502ff8fc26f28c41756589107ca = $(`<div id="html_84bb8502ff8fc26f28c41756589107ca" style="width: 100.0%; height: 100.0%;"><b>V069</b> (Busan, SIMULATED)<br>3 turnovers/week<br>served by hub Busan: 13 min drive, 11.2 km</div>`)[0];
+                popup_d35bc0385a78ca9c8f70dc5d54c107d6.setContent(html_84bb8502ff8fc26f28c41756589107ca);
+            
+        
+
+        circle_marker_81ead72a20d610e936946162f68e7757.bindPopup(popup_d35bc0385a78ca9c8f70dc5d54c107d6)
+        ;
+
+        
+    
+    
+            var circle_marker_b3aad0eb83e5655fdd110068e40f18d5 = L.circleMarker(
+                [35.13781, 129.12885],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_d295d1106a5fd09d71b6bfdd9f4a258a = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_7e292e6267424c00e473fc1e3fb40099 = $(`<div id="html_7e292e6267424c00e473fc1e3fb40099" style="width: 100.0%; height: 100.0%;"><b>V070</b> (Busan, SIMULATED)<br>4 turnovers/week<br>served by hub Busan: 9 min drive, 10.0 km</div>`)[0];
+                popup_d295d1106a5fd09d71b6bfdd9f4a258a.setContent(html_7e292e6267424c00e473fc1e3fb40099);
+            
+        
+
+        circle_marker_b3aad0eb83e5655fdd110068e40f18d5.bindPopup(popup_d295d1106a5fd09d71b6bfdd9f4a258a)
+        ;
+
+        
+    
+    
+            var circle_marker_e3009269b52c9e321b99a00341d3e05d = L.circleMarker(
+                [35.15602, 129.18502],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_4fcbeac425e61f13207c3ef4aef19040 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_18e163429ea538bba71c282c3f3a1896 = $(`<div id="html_18e163429ea538bba71c282c3f3a1896" style="width: 100.0%; height: 100.0%;"><b>V071</b> (Busan, SIMULATED)<br>4 turnovers/week<br>served by hub Busan: 14 min drive, 12.1 km</div>`)[0];
+                popup_4fcbeac425e61f13207c3ef4aef19040.setContent(html_18e163429ea538bba71c282c3f3a1896);
+            
+        
+
+        circle_marker_e3009269b52c9e321b99a00341d3e05d.bindPopup(popup_4fcbeac425e61f13207c3ef4aef19040)
+        ;
+
+        
+    
+    
+            var circle_marker_dd383d256337666d297146a291182456 = L.circleMarker(
+                [35.1815, 129.13296],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_3d24a8fa638808a131241a3d9b64ef99 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_2e679d669292be30f6b001db8ad3d785 = $(`<div id="html_2e679d669292be30f6b001db8ad3d785" style="width: 100.0%; height: 100.0%;"><b>V072</b> (Busan, SIMULATED)<br>5 turnovers/week<br>served by hub Busan: 17 min drive, 9.3 km</div>`)[0];
+                popup_3d24a8fa638808a131241a3d9b64ef99.setContent(html_2e679d669292be30f6b001db8ad3d785);
+            
+        
+
+        circle_marker_dd383d256337666d297146a291182456.bindPopup(popup_3d24a8fa638808a131241a3d9b64ef99)
+        ;
+
+        
+    
+    
+            var circle_marker_864dc3598a8928f82c2f20b70b92b525 = L.circleMarker(
+                [35.19617, 129.18806],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_4fdccda6053f26b43d78692ce560e913 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_cf85c0043b58d9192f27497f62599c40 = $(`<div id="html_cf85c0043b58d9192f27497f62599c40" style="width: 100.0%; height: 100.0%;"><b>V073</b> (Busan, SIMULATED)<br>4 turnovers/week<br>served by hub Busan: 27 min drive, 14.1 km</div>`)[0];
+                popup_4fdccda6053f26b43d78692ce560e913.setContent(html_cf85c0043b58d9192f27497f62599c40);
+            
+        
+
+        circle_marker_864dc3598a8928f82c2f20b70b92b525.bindPopup(popup_4fdccda6053f26b43d78692ce560e913)
+        ;
+
+        
+    
+    
+            var circle_marker_cac2c8af0443f26cdf4e97364abecbf4 = L.circleMarker(
+                [35.16496, 129.19715],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_e0db07fdeb01e8837ba49c277234aee9 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_bad7c63ffbe92f4aa712436505982a58 = $(`<div id="html_bad7c63ffbe92f4aa712436505982a58" style="width: 100.0%; height: 100.0%;"><b>V074</b> (Busan, SIMULATED)<br>5 turnovers/week<br>served by hub Busan: 16 min drive, 13.5 km</div>`)[0];
+                popup_e0db07fdeb01e8837ba49c277234aee9.setContent(html_bad7c63ffbe92f4aa712436505982a58);
+            
+        
+
+        circle_marker_cac2c8af0443f26cdf4e97364abecbf4.bindPopup(popup_e0db07fdeb01e8837ba49c277234aee9)
+        ;
+
+        
+    
+    
+            var circle_marker_82ed74df47398d725906152dd2895d64 = L.circleMarker(
+                [35.12683, 129.12632],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_68d78eb292b5b7bbde9fc1c247e7d9c0 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_9c6be4255a978207a31cc0115c1483e4 = $(`<div id="html_9c6be4255a978207a31cc0115c1483e4" style="width: 100.0%; height: 100.0%;"><b>V075</b> (Busan, SIMULATED)<br>3 turnovers/week<br>served by hub Busan: 15 min drive, 11.2 km</div>`)[0];
+                popup_68d78eb292b5b7bbde9fc1c247e7d9c0.setContent(html_9c6be4255a978207a31cc0115c1483e4);
+            
+        
+
+        circle_marker_82ed74df47398d725906152dd2895d64.bindPopup(popup_68d78eb292b5b7bbde9fc1c247e7d9c0)
+        ;
+
+        
+    
+    
+            var circle_marker_a74f0ee5cbe26cf1eecc9f3c734cf883 = L.circleMarker(
+                [35.14332, 129.14379],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_16a99d0df01c7b713c71abb6a28b5428 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_3c0e4c460db010922eab5d479a4466be = $(`<div id="html_3c0e4c460db010922eab5d479a4466be" style="width: 100.0%; height: 100.0%;"><b>V076</b> (Busan, SIMULATED)<br>2 turnovers/week<br>served by hub Busan: 10 min drive, 9.2 km</div>`)[0];
+                popup_16a99d0df01c7b713c71abb6a28b5428.setContent(html_3c0e4c460db010922eab5d479a4466be);
+            
+        
+
+        circle_marker_a74f0ee5cbe26cf1eecc9f3c734cf883.bindPopup(popup_16a99d0df01c7b713c71abb6a28b5428)
+        ;
+
+        
+    
+    
+            var circle_marker_d3d8d2898b8b132a6906bf3534aa7efa = L.circleMarker(
+                [35.1381, 129.16926],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_826e6320c58a44891f304eaff41528c7 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_24be7f58db9245079ba13339cb315ad7 = $(`<div id="html_24be7f58db9245079ba13339cb315ad7" style="width: 100.0%; height: 100.0%;"><b>V077</b> (Busan, SIMULATED)<br>2 turnovers/week<br>served by hub Busan: 14 min drive, 11.4 km</div>`)[0];
+                popup_826e6320c58a44891f304eaff41528c7.setContent(html_24be7f58db9245079ba13339cb315ad7);
+            
+        
+
+        circle_marker_d3d8d2898b8b132a6906bf3534aa7efa.bindPopup(popup_826e6320c58a44891f304eaff41528c7)
+        ;
+
+        
+    
+    
+            var circle_marker_b4ef9c3b5999cdd479a1605a7542d597 = L.circleMarker(
+                [35.17033, 129.13718],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_c6ed909e2bbfaa11f5bf81602c4cba58 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_e37af01fce6f6569cf003bbf532c5e73 = $(`<div id="html_e37af01fce6f6569cf003bbf532c5e73" style="width: 100.0%; height: 100.0%;"><b>V078</b> (Busan, SIMULATED)<br>2 turnovers/week<br>served by hub Busan: 9 min drive, 8.1 km</div>`)[0];
+                popup_c6ed909e2bbfaa11f5bf81602c4cba58.setContent(html_e37af01fce6f6569cf003bbf532c5e73);
+            
+        
+
+        circle_marker_b4ef9c3b5999cdd479a1605a7542d597.bindPopup(popup_c6ed909e2bbfaa11f5bf81602c4cba58)
+        ;
+
+        
+    
+    
+            var circle_marker_21c1e7130735532a3a951f957793fa7f = L.circleMarker(
+                [35.17733, 129.12559],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_448ad2b8ae5753cae7804035d6776580 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_abdbee9aee5a4b2d8786555420e9f0d8 = $(`<div id="html_abdbee9aee5a4b2d8786555420e9f0d8" style="width: 100.0%; height: 100.0%;"><b>V079</b> (Busan, SIMULATED)<br>3 turnovers/week<br>served by hub Busan: 6 min drive, 5.4 km</div>`)[0];
+                popup_448ad2b8ae5753cae7804035d6776580.setContent(html_abdbee9aee5a4b2d8786555420e9f0d8);
+            
+        
+
+        circle_marker_21c1e7130735532a3a951f957793fa7f.bindPopup(popup_448ad2b8ae5753cae7804035d6776580)
+        ;
+
+        
+    
+    
+            var circle_marker_56e31fe1cbadbdc57dde8d9a07ef28b3 = L.circleMarker(
+                [35.19817, 129.16697],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_aaf52a5095845ce5fbe8a026cd9e8ac0 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_76b40120cc99dc132e2965e27a6e28db = $(`<div id="html_76b40120cc99dc132e2965e27a6e28db" style="width: 100.0%; height: 100.0%;"><b>V080</b> (Busan, SIMULATED)<br>3 turnovers/week<br>served by hub Busan: 31 min drive, 15.6 km</div>`)[0];
+                popup_aaf52a5095845ce5fbe8a026cd9e8ac0.setContent(html_76b40120cc99dc132e2965e27a6e28db);
+            
+        
+
+        circle_marker_56e31fe1cbadbdc57dde8d9a07ef28b3.bindPopup(popup_aaf52a5095845ce5fbe8a026cd9e8ac0)
+        ;
+
+        
+    
+    
+            var circle_marker_4db5bfdbb12090a93eec75b55ef0f9a7 = L.circleMarker(
+                [35.18803, 129.17654],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_c0e2f73034b2cc1d406b8980441577f5 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_8e9754f098e285cd3bed1ba727e66e61 = $(`<div id="html_8e9754f098e285cd3bed1ba727e66e61" style="width: 100.0%; height: 100.0%;"><b>V081</b> (Busan, SIMULATED)<br>2 turnovers/week<br>served by hub Busan: 18 min drive, 12.6 km</div>`)[0];
+                popup_c0e2f73034b2cc1d406b8980441577f5.setContent(html_8e9754f098e285cd3bed1ba727e66e61);
+            
+        
+
+        circle_marker_4db5bfdbb12090a93eec75b55ef0f9a7.bindPopup(popup_c0e2f73034b2cc1d406b8980441577f5)
+        ;
+
+        
+    
+    
+            var circle_marker_d0f65db77fc1e88b9c7f0c01b4e356f0 = L.circleMarker(
+                [35.1384, 129.16985],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_cc0ef425cbac292363e8dedb6cea19a9 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_0863473727dbb4ff4e6115200a40f039 = $(`<div id="html_0863473727dbb4ff4e6115200a40f039" style="width: 100.0%; height: 100.0%;"><b>V082</b> (Busan, SIMULATED)<br>4 turnovers/week<br>served by hub Busan: 14 min drive, 11.4 km</div>`)[0];
+                popup_cc0ef425cbac292363e8dedb6cea19a9.setContent(html_0863473727dbb4ff4e6115200a40f039);
+            
+        
+
+        circle_marker_d0f65db77fc1e88b9c7f0c01b4e356f0.bindPopup(popup_cc0ef425cbac292363e8dedb6cea19a9)
+        ;
+
+        
+    
+    
+            var circle_marker_bbd0e5b2bfc3be153f29453d2ab82bc2 = L.circleMarker(
+                [35.12627, 129.18803],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_f9c3e49fd4370c344eab1086c3519fc4 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_8379ed7c0ef36a0f75cdd4c28b0337c3 = $(`<div id="html_8379ed7c0ef36a0f75cdd4c28b0337c3" style="width: 100.0%; height: 100.0%;"><b>V083</b> (Busan, SIMULATED)<br>3 turnovers/week<br>served by hub Busan: 14 min drive, 11.9 km</div>`)[0];
+                popup_f9c3e49fd4370c344eab1086c3519fc4.setContent(html_8379ed7c0ef36a0f75cdd4c28b0337c3);
+            
+        
+
+        circle_marker_bbd0e5b2bfc3be153f29453d2ab82bc2.bindPopup(popup_f9c3e49fd4370c344eab1086c3519fc4)
+        ;
+
+        
+    
+    
+            var circle_marker_83399f8400912cf5c2790574ee00a5d4 = L.circleMarker(
+                [37.66432, 127.18056],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_80b776b9e4101c6be490d572b6fd52ec = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_6867d4a3009fb28c2dbf1bbf845b9d60 = $(`<div id="html_6867d4a3009fb28c2dbf1bbf845b9d60" style="width: 100.0%; height: 100.0%;"><b>V084</b> (Namyangju, SIMULATED)<br>5 turnovers/week<br>served by hub Namyangju: 10 min drive, 5.8 km</div>`)[0];
+                popup_80b776b9e4101c6be490d572b6fd52ec.setContent(html_6867d4a3009fb28c2dbf1bbf845b9d60);
+            
+        
+
+        circle_marker_83399f8400912cf5c2790574ee00a5d4.bindPopup(popup_80b776b9e4101c6be490d572b6fd52ec)
+        ;
+
+        
+    
+    
+            var circle_marker_c574c9489a14d840ece5c5dd1702ea54 = L.circleMarker(
+                [37.62309, 127.20194],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_4f24c81bd4e191ca37d43c5ad6a60d0a = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_ff8658a70f494ea42846b3e50107cc34 = $(`<div id="html_ff8658a70f494ea42846b3e50107cc34" style="width: 100.0%; height: 100.0%;"><b>V085</b> (Namyangju, SIMULATED)<br>2 turnovers/week<br>served by hub Namyangju: 5 min drive, 2.5 km</div>`)[0];
+                popup_4f24c81bd4e191ca37d43c5ad6a60d0a.setContent(html_ff8658a70f494ea42846b3e50107cc34);
+            
+        
+
+        circle_marker_c574c9489a14d840ece5c5dd1702ea54.bindPopup(popup_4f24c81bd4e191ca37d43c5ad6a60d0a)
+        ;
+
+        
+    
+    
+            var circle_marker_d984cd32e5b4264ae3c40cd6a05dd05d = L.circleMarker(
+                [37.64613, 127.2403],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_1d7c4e7bdfa08949a32a9cdb464ca38e = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_0563ac66ad0f5ddc7eae75800891acbe = $(`<div id="html_0563ac66ad0f5ddc7eae75800891acbe" style="width: 100.0%; height: 100.0%;"><b>V086</b> (Namyangju, SIMULATED)<br>2 turnovers/week<br>served by hub Namyangju: 6 min drive, 3.4 km</div>`)[0];
+                popup_1d7c4e7bdfa08949a32a9cdb464ca38e.setContent(html_0563ac66ad0f5ddc7eae75800891acbe);
+            
+        
+
+        circle_marker_d984cd32e5b4264ae3c40cd6a05dd05d.bindPopup(popup_1d7c4e7bdfa08949a32a9cdb464ca38e)
+        ;
+
+        
+    
+    
+            var circle_marker_87e812510dbbacc9633018ddf9d100ff = L.circleMarker(
+                [37.6211, 127.24552],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_655fec0549f927012c43a5e15241823a = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_1214083fee026459aae24ec2312aca8a = $(`<div id="html_1214083fee026459aae24ec2312aca8a" style="width: 100.0%; height: 100.0%;"><b>V087</b> (Namyangju, SIMULATED)<br>3 turnovers/week<br>served by hub Namyangju: 18 min drive, 10.7 km</div>`)[0];
+                popup_655fec0549f927012c43a5e15241823a.setContent(html_1214083fee026459aae24ec2312aca8a);
+            
+        
+
+        circle_marker_87e812510dbbacc9633018ddf9d100ff.bindPopup(popup_655fec0549f927012c43a5e15241823a)
+        ;
+
+        
+    
+    
+            var circle_marker_21ede68be85e3d01312c0c72887e4d69 = L.circleMarker(
+                [38.1747, 128.6047],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_99650c626802ee964f005b846bc82c8f = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_0dff0d347a66b179f2d09cc0e4ef00b0 = $(`<div id="html_0dff0d347a66b179f2d09cc0e4ef00b0" style="width: 100.0%; height: 100.0%;"><b>V091</b> (Sokcho, SIMULATED)<br>2 turnovers/week<br>served by hub Yangyang: 17 min drive, 13.6 km</div>`)[0];
+                popup_99650c626802ee964f005b846bc82c8f.setContent(html_0dff0d347a66b179f2d09cc0e4ef00b0);
+            
+        
+
+        circle_marker_21ede68be85e3d01312c0c72887e4d69.bindPopup(popup_99650c626802ee964f005b846bc82c8f)
+        ;
+
+        
+    
+    
+            var circle_marker_f12c4313aefecd36963d4ebf5fa807c5 = L.circleMarker(
+                [38.23291, 128.61608],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_609b19a145fd9f4f9cb1bda9706b8a29 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_49ccb04220661f3381055a4add36cd43 = $(`<div id="html_49ccb04220661f3381055a4add36cd43" style="width: 100.0%; height: 100.0%;"><b>V092</b> (Sokcho, SIMULATED)<br>4 turnovers/week<br>served by hub Yangyang: 27 min drive, 19.9 km</div>`)[0];
+                popup_609b19a145fd9f4f9cb1bda9706b8a29.setContent(html_49ccb04220661f3381055a4add36cd43);
+            
+        
+
+        circle_marker_f12c4313aefecd36963d4ebf5fa807c5.bindPopup(popup_609b19a145fd9f4f9cb1bda9706b8a29)
+        ;
+
+        
+    
+    
+            var circle_marker_e207b488450c5b2eb942c27bd7cd6564 = L.circleMarker(
+                [38.19317, 128.60956],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_e153578fbd8187f404f845705689bf4a = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_e5b48bd831df14f416c9fd9499a751e6 = $(`<div id="html_e5b48bd831df14f416c9fd9499a751e6" style="width: 100.0%; height: 100.0%;"><b>V093</b> (Sokcho, SIMULATED)<br>3 turnovers/week<br>served by hub Yangyang: 18 min drive, 15.0 km</div>`)[0];
+                popup_e153578fbd8187f404f845705689bf4a.setContent(html_e5b48bd831df14f416c9fd9499a751e6);
+            
+        
+
+        circle_marker_e207b488450c5b2eb942c27bd7cd6564.bindPopup(popup_e153578fbd8187f404f845705689bf4a)
+        ;
+
+        
+    
+    
+            var circle_marker_b18f595d901976594a6f954c5a57ed30 = L.circleMarker(
+                [37.50428, 127.95309],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_bb2217229aba9eb724fe52c84cc28447 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_02be9e7757a3327c16a5ded9fcde1e81 = $(`<div id="html_02be9e7757a3327c16a5ded9fcde1e81" style="width: 100.0%; height: 100.0%;"><b>V098</b> (Hoengseong, SIMULATED)<br>3 turnovers/week<br>served by hub Hongcheon: 29 min drive, 27.8 km</div>`)[0];
+                popup_bb2217229aba9eb724fe52c84cc28447.setContent(html_02be9e7757a3327c16a5ded9fcde1e81);
+            
+        
+
+        circle_marker_b18f595d901976594a6f954c5a57ed30.bindPopup(popup_bb2217229aba9eb724fe52c84cc28447)
+        ;
+
+        
+    
+    
+            var circle_marker_144a5367f844255ac1bd1a918f4ee471 = L.circleMarker(
+                [37.48215, 127.9557],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_5da22a91b97be11ec7aa6044409fd999 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_0cdb92b8fa475acbe7d29b1d2d09b5b7 = $(`<div id="html_0cdb92b8fa475acbe7d29b1d2d09b5b7" style="width: 100.0%; height: 100.0%;"><b>V099</b> (Hoengseong, SIMULATED)<br>2 turnovers/week<br>served by hub Hongcheon: 35 min drive, 33.1 km</div>`)[0];
+                popup_5da22a91b97be11ec7aa6044409fd999.setContent(html_0cdb92b8fa475acbe7d29b1d2d09b5b7);
+            
+        
+
+        circle_marker_144a5367f844255ac1bd1a918f4ee471.bindPopup(popup_5da22a91b97be11ec7aa6044409fd999)
+        ;
+
+        
+    
+    
+            var circle_marker_6ebb221c795a65ee9b420c30b565c155 = L.circleMarker(
+                [37.51814, 127.97515],
+                {"bubblingMouseEvents": true, "color": "#2a78d6", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2a78d6", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_4a0bf6729e16561cf95055863cb49fba);
+        
+    
+        var popup_f8b0f9bb8a04081159e4e7d8d01b5373 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_9393a9d84e213cd3a5ec8e4a76ce96c4 = $(`<div id="html_9393a9d84e213cd3a5ec8e4a76ce96c4" style="width: 100.0%; height: 100.0%;"><b>V100</b> (Hoengseong, SIMULATED)<br>4 turnovers/week<br>served by hub Hongcheon: 29 min drive, 26.4 km</div>`)[0];
+                popup_f8b0f9bb8a04081159e4e7d8d01b5373.setContent(html_9393a9d84e213cd3a5ec8e4a76ce96c4);
+            
+        
+
+        circle_marker_6ebb221c795a65ee9b420c30b565c155.bindPopup(popup_f8b0f9bb8a04081159e4e7d8d01b5373)
+        ;
+
+        
+    
+    
+            feature_group_4a0bf6729e16561cf95055863cb49fba.addTo(map_173bd6e9ff04ca1a602159ceaa3cb953);
+        
+    
+            var feature_group_133713d1ede6b88823e0f93d68548c7a = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_db0f3acface493373264c91fa08ac4ba = L.circleMarker(
+                [37.71723, 126.50925],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_133713d1ede6b88823e0f93d68548c7a);
+        
+    
+        var popup_1354c2f6ea69ebd02693b51395b724f1 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_97415d9e3445eb660789b74733c9854f = $(`<div id="html_97415d9e3445eb660789b74733c9854f" style="width: 100.0%; height: 100.0%;"><b>V088</b> (Ganghwa, SIMULATED)<br>5 turnovers/week<br>served by outsourced to the mainland vendor (75,000 KRW/week)</div>`)[0];
+                popup_1354c2f6ea69ebd02693b51395b724f1.setContent(html_97415d9e3445eb660789b74733c9854f);
+            
+        
+
+        circle_marker_db0f3acface493373264c91fa08ac4ba.bindPopup(popup_1354c2f6ea69ebd02693b51395b724f1)
+        ;
+
+        
+    
+    
+            var circle_marker_5e42ae107a1f952fb841503c7336d490 = L.circleMarker(
+                [37.77751, 126.46368],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_133713d1ede6b88823e0f93d68548c7a);
+        
+    
+        var popup_2a8dd888a1395085335d3688994584db = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_a672648c4a469ee8edf89f5dac63e0d7 = $(`<div id="html_a672648c4a469ee8edf89f5dac63e0d7" style="width: 100.0%; height: 100.0%;"><b>V089</b> (Ganghwa, SIMULATED)<br>4 turnovers/week<br>served by outsourced to the mainland vendor (60,000 KRW/week)</div>`)[0];
+                popup_2a8dd888a1395085335d3688994584db.setContent(html_a672648c4a469ee8edf89f5dac63e0d7);
+            
+        
+
+        circle_marker_5e42ae107a1f952fb841503c7336d490.bindPopup(popup_2a8dd888a1395085335d3688994584db)
+        ;
+
+        
+    
+    
+            var circle_marker_e26b76a64e27424600e54362d0929471 = L.circleMarker(
+                [37.758, 126.49665],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_133713d1ede6b88823e0f93d68548c7a);
+        
+    
+        var popup_d1393921128db262d8b2ed4c80c67caf = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_81582ee8850d5b551776bdd3d38ceee0 = $(`<div id="html_81582ee8850d5b551776bdd3d38ceee0" style="width: 100.0%; height: 100.0%;"><b>V090</b> (Ganghwa, SIMULATED)<br>4 turnovers/week<br>served by outsourced to the mainland vendor (60,000 KRW/week)</div>`)[0];
+                popup_d1393921128db262d8b2ed4c80c67caf.setContent(html_81582ee8850d5b551776bdd3d38ceee0);
+            
+        
+
+        circle_marker_e26b76a64e27424600e54362d0929471.bindPopup(popup_d1393921128db262d8b2ed4c80c67caf)
+        ;
+
+        
+    
+    
+            var circle_marker_38016bb4899f7f983a46bb6408ef5187 = L.circleMarker(
+                [37.40194, 128.36322],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_133713d1ede6b88823e0f93d68548c7a);
+        
+    
+        var popup_a6c7ff9bb0a2a48a40b888d580e77329 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_8cd275b20027d912153c51ada3c2c17e = $(`<div id="html_8cd275b20027d912153c51ada3c2c17e" style="width: 100.0%; height: 100.0%;"><b>V094</b> (Pyeongchang, SIMULATED)<br>5 turnovers/week<br>served by outsourced to the mainland vendor (75,000 KRW/week)</div>`)[0];
+                popup_a6c7ff9bb0a2a48a40b888d580e77329.setContent(html_8cd275b20027d912153c51ada3c2c17e);
+            
+        
+
+        circle_marker_38016bb4899f7f983a46bb6408ef5187.bindPopup(popup_a6c7ff9bb0a2a48a40b888d580e77329)
+        ;
+
+        
+    
+    
+            var circle_marker_f3e2656ef182d5e8c2d40e3b0727b96c = L.circleMarker(
+                [37.33264, 128.40236],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_133713d1ede6b88823e0f93d68548c7a);
+        
+    
+        var popup_5a4ee752bf7295747a92666c76a9d206 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_ce27c81bcae288661a5234327640e787 = $(`<div id="html_ce27c81bcae288661a5234327640e787" style="width: 100.0%; height: 100.0%;"><b>V095</b> (Pyeongchang, SIMULATED)<br>4 turnovers/week<br>served by outsourced to the mainland vendor (60,000 KRW/week)</div>`)[0];
+                popup_5a4ee752bf7295747a92666c76a9d206.setContent(html_ce27c81bcae288661a5234327640e787);
+            
+        
+
+        circle_marker_f3e2656ef182d5e8c2d40e3b0727b96c.bindPopup(popup_5a4ee752bf7295747a92666c76a9d206)
+        ;
+
+        
+    
+    
+            var circle_marker_38d587b499d53a6f58546d973c6a15a0 = L.circleMarker(
+                [37.3756, 128.42588],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_133713d1ede6b88823e0f93d68548c7a);
+        
+    
+        var popup_157e2b8714d7b2c0e665dbf5d86f8751 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_e96b8734b0e317821465dadb86333b09 = $(`<div id="html_e96b8734b0e317821465dadb86333b09" style="width: 100.0%; height: 100.0%;"><b>V096</b> (Pyeongchang, SIMULATED)<br>2 turnovers/week<br>served by outsourced to the mainland vendor (30,000 KRW/week)</div>`)[0];
+                popup_157e2b8714d7b2c0e665dbf5d86f8751.setContent(html_e96b8734b0e317821465dadb86333b09);
+            
+        
+
+        circle_marker_38d587b499d53a6f58546d973c6a15a0.bindPopup(popup_157e2b8714d7b2c0e665dbf5d86f8751)
+        ;
+
+        
+    
+    
+            var circle_marker_82235291ecb7db9bddc42445eaae2fc4 = L.circleMarker(
+                [37.36085, 128.37052],
+                {"bubblingMouseEvents": true, "color": "#7a7a7a", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7a7a7a", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(feature_group_133713d1ede6b88823e0f93d68548c7a);
+        
+    
+        var popup_484772c4cc7ba1451ace65b2ba4c9def = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_68e069e2bc0387a94933b35d77ddf65f = $(`<div id="html_68e069e2bc0387a94933b35d77ddf65f" style="width: 100.0%; height: 100.0%;"><b>V097</b> (Pyeongchang, SIMULATED)<br>5 turnovers/week<br>served by outsourced to the mainland vendor (75,000 KRW/week)</div>`)[0];
+                popup_484772c4cc7ba1451ace65b2ba4c9def.setContent(html_68e069e2bc0387a94933b35d77ddf65f);
+            
+        
+
+        circle_marker_82235291ecb7db9bddc42445eaae2fc4.bindPopup(popup_484772c4cc7ba1451ace65b2ba4c9def)
+        ;
+
+        
+    
+    
+            feature_group_133713d1ede6b88823e0f93d68548c7a.addTo(map_173bd6e9ff04ca1a602159ceaa3cb953);
+        
+    
+            var feature_group_389d508a40a924a4fafc76422338b9f5 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_6443dd8bbb257555fed09acbd334b503 = L.marker(
+                [37.636, 127.2165],
+                {
+}
+            ).addTo(feature_group_389d508a40a924a4fafc76422338b9f5);
+        
+    
+            var icon_2b5f01f4aeb572e566d5c2f93e997ae7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6376791819a848489fd56aa9be8dd71f = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_621825e76cf4902eccbdfcb899cb7b8d = $(`<div id="html_621825e76cf4902eccbdfcb899cb7b8d" style="width: 100.0%; height: 100.0%;"><b>Hub Namyangju</b> (mainland)<br>rent 626,192 KRW/week<br>serves 32 villas, 113 of 370 turnovers/week</div>`)[0];
+                popup_6376791819a848489fd56aa9be8dd71f.setContent(html_621825e76cf4902eccbdfcb899cb7b8d);
+            
+        
+
+        marker_6443dd8bbb257555fed09acbd334b503.bindPopup(popup_6376791819a848489fd56aa9be8dd71f)
+        ;
+
+        
+    
+    
+            marker_6443dd8bbb257555fed09acbd334b503.bindTooltip(
+                `<div>
+                     hub Namyangju
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6443dd8bbb257555fed09acbd334b503.setIcon(icon_2b5f01f4aeb572e566d5c2f93e997ae7);
+            
+    
+            var marker_a906313413ab0053ed1da78ba885d098 = L.marker(
+                [37.697, 127.8886],
+                {
+}
+            ).addTo(feature_group_389d508a40a924a4fafc76422338b9f5);
+        
+    
+            var icon_d8919c556a127f1d51b0ef7fa18d4b60 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f0c08179d0f3fcd7e9585db0b3bf0f6a = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_4e9c7b2c07e5ade8772275e783050653 = $(`<div id="html_4e9c7b2c07e5ade8772275e783050653" style="width: 100.0%; height: 100.0%;"><b>Hub Hongcheon</b> (mainland)<br>rent 313,096 KRW/week<br>serves 16 villas, 57 of 370 turnovers/week</div>`)[0];
+                popup_f0c08179d0f3fcd7e9585db0b3bf0f6a.setContent(html_4e9c7b2c07e5ade8772275e783050653);
+            
+        
+
+        marker_a906313413ab0053ed1da78ba885d098.bindPopup(popup_f0c08179d0f3fcd7e9585db0b3bf0f6a)
+        ;
+
+        
+    
+    
+            marker_a906313413ab0053ed1da78ba885d098.bindTooltip(
+                `<div>
+                     hub Hongcheon
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a906313413ab0053ed1da78ba885d098.setIcon(icon_d8919c556a127f1d51b0ef7fa18d4b60);
+            
+    
+            var marker_2620c39641b8c462f7c12c104dce5ddc = L.marker(
+                [38.0754, 128.619],
+                {
+}
+            ).addTo(feature_group_389d508a40a924a4fafc76422338b9f5);
+        
+    
+            var icon_16122a42cb178259cd6693e0c884babe = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4543065c6af52e9643805f431fc5ec40 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_048741dd2d62fcc6e3d7ddd310d22268 = $(`<div id="html_048741dd2d62fcc6e3d7ddd310d22268" style="width: 100.0%; height: 100.0%;"><b>Hub Yangyang</b> (mainland)<br>rent 313,096 KRW/week<br>serves 14 villas, 47 of 370 turnovers/week</div>`)[0];
+                popup_4543065c6af52e9643805f431fc5ec40.setContent(html_048741dd2d62fcc6e3d7ddd310d22268);
+            
+        
+
+        marker_2620c39641b8c462f7c12c104dce5ddc.bindPopup(popup_4543065c6af52e9643805f431fc5ec40)
+        ;
+
+        
+    
+    
+            marker_2620c39641b8c462f7c12c104dce5ddc.bindTooltip(
+                `<div>
+                     hub Yangyang
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2620c39641b8c462f7c12c104dce5ddc.setIcon(icon_16122a42cb178259cd6693e0c884babe);
+            
+    
+            var marker_8d7bc47de1bc808d4d0991f9416a0df2 = L.marker(
+                [35.1796, 129.0756],
+                {
+}
+            ).addTo(feature_group_389d508a40a924a4fafc76422338b9f5);
+        
+    
+            var icon_0875f2096bd37d48889ffacec068cfcd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_541779f64d4aaba983c785cda094aa90 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_4ea51cb24fbd48fcc94c636fc43c3430 = $(`<div id="html_4ea51cb24fbd48fcc94c636fc43c3430" style="width: 100.0%; height: 100.0%;"><b>Hub Busan</b> (mainland)<br>rent 438,335 KRW/week<br>serves 15 villas, 49 of 370 turnovers/week</div>`)[0];
+                popup_541779f64d4aaba983c785cda094aa90.setContent(html_4ea51cb24fbd48fcc94c636fc43c3430);
+            
+        
+
+        marker_8d7bc47de1bc808d4d0991f9416a0df2.bindPopup(popup_541779f64d4aaba983c785cda094aa90)
+        ;
+
+        
+    
+    
+            marker_8d7bc47de1bc808d4d0991f9416a0df2.bindTooltip(
+                `<div>
+                     hub Busan
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8d7bc47de1bc808d4d0991f9416a0df2.setIcon(icon_0875f2096bd37d48889ffacec068cfcd);
+            
+    
+            var marker_712bb697afdcd5fea880efca15eaf01a = L.marker(
+                [33.4996, 126.5312],
+                {
+}
+            ).addTo(feature_group_389d508a40a924a4fafc76422338b9f5);
+        
+    
+            var icon_b74b4971a0aad69cb03024a0003e7af2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1040258a465b57220d752fcf5ab10639 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_f86f5b53a889b142486090f03df0d796 = $(`<div id="html_f86f5b53a889b142486090f03df0d796" style="width: 100.0%; height: 100.0%;"><b>Hub Jeju City</b> (jeju)<br>rent 438,335 KRW/week<br>serves 16 villas, 59 of 370 turnovers/week</div>`)[0];
+                popup_1040258a465b57220d752fcf5ab10639.setContent(html_f86f5b53a889b142486090f03df0d796);
+            
+        
+
+        marker_712bb697afdcd5fea880efca15eaf01a.bindPopup(popup_1040258a465b57220d752fcf5ab10639)
+        ;
+
+        
+    
+    
+            marker_712bb697afdcd5fea880efca15eaf01a.bindTooltip(
+                `<div>
+                     hub Jeju City
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_712bb697afdcd5fea880efca15eaf01a.setIcon(icon_b74b4971a0aad69cb03024a0003e7af2);
+            
+    
+            feature_group_389d508a40a924a4fafc76422338b9f5.addTo(map_173bd6e9ff04ca1a602159ceaa3cb953);
+        
+    
+            var layer_control_303fbc86f2e0a3520b4cc810c4db81d6_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_e960946ca867947cf22d278fc8c049e9,
+                },
+                overlays :  {
+                    "candidate towns" : feature_group_90c0f1b483040db28008cb6803a0c689,
+                    "assignment lines" : feature_group_8ef769529610d970667de6184b32220b,
+                    "villas served by a hub" : feature_group_4a0bf6729e16561cf95055863cb49fba,
+                    "villas outsourced to the vendor" : feature_group_133713d1ede6b88823e0f93d68548c7a,
+                    "open hubs" : feature_group_389d508a40a924a4fafc76422338b9f5,
+                },
+            };
+            let layer_control_303fbc86f2e0a3520b4cc810c4db81d6 = L.control.layers(
+                layer_control_303fbc86f2e0a3520b4cc810c4db81d6_layers.base_layers,
+                layer_control_303fbc86f2e0a3520b4cc810c4db81d6_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_173bd6e9ff04ca1a602159ceaa3cb953);
+
+        
+    
+            map_173bd6e9ff04ca1a602159ceaa3cb953.fitBounds(
+                [[33.22309, 126.46368], [38.23291, 129.19715]],
+                {}
+            );
+        
+</script>
+</html>
