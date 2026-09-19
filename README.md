@@ -52,15 +52,19 @@ MOZAIQ runs a private-villa membership with 30+ standalone villas, mostly in the
 
 ## Key results in more detail
 
-**Maps.** Static views below (points only, no basemap; click for full size). The interactive versions, with OpenStreetMap tiles and popups for region, drive time and hub load, are in `outputs/`: [hubs_current.html](outputs/hubs_current.html), [hubs_expansion.html](outputs/hubs_expansion.html), [hubs_expansion_whatif_batched.html](outputs/hubs_expansion_whatif_batched.html). Interactive versions of the maps will be linked via GitHub Pages. Jeju villas are only ever served from Jeju; that is checked on every solution.
+**Maps.** Static views below, one per scenario: the capital area and Gangwon in the main panel, with Jeju and Busan as insets when the scenario has villas there. The interactive versions, with OpenStreetMap tiles and popups for region, drive time and hub load, are in `outputs/`. Interactive versions of the maps will be linked via GitHub Pages. Jeju villas are only ever served from Jeju; that is checked on every solution.
 
-<table>
-<tr>
-<td width="33%"><a href="outputs/hubs_current.png"><img src="outputs/hubs_current.png" alt="Current scenario: 0 hubs, everything outsourced" width="100%"></a><br><sub><b>Current:</b> 0 hubs, everything outsourced</sub></td>
-<td width="33%"><a href="outputs/hubs_expansion.png"><img src="outputs/hubs_expansion.png" alt="Expansion scenario: 2 hubs, Hongcheon and Jeju City" width="100%"></a><br><sub><b>Expansion:</b> 2 hubs (Hongcheon, Jeju City)</sub></td>
-<td width="33%"><a href="outputs/hubs_expansion_whatif_batched.png"><img src="outputs/hubs_expansion_whatif_batched.png" alt="What-if with heavy batching: 5 hubs" width="100%"></a><br><sub><b>What-if, not a recommendation:</b> 0.25 round trips per turnover, 5 hubs</sub></td>
-</tr>
-</table>
+![Current scenario, base assumptions: 0 hubs, everything outsourced](outputs/hubs_current.png)
+
+*Current scenario, base assumptions: the exact optimum opens 0 hubs and outsources everything. SIMULATED villas, PLACEHOLDER costs, not MOZAIQ data. Points only, no basemap tiles; the faint land outline is from Natural Earth (public domain). Road times: OSRM; road data © OpenStreetMap contributors (ODbL). Interactive version: [hubs_current.html](outputs/hubs_current.html).*
+
+![Expansion scenario, base assumptions: 2 hubs, Hongcheon and Jeju City](outputs/hubs_expansion.png)
+
+*Expansion scenario, base assumptions: 2 hubs (Hongcheon and Jeju City); 90% of mainland and 41% of Jeju turnovers are still outsourced. SIMULATED villas, PLACEHOLDER costs, not MOZAIQ data. Points only, no basemap tiles; land outline from Natural Earth (public domain). Road times: OSRM; road data © OpenStreetMap contributors (ODbL). Interactive version: [hubs_expansion.html](outputs/hubs_expansion.html).*
+
+![What-if, not a business recommendation: expansion with heavy batching, 5 hubs](outputs/hubs_expansion_whatif_batched.png)
+
+*What-if, not a business recommendation: the expansion scenario with 0.25 van round trips per turnover (heavy batching), which is not the base assumption, so you can see what a hub network looks like (5 hubs). SIMULATED villas, PLACEHOLDER costs, not MOZAIQ data. Points only, no basemap tiles; land outline from Natural Earth (public domain). Road times: OSRM; road data © OpenStreetMap contributors (ODbL). Interactive version: [hubs_expansion_whatif_batched.html](outputs/hubs_expansion_whatif_batched.html).*
 
 ![Weekly cost, current vs expansion, outsource-everything vs optimum](outputs/cost_breakdown.png)
 
@@ -115,7 +119,7 @@ I framed the problem, made the modeling decisions, designed the validation, and 
 
 ## Attribution
 
-Road data © OpenStreetMap contributors (ODbL), served by OSRM ([data/cache/NOTICE.md](data/cache/NOTICE.md)). Map tiles © OpenStreetMap contributors.
+Road data © OpenStreetMap contributors (ODbL), served by OSRM ([data/cache/NOTICE.md](data/cache/NOTICE.md)). Map tiles © OpenStreetMap contributors. Land outline in the static maps: [Natural Earth](https://www.naturalearthdata.com/) (public domain), simplified in [data/korea_coast.json](data/korea_coast.json).
 
 ---
 

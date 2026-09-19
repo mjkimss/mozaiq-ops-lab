@@ -200,3 +200,18 @@ repository is deleted and recreated rather than force-pushed, because GitHub can
 **D40. README wording.** The Korean summary is the author's own text, verbatim, as one paragraph (replacing the earlier three-line version).
 The "Built with Claude Code" section states the author's role: framed the problem, made the modeling decisions, designed the validation and
 reviewed every phase; the code was written with Claude Code.
+
+## Map redesign
+
+**D41. Static maps redesigned for readability at README width (supersedes the plain lat/lon plot in D38).** Landscape, 1600 x 896 px. Main panel
+zoomed to the capital area and Gangwon (about 37.0-38.5 N, 126.3-129.3 E) so villas and hubs are legible; Jeju and Busan are small titled insets,
+drawn only if the scenario has villas there (current: Jeju only). Fonts sized for the displayed width (title 20 pt, hub labels 14 pt, legend 12 pt);
+only open hubs are labelled (name and turnovers/week) plus a few region names; candidate towns keep faint markers without labels; lat/lon ticks are
+replaced by a 50 km scale bar. The footer notes moved out of the image into README captions; each image keeps a short "SIMULATED data" tag. One map
+per README row at full width, the what-if map last with its banner inside the image.
+
+**D42. Coastline from Natural Earth (public domain).** Source: Natural Earth 1:10m Admin 0 - Countries, fetched as GeoJSON from the
+`nvkelso/natural-earth-vector` GitHub mirror by `src/make_coastline.py`, which keeps the outlines that touch the map window and thins them with
+Douglas-Peucker (tolerance 0.0015 degrees, about 150 m, numpy only). Result: `data/korea_coast.json`, 68 KB, 47 South Korean polygons plus 1 North
+Korean polygon; North Korea is included so the land above the DMZ is not drawn as sea. No new dependency (requests and numpy were already allowed).
+Attribution is in the README. Alternative considered: no coastline (the earlier version), which left the map hard to place geographically.

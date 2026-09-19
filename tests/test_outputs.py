@@ -21,4 +21,16 @@ def test_static_map_png_is_written(tmp_path):
     res = solve_with("current")
     out = tmp_path / "m.png"
     hub_map_png(res["inst"], res["exact"]["assign"], "title", "subtitle", out)
-    assert out.exists() and out.stat().st_size > 20_000
+    import matplotlib.image as mpimg
+    height, width = mpimg.imread(out).shape[:2]
+    assert (width, height) == (1600, 896)                  # landscape, 1600 px wide
+    assert out.stat().st_size > 20_000
+
+
+def test_coastline_file_covers_korea():
+    import json
+    from src.config import ROOT
+    polys = json.loads((ROOT / "data" / "korea_coast.json").read_text())["polygons"]
+    pts = [pt for ring in polys["KOR"] for pt in ring]
+    lons, lats = [p[0] for p in pts], [p[1] for p in pts]
+    assert min(lons) < 126.5 and max(lons) > 129.3 and min(lats) < 33.3 and max(lats) > 38.0   # west islands to the east coast, Jeju to Gangwon
