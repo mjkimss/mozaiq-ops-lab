@@ -34,7 +34,7 @@ Attempting Market Penetration to Foreign Markets* (IB extended essay, 2022; `doc
 | 13 | **Data error in Appendix 2.** Masan duplicates Yeoksam's coordinates (and the table is titled "DC locations" although it lists stores). | Corrected in `data/walmart_stores.csv` and logged (decision D4). |
 
 ## What v1 found (seed 42)
-See the Phase 1 report and `outputs/v1_result.json`. In short: stage 1 places the three durable DCs near
+See the printed output of `python -m src.v1_walmart`. In short: stage 1 places the three durable DCs near
 Busan, Daegu and central Korea, and the two non-durable DCs inside the Seoul-metro cluster. Stage 2 (adding the port
 term) moves the third durable DC north to (37.311, 127.104), Guseong in Yongin, cutting port distance by about
 74 km while adding about 4 km of store distance. That DC is still 47 km from the Incheon port (haversine); it was

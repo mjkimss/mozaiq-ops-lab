@@ -11,7 +11,6 @@ Every place the paper is vague is a choice recorded in docs/decisions.md.
 Run:  python -m src.v1_walmart
 """
 import csv
-import json
 
 import numpy as np
 
@@ -67,9 +66,9 @@ def assign(dcs, stores):
 
 def run_ga(stores, n_dcs, cfg, rng, ports=None, init_pop=None):
     """One GA run. Returns (final population, best individual, best-total-distance per generation)."""
-    ga, (lat_lo, lat_hi), (lon_lo, lon_hi) = cfg["v1"]["ga"], cfg["v1"]["bounds"]["lat"], cfg["v1"]["bounds"]["lon"]
+    ga, bounds = cfg["v1"]["ga"], cfg["v1"]["bounds"]
     n = ga["population"]
-    lo, hi = np.array([lat_lo, lon_lo]), np.array([lat_hi, lon_hi])
+    lo, hi = np.array([bounds["lat"], bounds["lon"]]).T  # lower and upper corner of the search box: (lat, lon)
 
     # Initialization: random DC coordinates inside the box (or start from a given population)
     pop = init_pop.copy() if init_pop is not None else rng.uniform(lo, hi, size=(n, n_dcs, 2))
@@ -121,7 +120,7 @@ def run(cfg):
             best = best[np.argsort(-best[:, 1])]  # label DCs east -> west, just for display
             idx, km = assign(best, s)
             out["groups"][group][stage] = {
-                "dcs": best, "history": hist, "assigned": idx, "store_km": km.sum(),
+                "dcs": best, "history": hist, "assigned": idx, "km": km, "store_km": km.sum(),
                 "port_km": port_km(best[None], ports)[0],
             }
     return out
@@ -144,22 +143,14 @@ def report(res, cfg):
             for L, (la, lo) in zip(letters, r["dcs"]):
                 lines.append(f"  DC {L}: ({la:.4f}, {lo:.4f})")
         lines.append("stage 2 assignment (store -> DC, km):")
-        _, km = assign(g["stage2"]["dcs"], s["coords"])
+        km = g["stage2"]["km"]
         for i, (L, name) in enumerate(zip(s["letters"], s["names"])):
             lines.append(f"  {L} {name:<12} -> DC {letters[g['stage2']['assigned'][i]]}  {km[i]:6.1f}")
         lines.append("")
     print("\n".join(lines))
 
 
-def save_json(res):
-    slim = {group: {stage: {"dcs": r["dcs"].round(6).tolist(), "store_km": round(float(r["store_km"]), 3),
-                            "port_km": round(float(r["port_km"]), 3)}
-                    for stage, r in g.items()} for group, g in res["groups"].items()}
-    (ROOT / "outputs" / "v1_result.json").write_text(json.dumps(slim, indent=2) + "\n")
-
-
-BLUE, ORANGE = "#2a78d6", "#eb6834"  # durable / non-durable; both colour-blind safe (checked with the dataviz validator)
-COLORS = {"durable": BLUE, "nondurable": ORANGE}
+COLORS = {"durable": "#2a78d6", "nondurable": "#eb6834"}  # blue / orange; colour-blind safe (checked with the dataviz validator)
 
 
 def plot_convergence(res):
@@ -184,10 +175,8 @@ def plot_convergence(res):
         ax.set_xlim(0, len(h) * 1.12)
         ax.grid(axis="y", color="#e4e3df", lw=0.7)
         ax.tick_params(colors=muted)
-        for side in ("top", "right"):
-            ax.spines[side].set_visible(False)
-        for side in ("left", "bottom"):
-            ax.spines[side].set_color("#c9c8c2")
+        ax.spines[["top", "right"]].set_visible(False)
+        ax.spines[["left", "bottom"]].set_color("#c9c8c2")
     axes[0].legend(frameon=False, labelcolor=ink, fontsize=9, loc="upper right")
     fig.suptitle("v1 (2022 GA rebuild): best distance per generation, roulette-wheel selection",
                  color=ink, fontsize=12, x=0.01, ha="left")
@@ -211,7 +200,6 @@ def make_map(res):
                                 tooltip=f"store {L}: {name} ({group} group)").add_to(store_layer)
         for stage, layer in stage_layers.items():
             r = g[stage]
-            _, km = assign(r["dcs"], s["coords"])
             for i, (la, lo) in enumerate(s["coords"]):
                 dla, dlo = r["dcs"][r["assigned"][i]]
                 folium.PolyLine([[la, lo], [dla, dlo]], color=color, weight=1.5, opacity=0.6).add_to(layer)
@@ -231,7 +219,6 @@ def main():
     cfg = load_config()
     res = run(cfg)
     report(res, cfg)
-    save_json(res)
     plot_convergence(res)
     make_map(res)
 

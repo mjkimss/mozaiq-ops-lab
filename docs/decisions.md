@@ -56,7 +56,7 @@ The paper names the ports but gives no coordinates. Verify before quoting any po
 land in the sea or in North Korea. No land constraint added in v1; it is listed as a limitation.
 
 **D13. Determinism:** one seeded numpy random generator (seed 42) is passed through the whole run.
-Running twice gives identical text, JSON and PNG. (The map HTML contains random element ids, so its bytes
+Running twice gives identical text and PNG. (The map HTML contains random element ids, so its bytes
 differ between runs though its content does not.)
 
 **D14. Store-to-DC split follows Table 1 even though the paper's text says "one store is supplied by two DCs".**
