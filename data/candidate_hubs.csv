@@ -1,0 +1,22 @@
+hub_id,name,zone,lat,lon,rent_tier,note
+H01,Seoul,mainland,37.5665,126.9780,seoul,approximate town centre; SIMULATED candidate
+H02,Hanam,mainland,37.5393,127.2148,gyeonggi,approximate town centre; SIMULATED candidate
+H03,Namyangju,mainland,37.6360,127.2165,gyeonggi,approximate town centre; SIMULATED candidate
+H04,Gimpo,mainland,37.6152,126.7159,gyeonggi,approximate town centre; SIMULATED candidate
+H05,Goyang,mainland,37.6584,126.8320,gyeonggi,approximate town centre; SIMULATED candidate
+H06,Incheon,mainland,37.4563,126.7052,gyeonggi,approximate town centre; SIMULATED candidate
+H07,Yongin,mainland,37.2411,127.1776,gyeonggi,approximate town centre; SIMULATED candidate
+H08,Suwon,mainland,37.2636,127.0286,gyeonggi,approximate town centre; SIMULATED candidate
+H09,Yangpyeong,mainland,37.4915,127.4875,gyeonggi,approximate town centre; SIMULATED candidate
+H10,Gapyeong,mainland,37.8315,127.5095,gyeonggi,approximate town centre; SIMULATED candidate
+H11,Chuncheon,mainland,37.8813,127.7298,gangwon,approximate town centre; SIMULATED candidate
+H12,Hongcheon,mainland,37.6970,127.8886,gangwon,approximate town centre; SIMULATED candidate
+H13,Hoengseong,mainland,37.4917,127.9850,gangwon,approximate town centre; SIMULATED candidate
+H14,Wonju,mainland,37.3422,127.9202,gangwon,approximate town centre; SIMULATED candidate
+H15,Gangneung,mainland,37.7519,128.8761,gangwon,approximate town centre; SIMULATED candidate
+H16,Sokcho,mainland,38.2070,128.5918,gangwon,approximate town centre; SIMULATED candidate
+H17,Yangyang,mainland,38.0754,128.6190,gangwon,approximate town centre; SIMULATED candidate
+H18,Busan,mainland,35.1796,129.0756,busan,approximate town centre; SIMULATED candidate
+H19,Gimhae,mainland,35.2285,128.8894,busan,approximate town centre; SIMULATED candidate
+H20,Jeju City,jeju,33.4996,126.5312,jeju,approximate town centre; SIMULATED candidate
+H21,Seogwipo,jeju,33.2541,126.5601,jeju,approximate town centre; SIMULATED candidate

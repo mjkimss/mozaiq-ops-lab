@@ -1,6 +1,7 @@
-# Phase 1 only. pandas, requests, pulp are added in Phase 2 (see docs/decisions.md).
 numpy==2.5.3
 pyyaml==6.0.3
 matplotlib==3.11.2
 folium==0.20.0
 pytest==9.1.1
+requests==2.34.2   # Phase 2: OSRM travel-time API
+pulp==3.3.2        # Phase 2: exact solver (bundles CBC)

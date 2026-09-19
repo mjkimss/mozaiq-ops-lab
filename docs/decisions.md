@@ -61,3 +61,67 @@ differ between runs though its content does not.)
 
 **D14. Store-to-DC split follows Table 1 even though the paper's text says "one store is supplied by two DCs".**
 Table 1 gives each store to one DC group only. Both statements cannot hold; Table 1 (and the brief) wins.
+
+## Phase 2: MOZAIQ hub model (v2)
+
+**D15. Cost = van transport + drive-time penalty + vendor fees + fixed hub cost + capacity penalty.** Transport is
+turnovers x round trips x 2 x road km x cost per km. The drive-time penalty is constant per villa-hub pair, so it is
+folded into the pair cost. Capacity overflow is penalized, not repaired (as specified). Alternative: hard capacity
+and drive-time constraints. Why soft: every term is linear, so PuLP minimizes exactly the GA's function.
+
+**D16. Jeju is a hard constraint through a `zone` (mainland | jeju) on villas, hubs and vendors.** A cross-zone pair is
+never feasible: never assigned, never sent to OSRM. Alternative: a big penalty for crossing. Why hard: a van cannot
+drive to Jeju; it mirrors the port logic of the 2022 paper. Tested end to end (a test fails if any cross-zone pair reaches the network).
+
+**D17. Jeju villas are in "current" (3 of 30) and "expansion" (16 of 100).** MOZAIQ already has Jeju villas (press and
+Minjoo's own research); the counts and the split between Jeju City and Seogwipo are simulated. Regions are labelled SIMULATED.
+
+**D18. 21 candidate hub towns** (more than the 8 examples), so the search space is 2^21 = 2,097,152 hub sets and a GA is a
+fair test. With about 10 candidates brute force is enough, and a test uses exactly that to cross-check PuLP.
+
+**D19. Outsourced local vendor, one per zone: always available, no rent, no capacity limit, no bit in the chromosome.**
+Flat fee per turnover. It removes the "unserved villa" case, so no unserved penalty exists. Reported per scenario: hub built or outsourced.
+
+**D20. Rent lives in config.yaml by tier (rent per m2 x hub area), not in the CSV.** Small deviation from the brief, per the
+rule that assumptions live in config.yaml with a source. `candidate_hubs.csv` carries a `rent_tier` column.
+
+**D21. Shared objective for GA and exact solver.** PuLP/CBC (single sourcing: x_ij binary, overflow as a slack variable) minimizes
+the same cost. Caveat shown in every run: the GA's assignment rule (cheapest open option, capacity penalized afterwards) is not
+capacity-aware, the MIP's is; the run prints whether capacity binds by pricing the MIP's hub set with the GA's rule.
+
+**D22. Travel-time module (shared with prototypes 2 and 3).** OSRM `table` endpoint, one destination per request with up to 50
+origins, 1 request per second, one retry. Cache key = directional coordinate pair rounded to 5 decimals, so any prototype
+or scenario reuses it. Only real answers are cached; fallbacks are flagged, counted, printed and never cached. Alternative: cache by
+villa/hub id (breaks when data is regenerated). Public demo server is fine for a prototype; production would use self-hosted OSRM or Kakao Mobility.
+
+**D23. The cache (`data/cache/osrm_pairs.json`, 92 KB, 1,628 pairs) is committed**, with `NOTICE.md`: "Road data (c) OpenStreetMap
+contributors (ODbL)". Why: reproducible offline runs and no repeat load on the free server. It is a September 2026 snapshot.
+
+**D24. Fallback settings are measured, not guessed:** median road/straight ratio 1.27 (p10 1.19, p90 1.50) and median implied
+speed 68 km/h over the 1,628 pairs. The driver-cost speed (45 km/h, PLACEHOLDER) is deliberately lower than OSRM's 68 km/h because
+OSRM's car profile is optimistic for a loaded van with stops. Direction of the bias: a lower speed raises driver cost per km (229 vs 152
+KRW/km, van 489 vs 412), so this choice leans toward outsourcing. Not adjusted; see the check under D29.
+
+**D25. Placeholders come from real-world references, not from a target hub count.** Sources actually opened are quoted in
+config.yaml with URL and year: diesel/fuel economy (hi5-guide, April 2026), minimum wage (MOEL, 2025 announcement for 2026),
+capital-area industrial rent (JLL via Real Estate Asia, Q2 2022), washer throughput (HOZO guide), linen per hotel room (BASE4, 2018).
+Not found, so PLACEHOLDER with no source: vendor fee per kg or per turnover, regional rents outside the capital area, hub area, machines
+per hub, linen kg per turnover, drive-time limit, villa turnovers. Nothing was adjusted after seeing results.
+
+**D26. Fixed hub cost = rent only.** In-house labour, energy and machines are not modelled. This biases the model toward building
+hubs, so an "outsource everything" answer is not caused by leaving hub costs out.
+
+**D27. Van trips: one direct round trip per turnover (`van_round_trips_per_turnover` = 1.0).** Upper bound on van cost; real vans
+batch several villas per run (prototype 2). Probably the most influential placeholder.
+
+**D28. GA design.** One bit per hub, uniform crossover, bit-flip mutation, 1 elite, population 50 x 100 generations (5,000
+evaluations, 0.24% of the space). Roulette keeps the paper's 1/cost fitness; tournament uses k=3. Both methods start from the same
+initial population for a given seed (paired comparison), same 20 seeds in both scenarios. Settings are PLACEHOLDERs, not tuned.
+
+**D29. Result with the sourced placeholders is (near) degenerate; reported, not tuned.** current: the optimum opens 0 hubs and
+outsources everything, so the GA-vs-optimal comparison is trivial there. expansion: 2 hubs (Hongcheon, Jeju City), 90% of mainland
+turnovers outsourced. An informational grid (not used for any setting) shows the answer hinges on two unsourced numbers, the vendor
+fee and van batching: at 1.5x the vendor fee current opens 1 hub and expansion 7; at 2x, 3 and 8. The driver-speed choice (D24) does not matter: at 68 km/h (van 412 KRW/km) the counts stay 0 and 2. To be adjusted with Minjoo, with a stated reason.
+
+**D30. Dependencies added: requests, pulp (pinned; PuLP 3.3.2 prints API-deprecation warnings for 4.0, filtered in pytest.ini).**
+pandas skipped: csv + numpy cover loading and tables.

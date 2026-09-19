@@ -26,3 +26,117 @@ v1:
     crossover_prob: 0.9       # PLACEHOLDER: chance a pair is crossed; otherwise the child copies parent 1
     mutation_prob: 0.05       # PLACEHOLDER: per-gene chance (a gene is one latitude or one longitude value)
     elite: 1                  # ADDITION beyond the paper: best individual is copied unchanged each generation
+
+# =====================================================================================================
+# v2 = MOZAIQ hub model. ALL MOZAIQ NUMBERS BELOW ARE SIMULATED OR ASSUMED, NOT MOZAIQ DATA.
+# Public MOZAIQ facts used: regions (Seoul-Gahoe hanok, Gapyeong, Cheongpyeong, Hongcheon, Yangyang, Jeju),
+# 30+ villas mostly in the capital area, expansion toward Jeju/Busan and 100+ villas, memberships of
+# 10/20/30 nights a year. Everything else is a placeholder.
+# Source rule: a "source:" line names a page I actually opened, with URL and year. Where I found no source
+# the comment says "PLACEHOLDER: rough estimate, no source". Values are NOT tuned to any hub count.
+# =====================================================================================================
+v2:
+  osrm:
+    base_url: https://router.project-osrm.org   # source: OSRM public demo server, fine for a prototype (see README note in Phase 3)
+    batch_size: 50            # sources per table request (one destination per request; demo server limit is about 100 coordinates)
+    min_interval_s: 1.0       # polite: at most 1 request per second
+    timeout_s: 20
+    retries: 1                # one retry after a failure, then fall back to haversine
+    user_agent: mozaiq-ops-lab-portfolio-prototype
+  fallback:
+    detour_factor: 1.27       # source: MEASURED, median road km / straight-line km over 1,628 OSRM villa-hub pairs (expansion instance; p10 1.19, p90 1.50)
+    speed_kmh: 68             # source: MEASURED, median implied average speed of those OSRM pairs (p10 53, p90 80). OSRM's car profile, so optimistic for a loaded van
+
+  # ---- van transport -------------------------------------------------------------------------------
+  # van_cost_per_km_krw = fuel + driver time + other, summed here so the arithmetic can be checked:
+  #   fuel   160 KRW/km: diesel 1,600 KRW/L at 10 km/L for a 1-ton van (Porter2 city 9-10 km/L).
+  #          source: https://hi5-guide.com/cargo-truck-fuel-cost-calculator/  (page dated April 2026)
+  #   driver 229 KRW/km: 2026 minimum wage 10,320 KRW/h divided by an assumed 45 km/h average speed.
+  #          source: https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=18144  (Ministry of Employment and Labor, announced 2025)
+  #          speed 45 km/h = PLACEHOLDER: rough estimate, no source. Wage only, no insurance or overtime.
+  #   other  100 KRW/km: maintenance, tyres, depreciation, tolls. PLACEHOLDER: rough estimate, no source.
+  costs:
+    van_cost_per_km_krw: 489
+    # A direct, unbatched hub->villa->hub round trip per turnover. This is an UPPER BOUND on van cost (real vans batch
+    # several villas per run; that is prototype 2). PLACEHOLDER: probably the most influential number in the model.
+    van_round_trips_per_turnover: 1.0
+
+  # ---- hubs ----------------------------------------------------------------------------------------
+  # Fixed weekly cost of an open hub = rent only (in-house labour, energy and machines are NOT modelled, which
+  # biases the model TOWARD building hubs; noted as a limitation).
+  hub:
+    area_m2: 300              # PLACEHOLDER: rough estimate, no source (about 90 pyeong: one washer line, drying, linen store)
+    # Base rent: capital-area effective industrial rent 29,900 KRW per pyeong per month (Q2 2022) / 3.3058 m2 per pyeong.
+    #   source: https://www.realestateasia.com/industrial/news/seoul-industrial-rents-inch-16-in-q2  (JLL data, Q2 2022; 4 years old)
+    rent_gyeonggi_krw_per_m2_month: 9045
+    # Other tiers as multiples of the Gyeonggi/capital-area figure. PLACEHOLDER: rough estimate, no source found for
+    # regional industrial rents (Gangwon, Busan, Jeju). Only the direction is assumed: Seoul highest, Gangwon lowest.
+    rent_tier_multiplier: {seoul: 2.0, gyeonggi: 1.0, busan: 0.7, jeju: 0.7, gangwon: 0.5}
+    # Capacity in turnovers/week = washer kg per cycle x cycles per hour x hours per week x machines / kg per turnover
+    #   washer_kg_per_cycle 92.5 (100 kg machine x 92.5% effective load) and 1 cycle per hour:
+    #     source: https://www.hozolaundry.com/washer-extractor-capacity-calculation/  (equipment maker guide, year not shown on page)
+    #   hours_per_week 40: the 40-hour week behind the minimum-wage figure (MOEL page above).
+    #   machines_per_hub 1: PLACEHOLDER: rough estimate, no source.
+    #   linen_kg_per_turnover 10: PLACEHOLDER: rough estimate. Reference: a 120-room hotel launders about 400,000 lb a year,
+    #     about 4.1 kg per room per day (source: https://www.base-4.com/hotel-laundry-p1/, 2018, occupancy not stated);
+    #     a villa turnover covers several beds and bathrooms, assumed about 2.5 rooms' worth.
+    #   Result 92.5 x 1 x 40 x 1 / 10 = 370 turnovers/week. For scale only: LaundryGo says it can process up to 25 tons a day
+    #     (https://www.laundrygo.com/business/, client list as of July 2023).
+    washer_kg_per_cycle: 92.5
+    cycles_per_hour: 1
+    hours_per_week: 40
+    machines_per_hub: 1
+    linen_kg_per_turnover: 10
+    max_linen_drive_min: 90   # PLACEHOLDER: rough estimate, no source (linen back in the villa the same day)
+
+  # ---- local outsourced laundry vendor (one per zone; always available, no rent, no capacity limit) -----
+  # Flat fee per villa turnover, including their pickup and delivery. No source: I searched Soomgo, LaundryGo, Taesung
+  # laundry, hotelup and Cleantopia and none publishes a per-kg price for accommodation linen. PLACEHOLDER: rough estimate,
+  # no source: 10 kg per turnover x 1,500 KRW/kg = 15,000 on the mainland; Jeju +30% for island logistics.
+  # It is set higher than the in-house variable cost by construction, as specified. The Jeju hub-versus-vendor answer depends on it.
+  vendor:
+    cost_per_turnover_krw: {mainland: 15000, jeju: 19500}
+
+  # ---- penalties (soft constraints; large enough to dominate real costs, stated so) -------------------------
+  penalties:
+    # 5,000 KRW per excess minute per turnover: about 10x the real van cost of a minute (489 KRW/km x about 0.75 km/min).
+    drive_krw_per_min_per_turnover: 5000
+    # 50,000 KRW per turnover above hub capacity: more than any vendor fee (15,000-19,500), so overflowing is never cheaper than outsourcing.
+    capacity_krw_per_turnover: 50000
+
+  # ---- simulated villas (data/villas.csv is generated from this table by src/make_villas.py) ---------------
+  villas:
+    seed: 7
+    jitter_deg: 0.04          # about 4 km: coordinates are region-level, never real addresses
+    weekly_turnovers_range: [2, 5]   # PLACEHOLDER: rough estimate, no source (integer per villa per week). Memberships sell 10/20/30 nights a year, so stays are short.
+    # Region centres are approximate town coordinates. Counts are PLACEHOLDERs. "current" = n_current villas; "expansion" adds n_added more.
+    # Jeju has real MOZAIQ villas (press), so a few are in "current"; how many, and where on the island, is simulated.
+    regions:
+      - {name: Seoul-Gahoe,   zone: mainland, lat: 37.5826, lon: 126.9855, n_current: 4, n_added: 5}
+      - {name: Gapyeong,      zone: mainland, lat: 37.8315, lon: 127.5095, n_current: 5, n_added: 3}
+      - {name: Cheongpyeong,  zone: mainland, lat: 37.7390, lon: 127.4210, n_current: 4, n_added: 2}
+      - {name: Hongcheon,     zone: mainland, lat: 37.6970, lon: 127.8886, n_current: 5, n_added: 3}
+      - {name: Yangyang,      zone: mainland, lat: 38.0754, lon: 128.6190, n_current: 4, n_added: 2}
+      - {name: Yangpyeong,    zone: mainland, lat: 37.4915, lon: 127.4875, n_current: 2, n_added: 3}
+      - {name: Chuncheon,     zone: mainland, lat: 37.8813, lon: 127.7298, n_current: 2, n_added: 3}
+      - {name: Gangneung,     zone: mainland, lat: 37.7519, lon: 128.8761, n_current: 1, n_added: 4}
+      - {name: Jeju-City,     zone: jeju,     lat: 33.4996, lon: 126.5312, n_current: 2, n_added: 8}
+      - {name: Seogwipo,      zone: jeju,     lat: 33.2541, lon: 126.5601, n_current: 1, n_added: 5}
+      - {name: Busan,         zone: mainland, lat: 35.1631, lon: 129.1639, n_current: 0, n_added: 15}
+      - {name: Namyangju,     zone: mainland, lat: 37.6360, lon: 127.2165, n_current: 0, n_added: 4}
+      - {name: Ganghwa,       zone: mainland, lat: 37.7469, lon: 126.4879, n_current: 0, n_added: 3}
+      - {name: Sokcho,        zone: mainland, lat: 38.2070, lon: 128.5918, n_current: 0, n_added: 3}
+      - {name: Pyeongchang,   zone: mainland, lat: 37.3705, lon: 128.3903, n_current: 0, n_added: 4}
+      - {name: Hoengseong,    zone: mainland, lat: 37.4917, lon: 127.9850, n_current: 0, n_added: 3}
+
+  # ---- GA (all PLACEHOLDER: no source; not tuned; identical for roulette and tournament) ----------------
+  ga:
+    population: 50
+    generations: 100          # 5,000 evaluations, about 0.24% of the 2^21 possible hub sets
+    crossover_prob: 0.9
+    mutation_prob: 0.05       # per-bit flip chance (about 1 flip per individual)
+    elite: 1
+    tournament_k: 3
+    n_seeds: 20
+  exact:
+    time_limit_s: 300
