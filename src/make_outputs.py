@@ -12,7 +12,7 @@ from matplotlib.colors import LinearSegmentedColormap
 
 from src.config import ROOT, load_config
 from src.hub_ga import SELECTION, run_ga
-from src.hub_map import hub_map
+from src.hub_map import hub_map, hub_map_png
 from src.hub_model import describe
 from src.sensitivity import solve_with
 
@@ -255,13 +255,18 @@ def main():
     for sc, r in base.items():
         facts = describe(r["inst"], r["exact"]["assign"])
         outsourced = ", ".join(f"{z} {s:.0%}" for z, s in facts["vendor_share"].items())
-        banner = (f"<b>{sc}, base assumptions.</b> {NOTE}. Exact optimum: <b>{r['n_hubs']} hubs</b>"
-                  f"{' (' + ', '.join(r['hub_names']) + ')' if r['n_hubs'] else ' (outsource-first at these costs)'}; turnovers outsourced: {outsourced}.")
+        names = f" ({', '.join(r['hub_names'])})" if r["n_hubs"] else " (outsource-first at these costs)"
+        banner = f"<b>{sc}, base assumptions.</b> {NOTE}. Exact optimum: <b>{r['n_hubs']} hubs</b>{names}; turnovers outsourced: {outsourced}."
         hub_map(r["inst"], r["exact"]["assign"], banner, OUT / f"hubs_{sc}.html")
+        hub_map_png(r["inst"], r["exact"]["assign"], f"{sc.capitalize()}: base assumptions, exact optimum",
+                    f"{r['n_hubs']} hubs{names}. Turnovers outsourced to the vendor: {outsourced}.", OUT / f"hubs_{sc}.png")
     what = solve_with("expansion", cfg, round_trips=0.25)
     hub_map(what["inst"], what["exact"]["assign"],
             f"<b>WHAT-IF, not a business recommendation.</b> Expansion with 0.25 van round trips per turnover (heavy batching), which is not the base assumption. "
             f"{NOTE}. Exact optimum: <b>{what['n_hubs']} hubs</b> ({', '.join(what['hub_names'])}).", OUT / "hubs_expansion_whatif_batched.html")
+    hub_map_png(what["inst"], what["exact"]["assign"], "WHAT-IF, not a business recommendation",
+                f"Expansion with 0.25 van round trips per turnover (heavy batching), not the base assumption. Exact optimum: {what['n_hubs']} hubs ({', '.join(what['hub_names'])}).",
+                OUT / "hubs_expansion_whatif_batched.png", whatif=True)
 
     print("break-even heatmap ...")
     mults, trips = [0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 3.0, 4.0], [1.0, 0.75, 0.5, 0.25, 0.1]

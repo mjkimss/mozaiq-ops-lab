@@ -14,3 +14,11 @@ def test_heatmap_base_cell_equals_the_business_result(tmp_path):
     assert out.exists() and out.stat().st_size > 10_000
     assert grids["current"][0][0] == 0 and grids["expansion"][0][0] == 2
     assert grids["expansion"][0][1] >= grids["expansion"][0][0]              # a dearer vendor never opens fewer hubs here
+
+
+def test_static_map_png_is_written(tmp_path):
+    from src.hub_map import hub_map_png
+    res = solve_with("current")
+    out = tmp_path / "m.png"
+    hub_map_png(res["inst"], res["exact"]["assign"], "title", "subtitle", out)
+    assert out.exists() and out.stat().st_size > 20_000

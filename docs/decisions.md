@@ -180,3 +180,23 @@ turnovers) have no source and the original would overclaim; two sentences were s
 `docs/walmart_paper.md`; the file was scanned for a candidate number, session number, supervisor name and personal name and none was
 present, so nothing was removed (the "Kim" hits are cited authors). Chart colours were checked with the dataviz validator; aqua is below 3:1
 contrast on the light surface, so every aqua bar segment carries a visible value label and a legend entry.
+
+## Pre-public cleanup
+
+**D38. Static PNG maps for the README, drawn with matplotlib from the same solution data as the folium maps.** GitHub does not render
+`.html`. No basemap tiles: a plain lat/lon plot avoids downloading tiles and the extra attribution that comes with them, and the interactive
+`.html` files (with OpenStreetMap tiles) are kept in `outputs/`. The README says interactive versions will be linked via GitHub Pages
+(not set up yet). Hub labels of the crowded capital area sit in the empty band around it, joined by thin lines.
+
+**D39. Third-party figures omitted from the public copy of `docs/walmart_paper.md`, and removed from git history.** Omitted, each replaced with
+an italic caption keeping the essay's own credit: Figure 1 (Locus Blog, 24 Apr. 2020), Figure 2 (Google Maps base map, credited in the essay to
+Simpl Fulfillment, accessed 14 July 2022), Appendix 1 (Amazon diagram, Dau and Chiles) and Appendix 3 (Walmart Form 10-K product-mix table, fiscal
+year ended January 31, 2006, the columns shown in the table; the essay's own citation gives the SEC URL and access date, not a year). Kept, the
+author's own: Figure 3 (GA flowchart) and Appendix 4 (label arrays). A cleanup commit alone would leave the figures retrievable from the first
+commit, so history was rewritten (only that file changes in each commit; messages, order and authors kept) and, at the author's request, the GitHub
+repository is deleted and recreated rather than force-pushed, because GitHub can keep unreachable commits fetchable by hash. A local-only backup
+(zip outside the repo and an unpushed tag) exists until the author confirms. Author email left unchanged, by choice.
+
+**D40. README wording.** The Korean summary is the author's own text, verbatim, as one paragraph (replacing the earlier three-line version).
+The "Built with Claude Code" section states the author's role: framed the problem, made the modeling decisions, designed the validation and
+reviewed every phase; the code was written with Claude Code.

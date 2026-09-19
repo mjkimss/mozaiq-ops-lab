@@ -1,8 +1,6 @@
 # mozaiq-ops-lab: villa operations hub optimizer (prototype 1 of 3)
 
-> MOZAIQ 별장 운영 허브 최적화 프로토타입입니다 (운영 수치는 모두 시뮬레이션 또는 가정치이며, 일부만 공개 자료를 참고했습니다. 실제 MOZAIQ 데이터가 아닙니다).
-> 2022년 IB 논문에서 설계한 유전 알고리즘을, 실제 도로 이동시간(OSRM)을 사용하고 정확해 솔버(PuLP)로 검증하도록 재구성해 세탁·비품 허브를 어디에 둘지(혹은 외주할지) 계산합니다.
-> 현재 비용 가정에서는 외주가 유리하지만, 여러 별장의 배송을 한 차량에 묶을수록 자체 허브가 유리해집니다. 그 배송 효율을 측정하는 것이 다음 프로토타입(세탁물 라우팅)입니다.
+> MOZAIQ 별장 운영 허브 최적화 프로토타입입니다. 운영 수치는 실제 MOZAIQ 데이터가 아닌 시뮬레이션 또는 가정치이며, 일부만 공개 자료를 참고했습니다. 제가 2022년 IB 논문에서 설계한 유전 알고리즘을 실제 도로 이동시간(OSRM)을 반영하고 정확해 솔버(PuLP)로 검증할 수 있도록 재구성하여, 세탁·비품 허브를 어디에 둘지(혹은 외주할지) 계산했습니다. 현재 비용 가정에서는 외주가 유리하지만, 여러 별장의 배송을 한 차량에 묶을수록 자체 허브가 유리해집니다. 그 배송 효율을 측정하는 것이 다음 프로토타입(세탁물 라우팅)입니다.
 
 **Everything about MOZAIQ in this repo is simulated or a placeholder.** The only public facts used are: villas in Seoul (Gahoe hanok), Gapyeong, Cheongpyeong, Hongcheon, Yangyang and Jeju; 30+ villas, mostly in the capital area; expansion toward Jeju and Busan and 100+ villas; memberships of 10/20/30 nights a year. Villa counts, turnovers, rents, capacities and costs are assumptions, each marked in [config.yaml](config.yaml) with a source (a page I actually opened, with URL and year) or `PLACEHOLDER`.
 
@@ -52,10 +50,15 @@ MOZAIQ runs a private-villa membership with 30+ standalone villas, mostly in the
 
 ## Key results in more detail
 
-**Maps** (open the `.html` files in a browser after cloning; popups show region, drive time, hub load):
-[hubs_current.html](outputs/hubs_current.html) (0 hubs, everything outsourced),
-[hubs_expansion.html](outputs/hubs_expansion.html) (2 hubs: Hongcheon and Jeju City),
-[hubs_expansion_whatif_batched.html](outputs/hubs_expansion_whatif_batched.html) (**what-if, not a recommendation**: 0.25 round trips per turnover, 5 hubs, so you can see what a network looks like). Jeju villas are only ever served from Jeju; that is checked on every solution.
+**Maps.** Static views below (points only, no basemap; click for full size). The interactive versions, with OpenStreetMap tiles and popups for region, drive time and hub load, are in `outputs/`: [hubs_current.html](outputs/hubs_current.html), [hubs_expansion.html](outputs/hubs_expansion.html), [hubs_expansion_whatif_batched.html](outputs/hubs_expansion_whatif_batched.html). Interactive versions of the maps will be linked via GitHub Pages. Jeju villas are only ever served from Jeju; that is checked on every solution.
+
+<table>
+<tr>
+<td width="33%"><a href="outputs/hubs_current.png"><img src="outputs/hubs_current.png" alt="Current scenario: 0 hubs, everything outsourced" width="100%"></a><br><sub><b>Current:</b> 0 hubs, everything outsourced</sub></td>
+<td width="33%"><a href="outputs/hubs_expansion.png"><img src="outputs/hubs_expansion.png" alt="Expansion scenario: 2 hubs, Hongcheon and Jeju City" width="100%"></a><br><sub><b>Expansion:</b> 2 hubs (Hongcheon, Jeju City)</sub></td>
+<td width="33%"><a href="outputs/hubs_expansion_whatif_batched.png"><img src="outputs/hubs_expansion_whatif_batched.png" alt="What-if with heavy batching: 5 hubs" width="100%"></a><br><sub><b>What-if, not a recommendation:</b> 0.25 round trips per turnover, 5 hubs</sub></td>
+</tr>
+</table>
 
 ![Weekly cost, current vs expansion, outsource-everything vs optimum](outputs/cost_breakdown.png)
 
@@ -77,7 +80,7 @@ The base model gives the vendor a flat fee regardless of distance, while in-hous
 - **Quality is not modelled.** A luxury brand may keep laundry in-house to control linen quality (consistency, damage and loss, turnaround). The model prices that at zero, so "outsource-first" is a cost-only statement. Prototype 3 (photo-based cleaning QA) could measure vendor-linen defect rates and give that trade-off a number.
 - **GA vs exact:** the GA assigns each villa to its cheapest open option and penalizes capacity afterwards; the exact solver is capacity-aware. Capacity never binds in the base results, and each run prints whether it does.
 - **Road times** come from the public OSRM demo server (car profile, a September 2026 snapshot in [data/cache/](data/cache/)). Fine for a prototype; a production version would use a self-hosted OSRM or the Kakao Mobility API.
-- Every design choice, alternative and reason: [docs/decisions.md](docs/decisions.md) (D1-D37).
+- Every design choice, alternative and reason: [docs/decisions.md](docs/decisions.md) (D1-D40).
 
 ## How to run
 
@@ -92,7 +95,7 @@ python -m src.run --scenario current      # v2: exact optimum + GA-vs-optimal ta
 python -m src.run --scenario expansion
 python -m src.run --stress                # algorithm-validation instances (not business results)
 python -m src.make_outputs                # regenerates every chart, map and table in outputs/ (about a minute)
-pytest                                    # 29 tests, none use the network
+pytest                                    # 30 tests, none use the network
 ```
 
 Runs are offline: road times come from the committed cache. If you delete it, the first run fetches the pairs from OSRM at 1 request per second (about a minute) and falls back to straight-line x 1.27 for any pair that fails, flagging it in the output. Same seeds give the same results (map HTML files differ in random element ids only).
@@ -106,7 +109,7 @@ Runs are offline: road times come from the committed cache. If you delete it, th
 
 ## Built with Claude Code
 
-I built this with Claude Code (Anthropic): I set the problem, made and reviewed every decision (all logged in [docs/decisions.md](docs/decisions.md)), and Claude Code wrote most of the code and first drafts under that review. Placeholders and sources are in [config.yaml](config.yaml); nothing about MOZAIQ was invented.
+I framed the problem, made the modeling decisions, designed the validation, and reviewed every phase; the code was written with Claude Code.
 
 ## Attribution
 
