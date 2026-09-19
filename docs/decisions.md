@@ -125,3 +125,34 @@ fee and van batching: at 1.5x the vendor fee current opens 1 hub and expansion 7
 
 **D30. Dependencies added: requests, pulp (pinned; PuLP 3.3.2 prints API-deprecation warnings for 4.0, filtered in pytest.ini).**
 pandas skipped: csv + numpy cover loading and tables.
+
+## Phase 2 addendum: GA validation, GA-vs-MIP rationale, limitation
+
+**D31. GA stress tests: ALGORITHM VALIDATION, NOT A BUSINESS RECOMMENDATION.** The base results (0 and 2 hubs) make the GA-vs-optimal
+test easy: "open nothing" or "open two" is found by almost any search. So `python -m src.run --stress` runs the expansion instance
+with two unsourced numbers changed until 5-9 hubs open (settings from the informational grid in D29; `current` has no setting that opens
+5+ hubs, so all three are expansion instances). Same 20 seeds, same GA budget (5,000 evaluations of 2^21), same PuLP check.
+Results (per-seed CSVs in `outputs/v2_expansion_stress_*_runs.csv`); the exact solver proved optimality in about 0.1 s every time:
+
+| instance | optimal hubs | roulette: mean / worst gap, optimum found | tournament: mean / worst gap, optimum found |
+|---|---|---|---|
+| vendor fee x2 | 8 | 0.64% / 2.52%, 13 of 20 | 0.00% / 0.00%, 20 of 20 |
+| vendor fee x3 | 9 | 1.13% / 3.43%, 5 of 20 | 0.00% / 0.00%, 20 of 20 |
+| 0.25 round trips, fee x1 | 5 | 1.17% / 4.14%, 10 of 20 | 0.00% / 0.00%, 20 of 20 |
+
+Reading: on harder instances roulette (the paper's rule, weak pressure on 1/cost) degrades while tournament still finds the optimum in
+every seed. Capacity never binds and the Jeju hard constraint held in every run. These instances say nothing about MOZAIQ; the
+base results stay the business result: "outsource-first at these costs".
+
+**D32. Why a GA if the MIP solves in 0.1 s?** At this scale (21 candidate hubs, 100 villas, linear costs) the exact solver is the better
+tool: it is faster, proves optimality, and needs no tuning. The GA is kept for two reasons. (1) It is the bridge from the 2022 paper:
+v1 to v2 shows the same method growing up, and roulette vs tournament is a direct answer to the paper's weak-selection limitation.
+(2) A GA only needs a function that scores a hub set, so it can take costs a MIP cannot express directly, for example batched van
+routing from prototype 2, where a hub's transport cost is the length of a real multi-stop route. If prototype 2 does not need that,
+the honest recommendation is to use the exact solver. The MIP also earns its place as the validator of the GA.
+
+**D33. Limitation: the vendor fee is flat regardless of distance, while in-house hubs pay per km.** A real local vendor would charge
+more for a remote villa (longer pickup and delivery), and does not exist in every place. With a flat fee the model over-favours
+outsourcing remote villas (e.g. Gangwon) relative to a distance-priced vendor. The model is NOT changed (base results stay as the
+business result). Planned for Phase 3: a "vendor distance surcharge" (extra KRW per turnover per km from the nearest town) as one more
+sensitivity line, alongside vendor fee, van batching, rent and turnovers.

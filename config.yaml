@@ -140,3 +140,12 @@ v2:
     n_seeds: 20
   exact:
     time_limit_s: 300
+
+  # ---- algorithm-validation instances: ALGORITHM VALIDATION, NOT A BUSINESS RECOMMENDATION -----------------
+  # The base results (few or no hubs, outsource-first) make the GA-vs-optimal test easy. These are the expansion instance with
+  # two unsourced numbers changed, so that 5-9 hubs open in the optimum (settings found with the informational grid in decisions D29;
+  # in "current" no such setting opens 5+ hubs). They only test the GA against PuLP on harder instances. Run: python -m src.run --stress
+  stress_tests:
+    - {name: vendor_x2,       scenario: expansion, vendor_multiplier: 2.0, round_trips: 1.0}
+    - {name: vendor_x3,       scenario: expansion, vendor_multiplier: 3.0, round_trips: 1.0}
+    - {name: batching_0.25,   scenario: expansion, vendor_multiplier: 1.0, round_trips: 0.25}
